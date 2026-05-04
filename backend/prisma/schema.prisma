@@ -1,0 +1,340 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Roles for RBAC
+enum Role {
+  ADMIN
+  MANAGER
+  INSTRUCTOR
+  STUDENT
+  AFFILIATE
+}
+
+enum CourseStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum EnrollmentStatus {
+  ENROLLED
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum TransactionType {
+  PAYMENT
+  COMMISSION
+  WITHDRAWAL
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  CLOSED
+}
+
+enum TicketType {
+  TECHNICAL
+  BILLING
+  GENERAL
+}
+
+enum ReportStatus {
+  PENDING
+  IN_PROGRESS
+  RESOLVED
+  DISMISSED
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  name          String
+  phone         String?
+  role          Role      @default(STUDENT)
+  status        String    @default("ACTIVE") // ACTIVE, BLOCKED
+  
+  // Financial info
+  balance       Decimal   @default(0) @db.Decimal(15, 2)
+  bankName      String?
+  bankAccount   String?
+  bankBranch    String?
+  bankOwner     String?
+  
+  // Profile info
+  avatar        String?
+  bio           String?   @db.Text
+  specialization String?
+  location      String?
+
+  // Relationships
+  courses       Course[]      @relation("InstructorCourses")
+  enrollments   Enrollment[]
+  transactions  Transaction[]
+  
+  // Support & Reports
+  sentTickets     SupportTicket[] @relation("SenderTickets")
+  sentReports     Report[]        @relation("Reporter")
+  receivedReports Report[]        @relation("ReportedUser")
+  reviews         Review[]
+
+
+  // Affiliate info
+  affiliateLinks  AffiliateLink[]
+  affiliateCode   String?         @unique
+  
+  sentCommunications     Communication[] @relation("SenderCommunications")
+  receivedCommunications Communication[] @relation("ReceiverCommunications")
+  notifications          Notification[]
+  lessonProgress         LessonProgress[]
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+
+  @@map("users")
+}
+
+model Course {
+  id            String    @id @default(uuid())
+  title         String
+  description   String    @db.Text
+  shortDescription String?  @db.Text
+  introVideoUrl String?
+  coverImage    String?
+  price         Decimal   @default(0) @db.Decimal(12, 2)
+  discountPrice Decimal?  @db.Decimal(12, 2)
+  isFree        Boolean   @default(false)
+  category      String
+  status        CourseStatus @default(PENDING)
+  
+  // Ownership
+  instructorId  String
+  instructor    User      @relation("InstructorCourses", fields: [instructorId], references: [id])
+
+  // Combo logic
+  isCombo         Boolean   @default(false)
+  combos          Course[]  @relation("ComboCourses")
+  includedCourses Course[]  @relation("ComboCourses")
+
+  // Curriculum
+  sections      CourseSection[]
+  enrollments   Enrollment[]
+  
+  // Affiliate linkage
+  affiliateLinks AffiliateLink[]
+
+  reviews       Review[]
+
+  transactions  Transaction[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+
+  @@map("courses")
+}
+
+model Review {
+  id          String   @id @default(uuid())
+  content     String   @db.Text
+  rating      Int      @default(5)
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+
+  @@map("reviews")
+}
+
+model CourseSection {
+  id        String   @id @default(uuid())
+  title     String
+  order     Int      @default(0)
+  
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  
+  lessons   Lesson[]
+
+  @@map("course_sections")
+}
+
+model Lesson {
+  id          String   @id @default(uuid())
+  title       String
+  content     String?  @db.Text
+  videoUrl    String?
+  bunnyVideoId String? // ID video từ Bunny Stream
+  duration    Int      @default(0) // in minutes
+  order       Int      @default(0)
+  isPreview   Boolean  @default(false)
+
+  sectionId   String
+  section     CourseSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  
+  lessonProgress LessonProgress[]
+
+  @@map("lessons")
+}
+
+model Enrollment {
+  id          String   @id @default(uuid())
+  progress    Int      @default(0)
+  status      EnrollmentStatus @default(ENROLLED)
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id])
+
+  enrolledAt  DateTime @default(now())
+
+  @@unique([userId, courseId])
+  @@map("enrollments")
+}
+
+model Transaction {
+  id        String            @id @default(uuid())
+  orderCode String?           @unique
+  amount    Decimal           @db.Decimal(15, 2)
+  type      TransactionType
+  status    TransactionStatus @default(PENDING)
+  idempotencyKey String?      @unique
+  
+  userId    String
+  user      User              @relation(fields: [userId], references: [id])
+  
+  courseId  String?
+  course    Course?   @relation(fields: [courseId], references: [id])
+  
+  description String?
+  bankInfo    String?         // Snapshot of banking details for withdrawals
+  completedAt DateTime?       // When the withdrawal was actually processed
+  createdAt   DateTime        @default(now())
+
+  @@map("transactions")
+}
+
+model SystemSetting {
+  id    String @id @default(uuid())
+  key   String @unique
+  value String
+
+  @@map("system_settings")
+}
+
+model SupportTicket {
+  id        String       @id @default(uuid())
+  subject   String
+  content   String       @db.Text
+  type      TicketType   @default(GENERAL)
+  status    TicketStatus @default(OPEN)
+  
+  senderId  String
+  sender    User         @relation("SenderTickets", fields: [senderId], references: [id])
+
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@map("support_tickets")
+}
+
+model Report {
+  id              String       @id @default(uuid())
+  reason          String       @db.Text
+  status          ReportStatus @default(PENDING)
+  
+  reporterId      String
+  reporter        User         @relation("Reporter", fields: [reporterId], references: [id])
+  
+  reportedUserId  String
+  reportedUser    User         @relation("ReportedUser", fields: [reportedUserId], references: [id])
+
+  createdAt       DateTime     @default(now())
+
+  @@map("reports")
+}
+
+model AffiliateLink {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  
+  courseId  String?
+  course    Course?  @relation(fields: [courseId], references: [id])
+  
+  code      String   @unique
+  clicks    Int      @default(0)
+  
+  createdAt DateTime @default(now())
+
+  @@map("affiliate_links")
+}
+
+model Communication {
+  id          String   @id @default(uuid())
+  subject     String
+  content     String   @db.Text
+  type        String   @default("EMAIL") // EMAIL, SYSTEM
+  status      String   @default("PENDING") // PENDING, SENT, FAILED
+  
+  senderId    String
+  sender      User     @relation("SenderCommunications", fields: [senderId], references: [id])
+  
+  receiverId  String
+  receiver    User     @relation("ReceiverCommunications", fields: [receiverId], references: [id])
+
+  createdAt   DateTime @default(now())
+
+  @@map("communications")
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  title     String
+  message   String
+  type      String   // SYSTEM, COURSE_APPROVED, COMMISSION, MESSAGE
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+model LessonProgress {
+  id          String   @id @default(uuid())
+  userId      String
+  lessonId    String
+  completedAt DateTime @default(now())
+  
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+  @@map("lesson_progress")
+}

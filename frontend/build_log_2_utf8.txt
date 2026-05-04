@@ -1,0 +1,32 @@
+﻿   Ôû▓ Next.js 15.5.14
+
+   Creating an optimized production build ...
+node.exe : <w> [webpack.ca
+che.PackFileCacheStrategy]
+ Caching failed for pack: 
+Error: EPERM: operation 
+not permitted, rename 'D:\
+Academy\frontend\.next\cac
+he\webpack\server-producti
+on\0.pack_' -> 'D:\Academy
+\frontend\.next\cache\webp
+ack\server-production\0.pa
+ck'
+At C:\Program 
+Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (<  
+  w> [webpack.ca...duct   
+ ion\0.pack':String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+ Ô£ô Compiled successfully in 6.3s
+   Linting and checking validity of types ...

@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: academy_pg
+    restart: always
+    environment:
+      POSTGRES_USER: user_nguyen
+      POSTGRES_PASSWORD: password_nguyen
+      POSTGRES_DB: academy
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_money
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@money.com
+      PGADMIN_DEFAULT_PASSWORD: admin_password
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+volumes:
+  pg_data:
