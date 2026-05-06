@@ -10,23 +10,30 @@ import { WinstonModule, utilities as nestWinstonModuleUtilities } from 'nest-win
 import * as winston from 'winston';
 
 async function bootstrap() {
+  const winstonTransports: winston.transport[] = [
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        nestWinstonModuleUtilities.format.nestLike('Academy', { colors: true }),
+      ),
+    }),
+  ];
+
+  if (process.env.LOGGER_TYPE === 'FILE') {
+    winstonTransports.push(
+      new winston.transports.File({
+        filename: 'logs/app.log',
+        format: winston.format.combine(
+          winston.format.timestamp(),
+          winston.format.json()
+        ),
+      })
+    );
+  }
+
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: WinstonModule.createLogger({
-      transports: [
-        new winston.transports.Console({
-          format: winston.format.combine(
-            winston.format.timestamp(),
-            nestWinstonModuleUtilities.format.nestLike('Academy', { colors: true }),
-          ),
-        }),
-        new winston.transports.File({
-          filename: 'logs/app.log',
-          format: winston.format.combine(
-            winston.format.timestamp(),
-            winston.format.json()
-          ),
-        }),
-      ],
+      transports: winstonTransports,
     }),
   });
   
