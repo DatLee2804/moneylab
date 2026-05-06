@@ -186,7 +186,7 @@ export default function LoginPage() {
             ].map((item) => (
               <button
                 key={item.id}
-                onClick={() => window.location.href = `http://localhost:3001/auth/google?role=${item.id}`}
+                onClick={() => window.location.href = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/auth/google?role=${item.id}`}
                 className="group relative p-6 bg-[#141414] border border-white/5 rounded-[32px] text-left hover:border-[#baff02] transition-all shadow-sm hover:shadow-xl active:scale-[0.98]"
               >
                 <div className="flex items-center space-x-4">
