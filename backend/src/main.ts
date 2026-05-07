@@ -82,10 +82,17 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   const port = process.env.PORT || 3001;
-  await app.listen(port);
-  console.log(`Application is running on: http://localhost:${port}`);
-  console.log(`API Documentation available at: http://localhost:${port}/api`);
-  console.log(`Static files available at: http://localhost:${port}/uploads/`);
-}
-bootstrap();
+  
+  if (process.env.NODE_ENV !== 'production') {
+    await app.listen(port);
+    console.log(`Application is running on: http://localhost:${port}`);
+    console.log(`API Documentation available at: http://localhost:${port}/api`);
+    console.log(`Static files available at: http://localhost:${port}/uploads/`);
+  }
 
+  await app.init();
+  
+  return app.getHttpAdapter().getInstance();
+}
+
+export default bootstrap();
