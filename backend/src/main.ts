@@ -44,7 +44,7 @@ async function bootstrap() {
 
   // Enable CORS
   app.enableCors({
-    origin: [/vercel\.app$/, 'http://localhost:3000', 'http://localhost:3002'],
+    origin: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
