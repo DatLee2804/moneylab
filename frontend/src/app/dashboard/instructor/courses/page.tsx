@@ -484,7 +484,7 @@ export default function InstructorCoursesPage() {
 
   return (
     <DashboardLayout role="instructor" title={selectedCourse ? "Thiết kế khóa học" : "Quản lý khóa học"}>
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-32 space-y-4">
             <Loader2 className="w-12 h-12 text-[#baff02] animate-spin" />
@@ -503,28 +503,28 @@ export default function InstructorCoursesPage() {
               </button>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
+            <div className="bg-white dark:bg-gray-800 rounded-none border-y border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden -mx-8 lg:-mx-12">
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-gray-50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-gray-700">
-                      <th className="p-6 text-xs font-bold text-gray-400 uppercase tracking-wider">STT</th>
-                      <th className="p-6 text-xs font-bold text-gray-400 uppercase tracking-wider"></th>
-                      <th className="p-6 text-xs font-bold text-gray-400 uppercase tracking-wider">Tên Khoá học</th>
-                      <th className="p-6 text-xs font-bold text-gray-400 uppercase tracking-wider">Số Buổi</th>
-                      <th className="p-6 text-xs font-bold text-gray-400 uppercase tracking-wider">Thể loại</th>
-                      <th className="p-6 text-xs font-bold text-gray-400 uppercase tracking-wider">Giá gốc</th>
-                      <th className="p-6 text-xs font-bold text-gray-400 uppercase tracking-wider">Giá KM</th>
-                      <th className="p-6 text-xs font-bold text-gray-400 uppercase tracking-wider text-center">Trạng thái</th>
-                      <th className="p-6 text-xs font-bold text-gray-400 uppercase tracking-wider w-1/4">Nội dung</th>
-                      <th className="p-6 text-xs font-bold text-gray-400 uppercase tracking-wider">Thao tác</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-wider">STT</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-wider"></th>
+                      <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-wider">Tên Khoá học</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-wider">Số Buổi</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-wider">Thể loại</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-wider">Giá gốc</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-wider">Giá KM</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-wider text-center">Trạng thái</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-wider w-1/4">Nội dung</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-wider">Thao tác</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-50 dark:divide-gray-700">
                     {courses.map((course, index) => (
                       <tr key={course.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-900/30 transition-colors">
-                        <td className="p-6 text-sm font-bold text-gray-400">{index + 1}</td>
-                        <td className="p-6">
+                        <td className="px-6 py-4 text-sm font-bold text-gray-400">{index + 1}</td>
+                        <td className="px-6 py-4">
                           <div className="relative w-20 h-10 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
                             {course.coverImage ? (
                               <Image src={course.coverImage} fill className="object-cover" alt={course.title} />
@@ -535,18 +535,18 @@ export default function InstructorCoursesPage() {
                             )}
                           </div>
                         </td>
-                        <td className="p-6 text-sm font-bold text-gray-900 dark:text-white max-w-xs">{course.title}</td>
-                        <td className="p-6 text-sm font-medium text-gray-600 dark:text-gray-400">{course.lessons || 0}</td>
-                        <td className="p-6 text-sm font-medium text-gray-600 dark:text-gray-400">
+                        <td className="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white max-w-xs">{course.title}</td>
+                        <td className="px-6 py-4 text-sm font-medium text-gray-600 dark:text-gray-400">{course.lessons || 0}</td>
+                        <td className="px-6 py-4 text-sm font-medium text-gray-600 dark:text-gray-400">
                           <span className="px-2.5 py-1 bg-[#baff02]/20 text-[#baff02] rounded-lg text-[10px] font-black uppercase tracking-wider">{course.category || 'AI'}</span>
                         </td>
-                        <td className="p-6 text-sm font-medium text-gray-400 line-through">
+                        <td className="px-6 py-4 text-sm font-medium text-gray-400 line-through">
                           {course.isFree ? '-' : `${course.price?.toLocaleString()}đ`}
                         </td>
-                        <td className="p-6 text-sm font-bold text-[#baff02]">
+                        <td className="px-6 py-4 text-sm font-bold text-[#baff02]">
                           {course.isFree || Number(course.price) === 0 ? 'Khoá học miễn phí' : `${course.discountPrice?.toLocaleString() || course.price?.toLocaleString()}đ`}
                         </td>
-                        <td className="p-6 text-center">
+                        <td className="px-6 py-4 text-center">
                           <span className={cn(
                             "px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest inline-flex items-center space-x-1.5",
                             course.status === 'APPROVED' 
@@ -558,14 +558,14 @@ export default function InstructorCoursesPage() {
                             {course.status === 'APPROVED' ? 'Đã duyệt' : course.status === 'REJECTED' ? 'Bị từ chối' : 'Chờ duyệt'}
                           </span>
                         </td>
-                        <td className="p-6 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                        <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
                           {course.description ? (
                              <div className="line-clamp-2">
                                {stripHtml(course.description)}
                              </div>
                           ) : 'Chưa có mô tả'}
                         </td>
-                        <td className="p-6">
+                        <td className="px-6 py-4">
                           <div className="flex flex-col space-y-2">
                             <button 
                               onClick={() => handleSelectCourse(course)}
@@ -617,14 +617,14 @@ export default function InstructorCoursesPage() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl max-h-[90vh] bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-2xl overflow-y-auto border border-gray-100 dark:border-gray-700 custom-scrollbar"
+              className="relative w-full max-w-2xl max-h-[90vh] bg-white rounded-[2.5rem] shadow-2xl overflow-y-auto border border-gray-100 custom-scrollbar"
             >
               <form onSubmit={handleSaveCourse} className="p-10 space-y-8">
                 <div className="flex justify-between items-center">
-                  <h2 className="text-2xl font-black text-[#0f172a] dark:text-white">
+                  <h2 className="text-2xl font-black text-gray-900">
                     {editingCourse ? 'Cập nhật khoá học' : 'Tạo khoá học mới'}
                   </h2>
-                  <button type="button" onClick={() => setIsCourseModalOpen(false)} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors">
+                  <button type="button" onClick={() => setIsCourseModalOpen(false)} className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors">
                     <X size={24} />
                   </button>
                 </div>
@@ -637,7 +637,7 @@ export default function InstructorCoursesPage() {
                       value={courseFormData.name || ''}
                       onChange={(e) => setCourseFormData({...courseFormData, name: e.target.value})}
                       placeholder="Nhập tên khóa học..."
-                      className="w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl text-sm font-bold text-[#0f172a] dark:text-white focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all placeholder:text-gray-400" 
+                      className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all placeholder:text-gray-400" 
                     />
                   </div>
                   <div className="space-y-2">
@@ -645,7 +645,7 @@ export default function InstructorCoursesPage() {
                     <select 
                       value={courseFormData.category || 'AI'}
                       onChange={(e) => setCourseFormData({...courseFormData, category: e.target.value})}
-                      className="w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl text-sm font-bold text-[#0f172a] dark:text-white focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all cursor-pointer" 
+                      className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all cursor-pointer" 
                     >
                       <option value="Đầu tư">Đầu tư</option>
                       <option value="AI & Công nghệ">AI & Công nghệ</option>
@@ -662,7 +662,7 @@ export default function InstructorCoursesPage() {
                       value={courseFormData.shortDescription || ''}
                       onChange={(e) => setCourseFormData({...courseFormData, shortDescription: e.target.value})}
                       placeholder="Chiến lược toàn diện cho Fanpage, Group Facebook..."
-                      className="w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl text-sm font-bold text-[#0f172a] dark:text-white focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all placeholder:text-gray-400" 
+                      className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all placeholder:text-gray-400" 
                     />
                   </div>
                   <div className="col-span-2 space-y-2">
@@ -672,7 +672,7 @@ export default function InstructorCoursesPage() {
                       value={courseFormData.introVideoUrl || ''}
                       onChange={(e) => setCourseFormData({...courseFormData, introVideoUrl: e.target.value})}
                       placeholder="https://youtube.com/watch?v=..."
-                      className="w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl text-sm font-bold text-[#0f172a] dark:text-white focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all placeholder:text-gray-400" 
+                      className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all placeholder:text-gray-400" 
                     />
                   </div>
                   <div className="space-y-2">
@@ -681,18 +681,18 @@ export default function InstructorCoursesPage() {
                       type="number" 
                       value={courseFormData.sessions || 0}
                       onChange={(e) => setCourseFormData({...courseFormData, sessions: parseInt(e.target.value) || 0})}
-                      className="w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl text-sm font-bold text-[#0f172a] dark:text-white focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all" 
+                      className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all" 
                     />
                   </div>
-                  <div className="col-span-2 space-y-4 py-4 border-y border-gray-100 dark:border-gray-800">
+                  <div className="col-span-2 space-y-4 py-4 border-y border-gray-100">
                     <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Chế độ học phí</label>
-                    <div className="flex bg-gray-100 dark:bg-gray-800 p-1.5 rounded-2xl w-fit">
+                    <div className="flex bg-gray-100 p-1.5 rounded-2xl w-fit">
                       <button 
                         type="button"
                         onClick={() => setCourseFormData({...courseFormData, isFree: false})}
                         className={cn(
                           "px-8 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all",
-                          !courseFormData.isFree ? "bg-white dark:bg-gray-700 text-[#0f172a] dark:text-white shadow-sm" : "text-gray-500"
+                          !courseFormData.isFree ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
                         )}
                       >
                         Trả phí
@@ -702,7 +702,7 @@ export default function InstructorCoursesPage() {
                         onClick={() => setCourseFormData({...courseFormData, isFree: true})}
                         className={cn(
                           "px-8 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all",
-                          courseFormData.isFree ? "bg-[#baff02] text-[#0f172a] shadow-sm" : "text-gray-500"
+                          courseFormData.isFree ? "bg-[#baff02] text-[#0f172a] shadow-sm" : "text-gray-500 hover:text-gray-700"
                         )}
                       >
                         Miễn phí
@@ -719,7 +719,7 @@ export default function InstructorCoursesPage() {
                           value={courseFormData.originalPrice || '0'}
                           onChange={(e) => setCourseFormData({...courseFormData, originalPrice: e.target.value})}
                           placeholder="Ví dụ: 2.500.000đ"
-                          className="w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl text-sm font-bold text-[#0f172a] dark:text-white focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all placeholder:text-gray-400" 
+                          className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all placeholder:text-gray-400" 
                         />
                       </div>
                       <div className="space-y-2">
@@ -729,7 +729,7 @@ export default function InstructorCoursesPage() {
                           value={courseFormData.discountPrice || '0'}
                           onChange={(e) => setCourseFormData({...courseFormData, discountPrice: e.target.value})}
                           placeholder="Ví dụ: 1.299.000đ"
-                          className="w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl text-sm font-bold text-[#0f172a] dark:text-white focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all placeholder:text-gray-400" 
+                          className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] focus:outline-none transition-all placeholder:text-gray-400" 
                         />
                       </div>
                     </>
@@ -739,24 +739,24 @@ export default function InstructorCoursesPage() {
                     <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Ảnh bìa khoá học</label>
                     <div 
                       onClick={() => fileInputRef.current?.click()}
-                      className="relative w-full h-48 bg-gray-50 dark:bg-gray-900 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-[2rem] flex flex-col items-center justify-center cursor-pointer hover:border-[#baff02] hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-all overflow-hidden group"
+                      className="relative w-full h-48 bg-gray-50 border-2 border-dashed border-gray-200 rounded-[2rem] flex flex-col items-center justify-center cursor-pointer hover:border-[#baff02] hover:bg-gray-100 transition-all overflow-hidden group"
                     >
                       {courseFormData.thumbnail ? (
                         <>
                           <Image src={courseFormData.thumbnail} fill className="object-cover" alt="Preview" />
-                          <div className="absolute inset-0 bg-black/40 opacity-100 transition-opacity flex items-center justify-center">
-                             <div className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl text-white text-xs font-bold border border-white/30">
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                             <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl text-gray-900 text-xs font-bold border border-gray-200">
                                Thay đổi ảnh bìa
                              </div>
                           </div>
                         </>
                       ) : (
                         <div className="flex flex-col items-center space-y-3">
-                          <div className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-sm text-gray-400">
+                          <div className="p-4 bg-white rounded-2xl shadow-sm text-gray-400">
                             <Upload size={24} />
                           </div>
                           <div className="text-center">
-                            <p className="text-sm font-bold text-[#0f172a] dark:text-white">Click để tải lên ảnh bìa</p>
+                            <p className="text-sm font-bold text-gray-900">Click để tải lên ảnh bìa</p>
                             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">PNG, JPG up to 10MB</p>
                           </div>
                         </div>
@@ -781,8 +781,8 @@ export default function InstructorCoursesPage() {
                   </div>
                 </div>
                 
-                <div className="flex justify-end gap-4 pt-4">
-                  <button type="button" onClick={() => setIsCourseModalOpen(false)} className="px-8 py-4 text-sm font-bold text-gray-500 hover:text-[#0f172a] transition-colors">Hủy</button>
+                <div className="flex justify-end gap-4 pt-4 border-t border-gray-100">
+                  <button type="button" onClick={() => setIsCourseModalOpen(false)} className="px-8 py-4 text-sm font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-2xl transition-colors">Hủy</button>
                   <button type="submit" className="px-10 py-4 bg-[#baff02] text-[#0f172a] rounded-2xl font-black shadow-lg shadow-[#baff02]/20 hover:bg-green-700 transition-all font-sans">
                     Lưu khoá học
                   </button>

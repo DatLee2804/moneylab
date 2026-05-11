@@ -114,8 +114,30 @@ export default function CourseDetail() {
     );
   };
 
+  useEffect(() => {
+    if (typeof window !== 'undefined' && user && course && !isEnrolling) {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('action') === 'enroll') {
+        router.replace(`/courses/${course.id}`);
+        setTimeout(() => {
+          handleEnroll();
+        }, 500);
+      }
+    }
+  }, [user, course, isEnrolling]);
+
   const handleEnroll = async () => {
     if (!course || isEnrolling) return;
+
+    if (!user) {
+      localStorage.setItem('postAuthAction', JSON.stringify({
+        action: 'enroll',
+        courseId: course.id,
+        redirectUrl: `/courses/${course.id}`
+      }));
+      router.push('/auth/login');
+      return;
+    }
 
     if (userRole?.toUpperCase() === 'INSTRUCTOR' && userId === course.instructorId) {
       alert("Bạn là giảng viên của khoá học này.");
@@ -374,88 +396,124 @@ export default function CourseDetail() {
               </div>
             </div>
 
-            {/* 5. Nội dung khoá học */}
-            <div className="space-y-6">
-              <div className="flex justify-between items-end px-2">
-                <h3 className="text-xl font-black flex items-center space-x-3">
-                  <div className="w-1.5 h-6 bg-[#baff02] rounded-full" />
-                  <span>Nội dung khoá học</span>
-                </h3>
-                <span className="text-xs font-bold text-gray-500">{course.sections.length} chương • {course.totalLessons} bài học</span>
-              </div>
-
-              <div className="space-y-4">
-                {course.sections.map((section, idx) => (
-                  <div 
-                    key={section.id} 
-                    className={cn(
-                      "bg-[#111111] rounded-3xl border border-white/5 overflow-hidden transition-all",
-                      openSections.includes(section.id) ? "ring-1 ring-[#baff02]/20" : ""
-                    )}
-                  >
-                    <button 
-                      onClick={() => toggleSection(section.id)}
-                      className="w-full flex items-center justify-between p-6 hover:bg-white/5 transition-colors group"
-                    >
-                      <div className="flex items-center space-x-4 text-left">
-                        <div className="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-[10px] font-black group-hover:bg-[#baff02] group-hover:text-[#0a0a0a] transition-all">
-                          {idx + 1}
-                        </div>
-                        <div>
-                          <p className="text-sm font-black group-hover:text-[#baff02] transition-colors">{section.title}</p>
-                          <p className="text-[10px] text-gray-500 font-bold uppercase mt-1">{section.lessons.length} bài học</p>
+            {/* 5. Nội dung / Combo */}
+            {course.isCombo ? (
+              <div className="space-y-6">
+                <div className="flex justify-between items-end px-2">
+                  <h3 className="text-xl font-black flex items-center space-x-3">
+                    <div className="w-1.5 h-6 bg-[#baff02] rounded-full" />
+                    <span>Các khóa học trong Combo này</span>
+                  </h3>
+                  <span className="text-xs font-bold text-gray-500">{course.includedCourses?.length || 0} khóa học</span>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {course.includedCourses?.map((included: any) => (
+                    <Link href={`/courses/${included.id}`} key={included.id} className="bg-[#111111] p-4 rounded-2xl border border-white/5 flex items-center space-x-4 hover:border-[#baff02]/50 transition-colors group">
+                      <div className="relative w-24 h-16 rounded-lg overflow-hidden bg-white/5 flex-shrink-0">
+                        {included.coverImage ? (
+                          <Image src={included.coverImage} fill className="object-cover group-hover:scale-105 transition-transform" alt={included.title} />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center text-gray-500"><Play size={20} /></div>
+                        )}
+                      </div>
+                      <div className="flex-grow">
+                        <h4 className="text-sm font-bold text-white line-clamp-1 group-hover:text-[#baff02] transition-colors">{included.title}</h4>
+                        <p className="text-[10px] text-gray-500 mt-1">{included.instructor?.name}</p>
+                        <div className="mt-2 flex items-baseline space-x-2">
+                          <span className="text-xs font-bold text-[#baff02]">{included.discountPrice ? formatPrice(included.discountPrice) : formatPrice(included.price)}</span>
+                          {included.discountPrice && Number(included.discountPrice) > 0 && (
+                            <span className="text-[10px] text-gray-500 line-through">{formatPrice(included.price)}</span>
+                          )}
                         </div>
                       </div>
-                      <ChevronDown 
-                        size={18} 
-                        className={cn("text-gray-500 transition-transform duration-300", openSections.includes(section.id) && "rotate-180 text-[#baff02]")} 
-                      />
-                    </button>
-                    
-                    <AnimatePresence>
-                      {openSections.includes(section.id) && (
-                        <motion.div 
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="border-t border-white/5 divide-y divide-white/5"
-                        >
-                          {section.lessons.map((lesson, lIdx) => (
-                            <div 
-                              key={lesson.id} 
-                              onClick={() => {
-                                if (course.isFree || lesson.isPreview) {
-                                  window.location.href = `/courses/${course.id}/player?lessonId=${lesson.id}`;
-                                }
-                              }}
-                              className={cn(
-                                "p-5 pl-8 flex items-center justify-between group transition-colors",
-                                (course.isFree || lesson.isPreview) ? "cursor-pointer hover:bg-white/5" : "cursor-not-allowed opacity-50"
-                              )}
-                            >
-                              <div className="flex items-center space-x-4">
-                                <div className="text-gray-600">
-                                  {lesson.isPreview || course.isFree ? <Play size={14} fill="currentColor" className="text-[#baff02]" /> : <Lock size={14} />}
-                                </div>
-                                <div className="flex flex-col">
-                                  <span className="text-sm font-bold text-gray-300">{lesson.title}</span>
-                                  {(lesson.isPreview || course.isFree) && (
-                                    <span className="text-[9px] text-[#baff02] font-black uppercase tracking-widest mt-0.5">
-                                      {course.isFree ? 'Miễn phí' : 'Học thử miễn phí'}
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                              <span className="text-[10px] text-gray-500 font-bold">{lesson.duration || 0} phút</span>
-                            </div>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="space-y-6">
+                <div className="flex justify-between items-end px-2">
+                  <h3 className="text-xl font-black flex items-center space-x-3">
+                    <div className="w-1.5 h-6 bg-[#baff02] rounded-full" />
+                    <span>Nội dung khoá học</span>
+                  </h3>
+                  <span className="text-xs font-bold text-gray-500">{course.sections?.length || 0} chương • {course.totalLessons} bài học</span>
+                </div>
+
+                <div className="space-y-4">
+                  {course.sections?.map((section, idx) => (
+                    <div 
+                      key={section.id} 
+                      className={cn(
+                        "bg-[#111111] rounded-3xl border border-white/5 overflow-hidden transition-all",
+                        openSections.includes(section.id) ? "ring-1 ring-[#baff02]/20" : ""
+                      )}
+                    >
+                      <button 
+                        onClick={() => toggleSection(section.id)}
+                        className="w-full flex items-center justify-between p-6 hover:bg-white/5 transition-colors group"
+                      >
+                        <div className="flex items-center space-x-4 text-left">
+                          <div className="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-[10px] font-black group-hover:bg-[#baff02] group-hover:text-[#0a0a0a] transition-all">
+                            {idx + 1}
+                          </div>
+                          <div>
+                            <p className="text-sm font-black group-hover:text-[#baff02] transition-colors">{section.title}</p>
+                            <p className="text-[10px] text-gray-500 font-bold uppercase mt-1">{section.lessons.length} bài học</p>
+                          </div>
+                        </div>
+                        <ChevronDown 
+                          size={18} 
+                          className={cn("text-gray-500 transition-transform duration-300", openSections.includes(section.id) && "rotate-180 text-[#baff02]")} 
+                        />
+                      </button>
+                      
+                      <AnimatePresence>
+                        {openSections.includes(section.id) && (
+                          <motion.div 
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="border-t border-white/5 divide-y divide-white/5"
+                          >
+                            {section.lessons.map((lesson, lIdx) => (
+                              <div 
+                                key={lesson.id} 
+                                onClick={() => {
+                                  if (course.isFree || lesson.isPreview) {
+                                    window.location.href = `/courses/${course.id}/player?lessonId=${lesson.id}`;
+                                  }
+                                }}
+                                className={cn(
+                                  "p-5 pl-8 flex items-center justify-between group transition-colors",
+                                  (course.isFree || lesson.isPreview) ? "cursor-pointer hover:bg-white/5" : "cursor-not-allowed opacity-50"
+                                )}
+                              >
+                                <div className="flex items-center space-x-4">
+                                  <div className="text-gray-600">
+                                    {lesson.isPreview || course.isFree ? <Play size={14} fill="currentColor" className="text-[#baff02]" /> : <Lock size={14} />}
+                                  </div>
+                                  <div className="flex flex-col">
+                                    <span className="text-sm font-bold text-gray-300">{lesson.title}</span>
+                                    {(lesson.isPreview || course.isFree) && (
+                                      <span className="text-[9px] text-[#baff02] font-black uppercase tracking-widest mt-0.5">
+                                        {course.isFree ? 'Miễn phí' : 'Học thử miễn phí'}
+                                      </span>
+                                    )}
+                                  </div>
+                                </div>
+                                <span className="text-[10px] text-gray-500 font-bold">{lesson.duration || 0} phút</span>
+                              </div>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* 6. Giảng viên */}
             <div className="bg-[#111111] rounded-[2rem] p-10 border border-white/5">

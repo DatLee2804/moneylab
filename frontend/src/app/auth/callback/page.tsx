@@ -21,8 +21,18 @@ function CallbackHandler() {
         // Ensure user obj aligns with the expected structure
         setAuth(user, token);
         
-        // Redirect to homepage or user dashboard
-        router.push('/');
+        const postAuth = localStorage.getItem('postAuthAction');
+        if (postAuth) {
+          try {
+            const parsed = JSON.parse(postAuth);
+            localStorage.removeItem('postAuthAction');
+            router.push(`${parsed.redirectUrl}?action=${parsed.action}`);
+          } catch (e) {
+            router.push('/');
+          }
+        } else {
+          router.push('/');
+        }
       } catch (error) {
         console.error('Failed to parse user data from URL', error);
         router.push('/auth/login?error=auth_failed');

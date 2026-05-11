@@ -218,6 +218,16 @@ export class CoursesService {
           },
           orderBy: { createdAt: 'desc' },
           take: 10
+        },
+        includedCourses: {
+          select: {
+            id: true,
+            title: true,
+            coverImage: true,
+            price: true,
+            discountPrice: true,
+            instructor: { select: { name: true } }
+          }
         }
       },
     });

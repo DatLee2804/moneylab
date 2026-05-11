@@ -34,8 +34,18 @@ export default function LoginPage() {
       
       setAuth(user, access_token);
       
-      // Redirect to Home instead of Dashboard
-      router.push('/');
+      const postAuth = localStorage.getItem('postAuthAction');
+      if (postAuth) {
+        try {
+          const parsed = JSON.parse(postAuth);
+          localStorage.removeItem('postAuthAction');
+          router.push(`${parsed.redirectUrl}?action=${parsed.action}`);
+        } catch (e) {
+          router.push('/');
+        }
+      } else {
+        router.push('/');
+      }
     } catch (err: any) {
       setError(err.response?.data?.message || 'Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản.');
       console.error('Login error:', err);
