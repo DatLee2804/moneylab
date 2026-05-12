@@ -37,7 +37,7 @@ export class UploadsController {
     FileInterceptor('file', {
       storage: memoryStorage(),
       fileFilter: (req, file, cb) => {
-        if (!file.mimetype.match(/\/(jpg|jpeg|png|gif|webp|mp4|pdf|docx?)$/)) {
+        if (!file.mimetype.match(/\/(jpg|jpeg|png|gif|webp|svg\+xml|svg|mp4|pdf|docx?)$/)) {
           return cb(new BadRequestException('File format is not supported!'), false);
         }
         cb(null, true);
