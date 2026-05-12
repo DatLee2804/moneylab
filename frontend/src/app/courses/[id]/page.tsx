@@ -71,6 +71,8 @@ interface Course {
   totalDuration: number;
   totalLessons: number;
   displayStudents: number;
+  isCombo?: boolean;
+  includedCourses?: any[];
 }
 
 export default function CourseDetail() {
