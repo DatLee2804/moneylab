@@ -73,7 +73,7 @@ export default function InstructorCoursesPage() {
 
   const fetchCourses = async () => {
     try {
-      const response = await api.get('/courses/me');
+      const response = await api.get('/courses/me?isCombo=false');
       setCourses(response.data);
     } catch (error) {
       console.error('Failed to fetch courses:', error);

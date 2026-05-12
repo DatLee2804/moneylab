@@ -8,7 +8,10 @@ export class EnrollmentsService {
 
   async enroll(studentId: string, courseId: string, bypassPaymentCheck = false) {
     // Check if course exists
-    const course = await this.prisma.course.findUnique({ where: { id: courseId } });
+    const course = await this.prisma.course.findUnique({ 
+      where: { id: courseId },
+      include: { includedCourses: true }
+    });
     if (!course) {
       throw new NotFoundException('Course not found');
     }
@@ -22,26 +25,50 @@ export class EnrollmentsService {
       throw new NotFoundException('Student not found');
     }
 
-    // Check if already enrolled
-    const existingEnrollment = await this.prisma.enrollment.findUnique({
-      where: {
-        userId_courseId: {
-          userId: studentId,
-          courseId: courseId,
+    return this.prisma.$transaction(async (tx) => {
+      // Check if already enrolled
+      const existingEnrollment = await tx.enrollment.findUnique({
+        where: {
+          userId_courseId: {
+            userId: studentId,
+            courseId: courseId,
+          },
         },
-      },
-    });
-    
-    if (existingEnrollment) {
-      throw new ConflictException('Student is already enrolled in this course');
-    }
+      });
+      
+      if (existingEnrollment) {
+        throw new ConflictException('Student is already enrolled in this course');
+      }
 
-    return this.prisma.enrollment.create({
-      data: {
-        userId: studentId,
-        courseId: courseId,
-        status: EnrollmentStatus.ENROLLED,
-      },
+      const coursesToEnroll = new Set<string>();
+      coursesToEnroll.add(courseId);
+      
+      if (course.isCombo && course.includedCourses) {
+        course.includedCourses.forEach(c => coursesToEnroll.add(c.id));
+      }
+
+      let primaryEnrollment = null;
+
+      for (const cId of coursesToEnroll) {
+        const existing = await tx.enrollment.findUnique({
+          where: {
+            userId_courseId: { userId: studentId, courseId: cId }
+          }
+        });
+
+        if (!existing) {
+          const newEnrollment = await tx.enrollment.create({
+            data: {
+              userId: studentId,
+              courseId: cId,
+              status: EnrollmentStatus.ENROLLED,
+            }
+          });
+          if (cId === courseId) primaryEnrollment = newEnrollment;
+        }
+      }
+
+      return primaryEnrollment;
     });
   }
 
@@ -162,7 +189,7 @@ export class EnrollmentsService {
     const courseIds = courses.map(c => c.id);
 
     // Get all enrollments for these courses, including user info
-    return this.prisma.enrollment.findMany({
+    const enrollments = await this.prisma.enrollment.findMany({
       where: {
         courseId: { in: courseIds },
       },
@@ -174,15 +201,36 @@ export class EnrollmentsService {
             email: true,
           },
         },
-        course: {
-          select: {
-            id: true,
-            title: true,
-          },
-        },
       },
-      orderBy: { enrolledAt: 'desc' },
+      orderBy: { enrolledAt: 'asc' },
     });
+
+    // Group by user
+    const studentMap = new Map<string, any>();
+
+    for (const en of enrollments) {
+      if (!studentMap.has(en.userId)) {
+        studentMap.set(en.userId, {
+          id: en.userId, // use userId as the unique ID for the list
+          user: en.user,
+          createdAt: en.enrolledAt, // earliest enrollment date
+          courseCount: 0,
+          totalProgress: 0,
+        });
+      }
+      
+      const st = studentMap.get(en.userId);
+      st.courseCount += 1;
+      st.totalProgress += en.progress;
+    }
+
+    return Array.from(studentMap.values()).map(st => ({
+      id: st.id,
+      user: st.user,
+      createdAt: st.createdAt,
+      courseCount: st.courseCount,
+      progress: Math.floor(st.totalProgress / st.courseCount),
+    })).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
   }
 }
   

@@ -257,19 +257,19 @@ export const SupportSection = ({ role }: { role: string }) => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative bg-[#141414] rounded-[40px] overflow-hidden shadow-2xl max-w-xl w-full border border-white/10"
+              className="relative bg-white rounded-[40px] overflow-hidden shadow-2xl max-w-xl w-full border border-gray-100"
             >
-              <div className="p-8 bg-[#0a0a0a] text-white flex items-center justify-between border-b border-white/5">
+              <div className="p-8 bg-white border-b border-gray-100 flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <Monitor size={24} className="text-[#baff02]" />
-                  <h3 className="text-xl font-black uppercase tracking-tight text-[#baff02]">Báo cáo Lỗi Hệ thống</h3>
+                  <h3 className="text-xl font-black uppercase tracking-tight text-black">Báo cáo Lỗi Hệ thống</h3>
                 </div>
-                <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-xl transition-all">
+                <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 text-gray-500 rounded-xl transition-all">
                   <X size={20} />
                 </button>
               </div>
 
-              <form onSubmit={handleSubmit} className="p-10 space-y-8">
+              <form onSubmit={handleSubmit} className="p-10 space-y-8 bg-white text-black">
                   <div className="space-y-1">
                     <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-2">Vấn đề gặp phải</label>
                     <input 
@@ -277,7 +277,7 @@ export const SupportSection = ({ role }: { role: string }) => {
                       type="text" 
                       value={formData.subject}
                       onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                      className="w-full px-6 py-4 bg-[#0a0a0a] border border-white/5 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/10 transition-all text-white placeholder:text-gray-700"
+                      className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/50 transition-all text-black placeholder:text-gray-400 outline-none"
                       placeholder="VD: Không xem được video, Lỗi nạp tiền..."
                     />
                   </div>
@@ -285,7 +285,7 @@ export const SupportSection = ({ role }: { role: string }) => {
                   <div className="grid grid-cols-2 gap-6">
                     <div className="space-y-1 flex flex-col h-full">
                        <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-2">Ngày phát hiện</label>
-                       <div className="px-6 py-4 bg-[#0a0a0a] rounded-2xl text-xs font-black text-gray-500 flex items-center space-x-2 border border-dashed border-white/10">
+                       <div className="px-6 py-4 bg-gray-50 rounded-2xl text-xs font-black text-gray-500 flex items-center space-x-2 border border-dashed border-gray-200">
                           <Calendar size={14} />
                           <span>{new Date().toLocaleDateString('vi-VN')}</span>
                        </div>
@@ -300,8 +300,8 @@ export const SupportSection = ({ role }: { role: string }) => {
                             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                           />
                           <div className={cn(
-                            "px-6 py-4 bg-[#0a0a0a] rounded-2xl text-xs font-black flex items-center space-x-2 transition-all border-2 border-dashed",
-                            formData.evidence ? "border-[#baff02] text-[#baff02]" : "border-white/5 text-gray-500 group-hover:border-[#baff02]/50"
+                            "px-6 py-4 bg-gray-50 rounded-2xl text-xs font-black flex items-center space-x-2 transition-all border-2 border-dashed",
+                            formData.evidence ? "border-[#baff02] text-[#baff02]" : "border-gray-200 text-gray-500 group-hover:border-[#baff02]/50"
                           )}>
                              <ImageIcon size={14} />
                              <span className="truncate">{formData.evidence ? formData.evidence.name : "Tải ảnh lên..."}</span>
@@ -317,7 +317,7 @@ export const SupportSection = ({ role }: { role: string }) => {
                       value={formData.reason}
                       onChange={(e) => setFormData({...formData, reason: e.target.value})}
                       rows={4}
-                      className="w-full px-8 py-5 bg-[#0a0a0a] border border-white/5 rounded-3xl text-sm font-medium focus:ring-2 focus:ring-[#baff02]/10 transition-all resize-none text-white placeholder:text-gray-700"
+                      className="w-full px-8 py-5 bg-gray-50 border border-gray-200 rounded-3xl text-sm font-medium focus:ring-2 focus:ring-[#baff02]/50 transition-all resize-none text-black placeholder:text-gray-400 outline-none"
                       placeholder="Hãy cho chúng tôi biết bạn đang gặp vấn đề gì..."
                     />
                   </div>
@@ -339,25 +339,25 @@ export const SupportSection = ({ role }: { role: string }) => {
         {isReplyModalOpen && selectedTicket && (
           <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsReplyModalOpen(false)} className="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-md" />
-            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="relative bg-[#141414] rounded-[40px] shadow-2xl max-w-2xl w-full border border-white/10 overflow-hidden">
+            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="relative bg-white rounded-[40px] shadow-2xl max-w-2xl w-full border border-gray-100 overflow-hidden">
                {/* Modal Header */}
-               <div className="p-8 bg-[#0a0a0a] border-b border-white/5 flex items-center justify-between">
+               <div className="p-8 bg-white border-b border-gray-100 flex items-center justify-between">
                  <div className="flex items-center space-x-3">
-                   <div className="p-3 bg-[#baff02]/10 text-[#baff02] rounded-2xl"><Monitor size={24} /></div>
+                   <div className="p-3 bg-blue-50 text-blue-500 rounded-2xl"><Monitor size={24} /></div>
                    <div>
-                     <h3 className="text-xl font-black uppercase tracking-tight text-white">Xử lý yêu cầu hỗ trợ</h3>
-                     <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest leading-none mt-1">ID: {selectedTicket.id}</p>
+                     <h3 className="text-xl font-black uppercase tracking-tight text-black">Xử lý yêu cầu hỗ trợ</h3>
+                     <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-none mt-1">ID: {selectedTicket.id}</p>
                    </div>
                  </div>
-                 <button onClick={() => setIsReplyModalOpen(false)} className="p-2 text-gray-500 hover:text-rose-500 transition-colors"><X size={24} /></button>
+                 <button onClick={() => setIsReplyModalOpen(false)} className="p-2 text-gray-400 hover:bg-gray-100 rounded-full transition-colors"><X size={24} /></button>
                </div>
 
                {/* Modal Content */}
-               <div className="p-10 space-y-8 max-h-[70vh] overflow-y-auto">
+               <div className="p-10 space-y-8 max-h-[70vh] overflow-y-auto bg-white">
                  {/* Ticket Context */}
                  <div className="space-y-4">
                    <div className="flex items-center justify-between">
-                      <span className="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-black text-[#baff02] uppercase tracking-[0.2em]">
+                      <span className="px-3 py-1 bg-blue-50 border border-blue-100 rounded-lg text-[10px] font-black text-blue-500 uppercase tracking-[0.2em]">
                         {selectedTicket.type}
                       </span>
                       <div className="flex items-center space-x-2 text-[10px] font-black text-gray-500 uppercase">
@@ -365,21 +365,21 @@ export const SupportSection = ({ role }: { role: string }) => {
                         <span>{new Date(selectedTicket.createdAt).toLocaleString('vi-VN')}</span>
                       </div>
                    </div>
-                   <div className="bg-[#0a0a0a] rounded-3xl p-6 border border-white/5">
+                   <div className="bg-gray-50 rounded-3xl p-6 border border-gray-100">
                       <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-3">Vấn đề & Nội dung:</p>
                       <h4 className="text-lg font-black text-[#baff02] mb-2">{selectedTicket.subject}</h4>
-                      <p className="text-sm text-gray-300 leading-relaxed font-medium italic">"{selectedTicket.content}"</p>
+                      <p className="text-sm text-gray-700 leading-relaxed font-medium italic">"{selectedTicket.content}"</p>
                    </div>
                  </div>
 
                  {/* Sender Details */}
                  <div className="grid grid-cols-2 gap-6">
-                    <div className="p-5 bg-[#0a0a0a] rounded-2xl border border-white/5">
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Người yêu cầu</p>
-                      <p className="text-sm font-black text-white">{selectedTicket.sender?.name}</p>
+                    <div className="p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                      <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">Người yêu cầu</p>
+                      <p className="text-sm font-black text-black">{selectedTicket.sender?.name}</p>
                     </div>
-                    <div className="p-5 bg-[#0a0a0a] rounded-2xl border border-white/5">
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Email</p>
+                    <div className="p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                      <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">Email</p>
                       <p className="text-sm font-bold text-gray-500 truncate">{selectedTicket.sender?.email}</p>
                     </div>
                  </div>
@@ -391,7 +391,7 @@ export const SupportSection = ({ role }: { role: string }) => {
                       value={replyMessage}
                       onChange={(e) => setReplyMessage(e.target.value)}
                       placeholder="Nhập nội dung phản hồi hoặc ghi chú kỹ thuật tại đây..."
-                      className="w-full px-8 py-5 bg-[#0a0a0a] border border-white/5 rounded-3xl text-sm font-medium focus:ring-4 focus:ring-[#baff02]/5 focus:border-[#baff02] outline-none transition-all resize-none text-white h-32"
+                      className="w-full px-8 py-5 bg-gray-50 border border-gray-200 rounded-3xl text-sm font-medium focus:ring-4 focus:ring-[#baff02]/20 focus:border-[#baff02] outline-none transition-all resize-none text-black h-32 placeholder:text-gray-400"
                     ></textarea>
                  </div>
 
@@ -400,14 +400,14 @@ export const SupportSection = ({ role }: { role: string }) => {
                     <button 
                       onClick={() => handleUpdateStatus(selectedTicket.id, 'IN_PROGRESS')}
                       disabled={isProcessing}
-                      className="py-4 bg-blue-500/10 text-blue-500 border border-blue-500/20 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all"
+                      className="py-4 bg-blue-50 text-blue-600 border border-blue-200 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all"
                     >
                       Bắt đầu xử lý
                     </button>
                     <button 
                       onClick={() => handleUpdateStatus(selectedTicket.id, 'CLOSED')}
                       disabled={isProcessing || !replyMessage.trim()}
-                      className="py-4 bg-[#baff02] text-[#0a0a0a] rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-[#baff02]/10 hover:bg-[#8ec401] transition-all"
+                      className="py-4 bg-[#baff02] text-[#0a0a0a] rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-[#baff02]/20 hover:bg-[#8ec401] transition-all"
                     >
                       Hoàn tất & Đóng
                     </button>
@@ -415,7 +415,7 @@ export const SupportSection = ({ role }: { role: string }) => {
                       <button 
                         onClick={() => handleEscalate(selectedTicket.id)}
                         disabled={isProcessing}
-                        className="col-span-2 py-4 bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center space-x-2"
+                        className="col-span-2 py-4 bg-amber-50 text-amber-600 border border-amber-200 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center space-x-2"
                       >
                         <AlertTriangle size={14} />
                         <span>Chuyển tiếp cho Admin hệ thống</span>

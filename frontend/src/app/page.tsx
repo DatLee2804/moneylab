@@ -17,6 +17,10 @@ interface Course {
   price: number;
   discountPrice?: number;
   category: string;
+  isCombo?: boolean;
+  isFree?: boolean;
+  students?: number;
+  createdAt: string;
   instructor?: {
     name: string;
   };
@@ -46,15 +50,13 @@ export default function HomePage() {
   };
 
   // Logic to separate courses into categories
-  const comboCourses = courses.filter(c => c.title.toLowerCase().includes('combo') || c.category.toLowerCase().includes('combo'));
-  const displayCombo = comboCourses.length > 0 ? comboCourses.slice(0, 4) : courses.slice(0, 4);
+  const displayCombo = courses.filter(c => c.isCombo === true).slice(0, 4);
 
-  const bestSelling = courses.slice(0, 4); // In a real app, this would be sorted by enrollments
+  const bestSelling = [...courses].sort((a, b) => (b.students || 0) - (a.students || 0)).slice(0, 4);
 
-  const beginnerCourses = courses.filter(c => c.title.toLowerCase().includes('cơ bản') || c.title.toLowerCase().includes('người mới') || c.category.toLowerCase().includes('cơ bản'));
-  const displayBeginner = beginnerCourses.length > 0 ? beginnerCourses.slice(0, 4) : courses.slice(0, 4).reverse();
+  const displayBeginner = courses.filter(c => c.isFree === true || c.category.toLowerCase().includes('cơ bản')).slice(0, 4);
 
-  const latestCourses = [...courses].reverse().slice(0, 4);
+  const latestCourses = [...courses].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 4);
 
   const renderCourseCard = (course: Course, isLight: boolean = false) => (
     <motion.div 

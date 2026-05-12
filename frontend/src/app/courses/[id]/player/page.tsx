@@ -39,6 +39,10 @@ export default function CoursePlayer() {
   const [watermarkPos, setWatermarkPos] = useState({ top: '20%', left: '20%' });
   const [userEmail, setUserEmail] = useState('');
   const [userRole, setUserRole] = useState('student');
+  const [activeTab, setActiveTab] = useState('Tổng quan');
+  const [comments, setComments] = useState<any[]>([]);
+  const [newComment, setNewComment] = useState('');
+  const [isSubmittingComment, setIsSubmittingComment] = useState(false);
 
   // Setup user and watermark
   useEffect(() => {
@@ -148,6 +152,34 @@ export default function CoursePlayer() {
     
     fetchLessonDetail();
   }, [activeLesson?.id]);
+
+  // Fetch comments
+  useEffect(() => {
+    const fetchComments = async () => {
+      if (!activeLesson?.id) return;
+      try {
+        const res = await api.get(`/lesson-comments/lesson/${activeLesson.id}`);
+        setComments(res.data);
+      } catch (error) {
+        console.error('Failed to fetch comments:', error);
+      }
+    };
+    fetchComments();
+  }, [activeLesson?.id]);
+
+  const submitComment = async () => {
+    if (!newComment.trim() || !activeLesson?.id) return;
+    setIsSubmittingComment(true);
+    try {
+      const res = await api.post(`/lesson-comments/${activeLesson.id}`, { content: newComment });
+      setComments([res.data, ...comments]);
+      setNewComment('');
+    } catch (e) {
+      console.error('Failed to submit comment:', e);
+    } finally {
+      setIsSubmittingComment(false);
+    }
+  };
 
   // Handle Complete
   const markAsCompleted = async (lessonId: string) => {
@@ -294,32 +326,100 @@ export default function CoursePlayer() {
           {/* Video Info Tabs */}
           <div className="bg-[#0a0a0a] border-t border-white/5 p-6 md:p-10 shrink-0">
             <div className="flex space-x-8 border-b border-white/5 mb-8 overflow-x-auto scrollbar-hide">
-              {['Tổng quan', 'Thảo luận', 'Tài liệu'].map((tab, i) => (
+              {['Tổng quan', 'Thảo luận', 'Tài liệu'].map((tab) => (
                 <button 
                   key={tab} 
+                  onClick={() => setActiveTab(tab)}
                   className={cn(
-                    "pb-4 text-sm font-bold transition-all relative whitespace-nowrap",
-                    i === 0 ? "text-[#baff02]" : "text-gray-500 hover:text-gray-300"
+                    "pb-4 text-sm font-bold transition-all relative whitespace-nowrap outline-none",
+                    activeTab === tab ? "text-[#baff02]" : "text-gray-500 hover:text-gray-300"
                   )}
                 >
                   {tab}
-                  {i === 0 && <motion.div layoutId="tab-active" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#baff02]" />}
+                  {activeTab === tab && <motion.div layoutId="tab-active" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#baff02]" />}
                 </button>
               ))}
             </div>
 
             <div className="max-w-4xl flex justify-between items-start">
-              <div>
-                <h2 className="text-2xl font-black text-white mb-4">{activeLesson?.title || 'Đang tải...'}</h2>
-                <div 
-                  className="text-gray-400 leading-relaxed font-bold prose dark:prose-invert prose-sm"
-                  dangerouslySetInnerHTML={{ __html: lessonDetail?.content || 'Chưa có mô tả chi tiết cho bài học này.' }}
-                />
+              <div className="flex-1 mr-8">
+                {activeTab === 'Tổng quan' && (
+                  <div>
+                    <h2 className="text-2xl font-black text-white mb-4">{activeLesson?.title || 'Đang tải...'}</h2>
+                    <div 
+                      className="text-gray-400 leading-relaxed font-bold prose dark:prose-invert prose-sm"
+                      dangerouslySetInnerHTML={{ __html: lessonDetail?.content || 'Chưa có mô tả chi tiết cho bài học này.' }}
+                    />
+                  </div>
+                )}
+
+                {activeTab === 'Thảo luận' && (
+                  <div className="space-y-6">
+                    <h3 className="text-xl font-bold text-white mb-4">Thảo luận ({comments.length})</h3>
+                    
+                    <div className="flex space-x-4 mb-8">
+                      <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white shrink-0 font-bold">
+                        {userEmail ? userEmail.charAt(0).toUpperCase() : 'U'}
+                      </div>
+                      <div className="flex-1 space-y-3">
+                        <textarea
+                          value={newComment}
+                          onChange={(e) => setNewComment(e.target.value)}
+                          placeholder="Thêm bình luận của bạn..."
+                          className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#baff02]/50 focus:ring-1 focus:ring-[#baff02]/50 min-h-[80px]"
+                        />
+                        <div className="flex justify-end">
+                          <button
+                            onClick={submitComment}
+                            disabled={!newComment.trim() || isSubmittingComment}
+                            className="px-4 py-2 bg-[#baff02] text-black font-bold text-sm rounded-lg hover:bg-[#baff02]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
+                          >
+                            {isSubmittingComment ? <Loader2 size={16} className="animate-spin" /> : <MessageSquare size={16} />}
+                            <span>Gửi bình luận</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-6">
+                      {comments.map((comment) => (
+                        <div key={comment.id} className="flex space-x-4">
+                          <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 shrink-0 font-bold overflow-hidden border border-white/10">
+                            {comment.user?.avatar ? (
+                              <img src={comment.user.avatar} alt={comment.user.name} className="w-full h-full object-cover" />
+                            ) : (
+                              (comment.user?.name || 'U').charAt(0).toUpperCase()
+                            )}
+                          </div>
+                          <div>
+                            <div className="flex items-center space-x-2 mb-1">
+                              <span className="text-sm font-bold text-white">{comment.user?.name || 'Ẩn danh'}</span>
+                              <span className="text-xs text-gray-500">
+                                {new Date(comment.createdAt).toLocaleDateString('vi-VN')} {new Date(comment.createdAt).toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'})}
+                              </span>
+                            </div>
+                            <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap">
+                              {comment.content}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {activeTab === 'Tài liệu' && (
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-4">Tài liệu đính kèm</h3>
+                    <p className="text-gray-500 text-sm">Chưa có tài liệu đính kèm cho bài học này.</p>
+                  </div>
+                )}
               </div>
+
               <button 
                 onClick={() => activeLesson && markAsCompleted(activeLesson.id)}
                 className={cn(
-                  "px-6 py-3 border rounded-xl font-bold uppercase text-xs transition-colors ml-4 shrink-0 flex items-center space-x-2",
+                  "px-6 py-3 border rounded-xl font-bold uppercase text-xs transition-colors shrink-0 flex items-center space-x-2",
                   activeLesson && completedLessons.includes(activeLesson.id) 
                     ? "bg-[#baff02] text-black border-[#baff02]"
                     : "bg-[#baff02]/10 border-[#baff02]/20 text-[#baff02] hover:bg-[#baff02] hover:text-black"
