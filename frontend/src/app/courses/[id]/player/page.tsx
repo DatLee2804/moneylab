@@ -18,7 +18,8 @@ import {
   Menu,
   X,
   Loader2,
-  Sparkles
+  Sparkles,
+  Lock
 } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -33,6 +34,7 @@ export default function CoursePlayer() {
   const [activeLesson, setActiveLesson] = useState<any>(null);
   const [lessonDetail, setLessonDetail] = useState<any>(null);
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+  const [isEnrolled, setIsEnrolled] = useState(false);
   
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
@@ -125,6 +127,25 @@ export default function CoursePlayer() {
           if (foundLesson) {
             setActiveLesson(foundLesson);
           }
+        }
+
+        // Check enrollment
+        try {
+          const userStr = localStorage.getItem('user');
+          if (userStr) {
+            const u = JSON.parse(userStr);
+            if (['admin', 'manager'].includes(u.role?.toLowerCase())) {
+              setIsEnrolled(true);
+            } else if (u.role?.toLowerCase() === 'instructor' && courseData.instructorId === u.id) {
+              setIsEnrolled(true);
+            } else {
+              const enRes = await api.get('/enrollments/me');
+              const isUserEnrolled = enRes.data.some((en: any) => en.courseId === courseData.id);
+              setIsEnrolled(isUserEnrolled);
+            }
+          }
+        } catch (e) {
+          console.error('Failed to check enrollment status', e);
         }
       } catch (error) {
         console.error('Failed to fetch course details:', error);
@@ -258,7 +279,23 @@ export default function CoursePlayer() {
             <div className="absolute inset-0 w-full h-full">
 
               {lessonDetail ? (
-                lessonDetail.videoEmbedUrl ? (
+                (!isEnrolled && !course?.isFree && !activeLesson?.isPreview) ? (
+                  <div className="flex flex-col items-center justify-center h-full text-gray-500 space-y-6 px-4 text-center z-10 relative">
+                    <div className="w-20 h-20 bg-gray-900 rounded-full flex items-center justify-center border border-white/5">
+                      <Lock size={32} className="text-[#baff02]" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">Nội dung trả phí</h3>
+                      <p className="text-sm text-gray-400">Bạn cần đăng ký khóa học để xem nội dung bài học này.</p>
+                    </div>
+                    <Link 
+                      href={`/courses/${course?.id}`}
+                      className="px-6 py-3 bg-[#baff02] text-black font-bold rounded-xl hover:bg-[#8ec401] transition-colors mt-2"
+                    >
+                      Đăng ký ngay
+                    </Link>
+                  </div>
+                ) : lessonDetail.videoEmbedUrl ? (
                   <iframe
                     src={lessonDetail.videoEmbedUrl}
                     loading="lazy"

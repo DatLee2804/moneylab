@@ -22,7 +22,7 @@ export default function InstructorCombosPage() {
   const [category, setCategory] = useState('');
   const [selectedCourses, setSelectedCourses] = useState<string[]>([]);
   const [availableCourses, setAvailableCourses] = useState([]);
-  const [coverImage, setCoverImage] = useState<File | null>(null);
+  const [coverImageBase64, setCoverImageBase64] = useState<string>('');
   const [existingCoverImageUrl, setExistingCoverImageUrl] = useState('');
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function InstructorCombosPage() {
     setDiscountPrice('');
     setCategory('');
     setSelectedCourses([]);
-    setCoverImage(null);
+    setCoverImageBase64('');
     setExistingCoverImageUrl('');
     setIsCreateModalOpen(true);
   };
@@ -75,7 +75,7 @@ export default function InstructorCombosPage() {
     setDiscountPrice(combo.discountPrice?.toString() || '');
     setCategory(combo.category || '');
     setSelectedCourses(combo.includedCourses?.map((c: any) => c.id) || []);
-    setCoverImage(null);
+    setCoverImageBase64('');
     setExistingCoverImageUrl(combo.coverImage || '');
     setIsCreateModalOpen(true);
   };
@@ -100,13 +100,8 @@ export default function InstructorCombosPage() {
 
     try {
       let coverImageUrl = existingCoverImageUrl;
-      if (coverImage) {
-        const formData = new FormData();
-        formData.append('file', coverImage);
-        const uploadRes = await api.post('/uploads/file', formData, {
-          headers: { 'Content-Type': 'multipart/form-data' }
-        });
-        coverImageUrl = uploadRes.data.url;
+      if (coverImageBase64) {
+        coverImageUrl = coverImageBase64;
       }
 
       const comboData = {
@@ -142,6 +137,17 @@ export default function InstructorCombosPage() {
       setSelectedCourses(selectedCourses.filter(id => id !== courseId));
     } else {
       setSelectedCourses([...selectedCourses, courseId]);
+    }
+  };
+
+  const handleCoverImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCoverImageBase64(reader.result as string);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -328,11 +334,11 @@ export default function InstructorCombosPage() {
                     className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed border-gray-200 rounded-[2rem] bg-gray-50 hover:bg-gray-100 hover:border-[#baff02] cursor-pointer transition-all overflow-hidden relative group"
                   >
                     <div className="space-y-1 w-full text-center flex flex-col items-center">
-                      {(coverImage || existingCoverImageUrl) ? (
+                      {(coverImageBase64 || existingCoverImageUrl) ? (
                         <>
                           <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-4 border border-gray-200">
                             <img 
-                              src={coverImage ? URL.createObjectURL(coverImage) : existingCoverImageUrl} 
+                              src={coverImageBase64 ? coverImageBase64 : existingCoverImageUrl} 
                               alt="Cover Preview" 
                               className="w-full h-full object-cover" 
                             />
@@ -354,7 +360,7 @@ export default function InstructorCombosPage() {
                           </div>
                         </div>
                       )}
-                      <input id="combo-cover-upload" type="file" accept="image/*" className="sr-only" onChange={(e) => setCoverImage(e.target.files?.[0] || null)} />
+                      <input id="combo-cover-upload" type="file" accept="image/*" className="sr-only" onChange={handleCoverImageUpload} />
                     </div>
                   </div>
                 </div>
