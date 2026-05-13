@@ -5,6 +5,7 @@ import { UpdateLessonDto } from './dto/create-lesson.dto';
 import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../../auth/guards/roles.guard';
 import { Roles } from '../../auth/decorators/roles.decorator';
+import { GetUser } from '../../auth/decorators/get-user.decorator';
 import { Role } from '@prisma/client';
 
 @ApiTags('Lessons')
@@ -16,8 +17,8 @@ export class LessonsController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Get a lesson detail internally' })
-  async findOne(@Param('id', ParseUUIDPipe) id: string) {
-    return this.coursesService.getLessonDetail(id);
+  async findOne(@Param('id', ParseUUIDPipe) id: string, @GetUser() user: any) {
+    return this.coursesService.getLessonDetail(id, user);
   }
 
   @Patch(':id')

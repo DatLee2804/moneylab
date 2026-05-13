@@ -65,6 +65,13 @@ export default function CoursePlayer() {
     return () => clearInterval(interval);
   }, []);
 
+  // Setup URL Masking (Anti-Direct Link Sharing)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', '/');
+    }
+  }, []);
+
   // Utility to extract Google Drive ID
   const getGoogleDriveId = (url: string) => {
     if (!url || typeof url !== 'string') return null;

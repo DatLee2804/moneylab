@@ -336,14 +336,14 @@ export class CoursesService {
     });
   }
 
-  async getLessonDetail(lessonId: string) {
+  async getLessonDetail(lessonId: string, user?: any) {
     const lesson = await this.prisma.lesson.findUnique({ 
       where: { id: lessonId },
       include: {
         section: {
           include: {
             course: {
-              select: { isFree: true }
+              select: { id: true, isFree: true, instructorId: true }
             }
           }
         }
@@ -352,14 +352,50 @@ export class CoursesService {
 
     if (!lesson) throw new NotFoundException('Lesson not found');
 
-    // Logic: If course is free, always allow video signature generation
+    const course = lesson.section?.course;
+    let isAuthorized = false;
+
+    if (!course) {
+      isAuthorized = false;
+    } else if (course.isFree || lesson.isPreview) {
+      isAuthorized = true;
+    } else if (user) {
+      const userRole = user.role?.toUpperCase();
+      if (['ADMIN', 'MANAGER'].includes(userRole)) {
+        isAuthorized = true;
+      } else if (userRole === 'INSTRUCTOR' && course.instructorId === user.id) {
+        isAuthorized = true;
+      } else {
+        const enrollment = await this.prisma.enrollment.findUnique({
+          where: {
+            userId_courseId: {
+              userId: user.id,
+              courseId: course.id,
+            },
+          },
+        });
+        if (enrollment) {
+          isAuthorized = true;
+        }
+      }
+    }
+
     let videoEmbedUrl = null;
-    if (lesson.bunnyVideoId) {
-      videoEmbedUrl = this.bunnyService.generateSignedUrl(lesson.bunnyVideoId);
+    let videoUrl = null;
+    let bunnyVideoId = null;
+
+    if (isAuthorized) {
+      videoUrl = lesson.videoUrl;
+      bunnyVideoId = lesson.bunnyVideoId;
+      if (lesson.bunnyVideoId) {
+        videoEmbedUrl = this.bunnyService.generateSignedUrl(lesson.bunnyVideoId);
+      }
     }
 
     return {
       ...lesson,
+      videoUrl,
+      bunnyVideoId,
       videoEmbedUrl,
     };
   }
