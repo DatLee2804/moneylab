@@ -65,6 +65,7 @@ export class AuthController {
     const userStr = encodeURIComponent(JSON.stringify(result.user));
     
     // Redirect to frontend callback page
-    res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:3000'}/auth/callback?token=${result.access_token}&user=${userStr}`);
+    const frontendUrl = process.env.FRONTEND_URL || 'https://moneylab.vn';
+    res.redirect(`${frontendUrl}/auth/callback?token=${result.access_token}&user=${userStr}`);
   }
 }
