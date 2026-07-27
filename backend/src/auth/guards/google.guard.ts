@@ -5,10 +5,12 @@ import { AuthGuard } from '@nestjs/passport';
 export class GoogleAuthGuard extends AuthGuard('google') {
   getAuthenticateOptions(context: ExecutionContext) {
     const request = context.switchToHttp().getRequest();
-    const role = request.query.role || 'STUDENT';
-    
-    return {
-      state: JSON.stringify({ role }),
-    };
+    if (!request.query.code) {
+      const role = request.query.role || 'STUDENT';
+      return {
+        state: JSON.stringify({ role }),
+      };
+    }
+    return undefined;
   }
 }
