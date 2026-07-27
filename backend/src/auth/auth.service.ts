@@ -53,9 +53,9 @@ export class AuthService {
       const randomPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
       user = await this.usersService.create({
         email: reqUser.email,
-        name: reqUser.name,
+        name: reqUser.name || reqUser.email.split('@')[0],
         password: randomPassword,
-        avatar: reqUser.picture,
+        avatar: reqUser.picture || null,
         role: reqUser.role || 'STUDENT', // Role from Google OAuth state
       });
     }

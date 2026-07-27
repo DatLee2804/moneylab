@@ -23,25 +23,39 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     profile: any,
     done: VerifyCallback,
   ): Promise<any> {
-    const { name, emails, photos } = profile;
-    
-    let selectedRole = 'STUDENT';
     try {
-      if (req.query.state) {
-        const state = JSON.parse(req.query.state as string);
-        if (state.role) {
-          selectedRole = state.role;
-        }
+      const emails = profile?.emails || [];
+      const email = emails[0]?.value;
+      
+      if (!email) {
+        return done(new Error('No email found from Google profile'), false);
       }
-    } catch(e) {}
 
-    const user = {
-      email: emails[0].value,
-      name: name.givenName + ' ' + name.familyName,
-      picture: photos[0].value,
-      role: selectedRole,
-      accessToken,
-    };
-    done(null, user);
+      const givenName = profile?.name?.givenName || '';
+      const familyName = profile?.name?.familyName || '';
+      const fullName = (givenName + ' ' + familyName).trim() || profile?.displayName || email.split('@')[0];
+      const picture = profile?.photos?.[0]?.value || null;
+
+      let selectedRole = 'STUDENT';
+      try {
+        if (req.query.state) {
+          const state = JSON.parse(req.query.state as string);
+          if (state.role) {
+            selectedRole = state.role;
+          }
+        }
+      } catch(e) {}
+
+      const user = {
+        email,
+        name: fullName,
+        picture,
+        role: selectedRole,
+        accessToken,
+      };
+      done(null, user);
+    } catch (err) {
+      done(err as Error, false);
+    }
   }
 }
