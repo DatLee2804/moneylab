@@ -19,8 +19,10 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
 import { ReviewsModule } from './modules/reviews/reviews.module';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { AppController } from './app.controller';
 
 @Module({
+  controllers: [AppController],
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     EventEmitterModule.forRoot(),
