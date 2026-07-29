@@ -11,9 +11,10 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     const clientSecret = configService.get<string>('GOOGLE_CLIENT_SECRET') || 'test-client-secret';
     const callbackURL = configService.get<string>('GOOGLE_CALLBACK_URL') || 'https://api.moneylab.vn/auth/google/callback';
 
-    console.log('[GoogleStrategy Config]:', {
-      clientIDPrefix: clientID ? clientID.substring(0, 15) + '...' : 'NONE',
-      hasClientSecret: !!clientSecret && clientSecret !== 'test-client-secret',
+    console.log('[GoogleStrategy Active Config]:', {
+      clientID: clientID ? `${clientID.substring(0, 12)}...${clientID.substring(clientID.length - 12)}` : 'MISSING',
+      clientSecretLength: clientSecret ? clientSecret.length : 0,
+      clientSecretPrefix: clientSecret ? `${clientSecret.substring(0, 7)}...` : 'MISSING',
       callbackURL,
     });
 
