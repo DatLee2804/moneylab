@@ -28,6 +28,19 @@ export class AllExceptionsFilter implements ExceptionFilter {
       console.warn(`[HTTP ${httpStatus}] ${httpAdapter.getRequestUrl(ctx.getRequest())}`);
     }
 
+    const reqUrl = httpAdapter.getRequestUrl(ctx.getRequest());
+    if (reqUrl && reqUrl.includes('/auth/google/callback')) {
+      const frontendUrl = process.env.FRONTEND_URL || 'https://moneylab.vn';
+      const rawMsg = (exception as any)?.message || 'google_auth_failed';
+      const errMsg = Array.isArray(rawMsg) ? rawMsg.join(', ') : rawMsg;
+      console.error('[OAuth Exception Redirect]:', exception);
+      return httpAdapter.redirect(
+        ctx.getResponse(),
+        HttpStatus.FOUND,
+        `${frontendUrl}/auth/login?error=${encodeURIComponent(errMsg)}`
+      );
+    }
+
 
 
     const message = 

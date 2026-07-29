@@ -1,4 +1,4 @@
-import { Injectable, ExecutionContext } from '@nestjs/common';
+import { Injectable, ExecutionContext, UnauthorizedException } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
 @Injectable()
@@ -14,14 +14,11 @@ export class GoogleAuthGuard extends AuthGuard('google') {
     return undefined;
   }
 
-  handleRequest(err: any, user: any, info: any, context: ExecutionContext) {
+  handleRequest(err: any, user: any, info: any) {
     if (err || !user) {
-      const response = context.switchToHttp().getResponse();
-      const frontendUrl = process.env.FRONTEND_URL || 'https://moneylab.vn';
-      const errorMessage = err?.message || info?.message || 'google_auth_failed';
-      
-      console.error('[GoogleAuthGuard Error]:', errorMessage, err);
-      return response.redirect(`${frontendUrl}/auth/login?error=${encodeURIComponent(errorMessage)}`);
+      const errorMessage = err?.message || info?.message || (typeof info === 'string' ? info : null) || 'google_auth_failed';
+      console.error('[GoogleAuthGuard Error]:', errorMessage, { err, info });
+      throw err || new UnauthorizedException(errorMessage);
     }
     return user;
   }
