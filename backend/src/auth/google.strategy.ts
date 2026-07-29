@@ -7,10 +7,20 @@ import { Request } from 'express';
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   constructor(configService: ConfigService) {
+    const clientID = configService.get<string>('GOOGLE_CLIENT_ID') || 'test-client-id';
+    const clientSecret = configService.get<string>('GOOGLE_CLIENT_SECRET') || 'test-client-secret';
+    const callbackURL = configService.get<string>('GOOGLE_CALLBACK_URL') || 'https://api.moneylab.vn/auth/google/callback';
+
+    console.log('[GoogleStrategy Config]:', {
+      clientIDPrefix: clientID ? clientID.substring(0, 15) + '...' : 'NONE',
+      hasClientSecret: !!clientSecret && clientSecret !== 'test-client-secret',
+      callbackURL,
+    });
+
     super({
-      clientID: configService.get<string>('GOOGLE_CLIENT_ID') || 'test-client-id',
-      clientSecret: configService.get<string>('GOOGLE_CLIENT_SECRET') || 'test-client-secret',
-      callbackURL: configService.get<string>('GOOGLE_CALLBACK_URL') || 'https://api.moneylab.vn/auth/google/callback',
+      clientID,
+      clientSecret,
+      callbackURL,
       scope: ['email', 'profile'],
       passReqToCallback: true,
       proxy: true,
