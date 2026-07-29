@@ -30,15 +30,17 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
     const reqUrl = httpAdapter.getRequestUrl(ctx.getRequest());
     if (reqUrl && reqUrl.includes('/auth/google/callback')) {
-      const frontendUrl = process.env.FRONTEND_URL || 'https://moneylab.vn';
+      const rawFrontendUrl = process.env.FRONTEND_URL || 'https://moneylab.vn';
+      const frontendUrl = rawFrontendUrl.trim().replace(/\/+$/, '');
       const rawMsg = (exception as any)?.message || 'google_auth_failed';
-      const errMsg = Array.isArray(rawMsg) ? rawMsg.join(', ') : rawMsg;
+      const errMsg = Array.isArray(rawMsg) ? rawMsg.join(', ') : String(rawMsg);
+      const safeMsg = encodeURIComponent(errMsg.replace(/[\r\n]+/g, ' '));
       console.error('[OAuth Exception Redirect]:', exception);
-      return httpAdapter.redirect(
-        ctx.getResponse(),
-        HttpStatus.FOUND,
-        `${frontendUrl}/auth/login?error=${encodeURIComponent(errMsg)}`
-      );
+      const response = ctx.getResponse();
+      if (response.headersSent) {
+        return;
+      }
+      return response.redirect(302, `${frontendUrl}/auth/login?error=${safeMsg}`);
     }
 
 

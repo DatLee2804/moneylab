@@ -58,7 +58,10 @@ export class AuthController {
 
   @Get('google/callback')
   @UseGuards(GoogleAuthGuard)
-  async googleAuthRedirect(@Req() req, @Res() res) {
+  async googleAuthRedirect(@Req() req: any, @Res() res: any) {
+    const rawFrontendUrl = process.env.FRONTEND_URL || 'https://moneylab.vn';
+    const frontendUrl = rawFrontendUrl.trim().replace(/\/+$/, '');
+
     try {
       if (!req.user) {
         throw new UnauthorizedException('No user object returned from Google Passport strategy');
@@ -66,16 +69,16 @@ export class AuthController {
 
       const result = await this.authService.googleLogin(req.user);
       
-      // Convert user object to base64 or encode component to pass via URL
       const userStr = encodeURIComponent(JSON.stringify(result.user));
+      const tokenStr = encodeURIComponent(result.access_token);
       
-      // Redirect to frontend callback page
-      const frontendUrl = process.env.FRONTEND_URL || 'https://moneylab.vn';
-      res.redirect(`${frontendUrl}/auth/callback?token=${result.access_token}&user=${userStr}`);
+      const targetUrl = `${frontendUrl}/auth/callback?token=${tokenStr}&user=${userStr}`;
+      console.log('[Google OAuth Redirecting to Frontend]:', targetUrl);
+      return res.redirect(302, targetUrl);
     } catch (error: any) {
       console.error('[Google OAuth Error]:', error);
-      const frontendUrl = process.env.FRONTEND_URL || 'https://moneylab.vn';
-      res.redirect(`${frontendUrl}/auth/login?error=${encodeURIComponent(error.message || 'google_login_failed')}`);
+      const safeMsg = encodeURIComponent(String(error?.message || 'google_login_failed').replace(/[\r\n]+/g, ' '));
+      return res.redirect(302, `${frontendUrl}/auth/login?error=${safeMsg}`);
     }
   }
 }
