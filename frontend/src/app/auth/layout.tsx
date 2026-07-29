@@ -18,13 +18,8 @@ export default function AuthLayout({
 
       {/* Header */}
       <header className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
-        <Link href="/" className="flex items-center space-x-2 group">
-          <div className="w-10 h-10 bg-[#baff02] rounded-xl flex items-center justify-center shadow-lg shadow-[#baff02]/20 group-hover:scale-110 transition-transform">
-            <ShieldCheck className="text-white" size={24} />
-          </div>
-          <span className="text-xl font-black text-white tracking-tighter">
-            Money Lab
-          </span>
+        <Link href="/" className="flex items-center group">
+          <img src="/images/logo.jpg" alt="Money Lab Logo" className="h-10 w-auto object-contain rounded-xl group-hover:scale-105 transition-transform" />
         </Link>
         <Link 
           href="/" 
