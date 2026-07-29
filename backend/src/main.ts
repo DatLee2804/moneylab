@@ -37,6 +37,9 @@ async function bootstrap() {
     }),
   });
   
+  // Enable trust proxy for Vercel/reverse proxies
+  app.set('trust proxy', 1);
+
   // Security headers
   app.use(helmet({
     crossOriginResourcePolicy: false, // Để xem ảnh được upload

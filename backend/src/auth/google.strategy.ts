@@ -10,9 +10,10 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     super({
       clientID: configService.get<string>('GOOGLE_CLIENT_ID') || 'test-client-id',
       clientSecret: configService.get<string>('GOOGLE_CLIENT_SECRET') || 'test-client-secret',
-      callbackURL: configService.get<string>('GOOGLE_CALLBACK_URL') || 'https://moneylab-backend.vercel.app/auth/google/callback',
+      callbackURL: configService.get<string>('GOOGLE_CALLBACK_URL') || 'https://api.moneylab.vn/auth/google/callback',
       scope: ['email', 'profile'],
       passReqToCallback: true,
+      proxy: true,
     });
   }
 
