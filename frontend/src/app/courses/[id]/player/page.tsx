@@ -75,7 +75,9 @@ export default function CoursePlayer() {
   // Utility to extract Google Drive ID
   const getGoogleDriveId = (url: string) => {
     if (!url || typeof url !== 'string') return null;
-    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
+                  url.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
+                  url.match(/^([a-zA-Z0-9_-]{25,50})$/);
     return match ? match[1] : null;
   };
 
@@ -83,19 +85,12 @@ export default function CoursePlayer() {
   const getYoutubeId = (url: string) => {
     if (!url || typeof url !== 'string') return null;
     try {
-      if (url.includes('youtu.be/')) {
-        return url.split('youtu.be/')[1].substring(0, 11);
-      }
-      if (url.includes('v=')) {
-        return url.split('v=')[1].substring(0, 11);
-      }
-      if (url.includes('embed/')) {
-        return url.split('embed/')[1].substring(0, 11);
-      }
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[2].length === 11) ? match[2] : null;
     } catch (e) {
       return null;
     }
-    return null;
   };
 
   // Fetch course data
@@ -323,6 +318,14 @@ export default function CoursePlayer() {
                   ) : getGoogleDriveId(lessonDetail.videoUrl) ? (
                     <iframe
                       src={`https://drive.google.com/file/d/${getGoogleDriveId(lessonDetail.videoUrl)}/preview`}
+                      style={{ border: 0, width: '100%', height: '100%' }}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen={true}
+                      className="absolute inset-0 pointer-events-auto bg-black"
+                    ></iframe>
+                  ) : lessonDetail.videoUrl.includes('drive.google.com') ? (
+                    <iframe
+                      src={lessonDetail.videoUrl.includes('/preview') ? lessonDetail.videoUrl : lessonDetail.videoUrl.replace(/\/view.*$/, '/preview')}
                       style={{ border: 0, width: '100%', height: '100%' }}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen={true}

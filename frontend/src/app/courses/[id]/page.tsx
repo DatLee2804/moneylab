@@ -201,7 +201,7 @@ export default function CourseDetail() {
       return `https://www.youtube.com/embed/${id}`;
     }
     if (url.includes('drive.google.com')) {
-      const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
       if (match) return `https://drive.google.com/file/d/${match[1]}/preview`;
     }
     return url;
