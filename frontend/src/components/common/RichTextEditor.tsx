@@ -65,7 +65,7 @@ const RichTextEditor = ({ content, onChange, placeholder }: RichTextEditorProps)
 
   const colors = [
     { name: 'White', value: '#ffffff' },
-    { name: 'Green', value: '#baff02' },
+    { name: 'Green', value: '#133E2B' },
     { name: 'Blue', value: '#3b82f6' },
     { name: 'Red', value: '#ef4444' },
     { name: 'Amber', value: '#f59e0b' },
@@ -73,7 +73,7 @@ const RichTextEditor = ({ content, onChange, placeholder }: RichTextEditorProps)
   ];
 
   return (
-    <div className="w-full border border-gray-200 rounded-3xl overflow-hidden bg-white transition-all focus-within:ring-2 focus-within:ring-[#baff02]/20 focus-within:border-[#baff02]/40">
+    <div className="w-full border border-gray-200 rounded-3xl overflow-hidden bg-white transition-all focus-within:ring-2 focus-within:ring-[#133E2B]/20 focus-within:border-[#133E2B]/40">
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-1 p-2 bg-gray-50 border-b border-gray-200">
         <div className="flex items-center space-x-1 border-r border-gray-200 pr-2 mr-1">

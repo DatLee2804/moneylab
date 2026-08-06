@@ -64,20 +64,20 @@ export default function ManagerCoursesPage() {
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h2 className="text-xl font-black text-[#0f172a] dark:text-white">Kho khóa học hệ thống</h2>
+            <h2 className="text-xl font-black text-[#0f172a] dark:text-[#1C221F]">Kho khóa học hệ thống</h2>
             <p className="text-sm text-gray-500 font-medium">Kiểm soát nội dung và hiệu suất kinh doanh</p>
           </div>
           
           <div className="flex items-center space-x-3">
             <div className="relative group">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#baff02] transition-colors" size={16} />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#1C221F] transition-colors" size={16} />
               <input 
                 type="text" 
                 placeholder="Tìm khóa học..." 
-                className="pl-10 pr-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/10 outline-none transition-all" 
+                className="pl-10 pr-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/10 outline-none transition-all" 
               />
             </div>
-            <button className="p-2.5 bg-white dark:bg-gray-800 text-gray-500 rounded-xl border border-gray-100 dark:border-gray-700 hover:text-[#baff02] transition-all">
+            <button className="p-2.5 bg-white dark:bg-gray-800 text-gray-500 rounded-xl border border-gray-100 dark:border-gray-700 hover:text-[#1C221F] transition-all">
               <Filter size={18} />
             </button>
           </div>
@@ -88,19 +88,19 @@ export default function ManagerCoursesPage() {
           <div className="overflow-x-auto min-h-[400px] flex flex-col">
             {isLoading ? (
               <div className="flex-grow flex flex-col items-center justify-center py-20 space-y-4">
-                <Loader2 className="animate-spin text-[#baff02]" size={40} />
-                <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Đang kết nối Database...</p>
+                <Loader2 className="animate-spin text-[#1C221F]" size={40} />
+                <p className="text-xs font-black text-gray-500 uppercase tracking-widest">Đang kết nối Database...</p>
               </div>
             ) : (
               <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-gray-50/50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-gray-700">
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Khóa học</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Chi tiết</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Doanh thu</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Đánh giá</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Trạng thái</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Thao tác</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Khóa học</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Chi tiết</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest text-center">Doanh thu</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest text-center">Đánh giá</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest text-center">Trạng thái</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest text-right">Thao tác</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50 dark:divide-gray-700">
@@ -119,7 +119,7 @@ export default function ManagerCoursesPage() {
                     >
                       <td className="px-8 py-6">
                         <div className="flex items-center space-x-4">
-                          <div className="relative w-20 h-12 rounded-xl overflow-hidden shadow-sm bg-gray-900 border border-white/5 flex items-center justify-center">
+                          <div className="relative w-20 h-12 rounded-xl overflow-hidden shadow-sm bg-gray-900 border border-[#E8E3D9] flex items-center justify-center">
                             {course.coverImage ? (
                               <Image src={course.coverImage} fill className="object-cover" alt={course.title} />
                             ) : (
@@ -127,15 +127,15 @@ export default function ManagerCoursesPage() {
                             )}
                           </div>
                           <div>
-                            <p className="text-sm font-bold text-[#0f172a] dark:text-white group-hover:text-[#baff02] transition-colors">{course.title}</p>
-                            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">ID: COURSE-{course.id.toString().padStart(3, '0')}</p>
+                            <p className="text-sm font-bold text-[#0f172a] dark:text-[#1C221F] group-hover:text-[#1C221F] transition-colors">{course.title}</p>
+                            <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">ID: COURSE-{course.id.toString().padStart(3, '0')}</p>
                           </div>
                         </div>
                       </td>
                       <td className="px-8 py-6">
                         <div className="space-y-1">
                           <div className="flex items-center space-x-2 text-[11px] text-gray-500 font-medium">
-                            <Layers size={12} className="text-[#baff02]" />
+                            <Layers size={12} className="text-[#1C221F]" />
                             <span>{course.lessons} buổi học</span>
                           </div>
                           <div className="flex items-center space-x-2 text-[11px] text-gray-500 font-medium">
@@ -146,10 +146,10 @@ export default function ManagerCoursesPage() {
                       </td>
                       <td className="px-8 py-6 text-center">
                         <div className="inline-block space-y-0.5">
-                          <p className="text-sm font-black text-[#baff02]">
+                          <p className="text-sm font-black text-[#1C221F]">
                             {Number(course.price) === 0 || course.isFree ? 'Khoá học miễn phí' : `${Number(course.price).toLocaleString('vi-VN')}đ`}
                           </p>
-                          <p className="text-[10px] text-gray-400 line-through font-medium">Original</p>
+                          <p className="text-[10px] text-gray-500 line-through font-medium">Original</p>
                         </div>
                       </td>
                       <td className="px-8 py-6 text-center">
@@ -178,8 +178,8 @@ export default function ManagerCoursesPage() {
                             className={cn(
                               "p-2.5 rounded-xl transition-all",
                               course.status === 'REJECTED' 
-                                ? "bg-rose-500 text-white shadow-lg shadow-rose-500/20" 
-                                : "bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-rose-500 hover:bg-rose-50"
+                                ? "bg-rose-500 text-[#1C221F] shadow-lg shadow-rose-500/20" 
+                                : "bg-gray-100 dark:bg-gray-700 text-gray-500 hover:text-rose-500 hover:bg-rose-50"
                             )}
                             title={course.status === 'REJECTED' ? "Mở khóa" : "Khóa khóa học"}
                           >
@@ -187,7 +187,7 @@ export default function ManagerCoursesPage() {
                           </button>
                           <Link 
                             href={`/courses/${course.id}/player`}
-                            className="p-2.5 bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-[#baff02] hover:bg-[#baff02]/10 rounded-xl transition-all inline-flex items-center justify-center"
+                            className="p-2.5 bg-gray-100 dark:bg-gray-700 text-gray-500 hover:text-[#1C221F] hover:bg-[#133E2B]/10 rounded-xl transition-all inline-flex items-center justify-center"
                             title="Xem chi tiết khóa học"
                           >
                             <Eye size={16} />
@@ -203,10 +203,10 @@ export default function ManagerCoursesPage() {
           </div>
           
           <div className="p-6 bg-gray-50/50 dark:bg-gray-900/30 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center">
-            <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">Tổng cộng: {courses.length} khóa học</p>
+            <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">Tổng cộng: {courses.length} khóa học</p>
             <div className="flex items-center space-x-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-               <DollarSign size={14} className="text-[#baff02]" />
-               <span className="text-xs font-black text-[#0f172a] dark:text-white">
+               <DollarSign size={14} className="text-[#1C221F]" />
+               <span className="text-xs font-black text-[#0f172a] dark:text-[#1C221F]">
                  Tổng doanh thu: {courses.reduce((acc: number, c: any) => acc + (Number(c.price) * (c.students || 0)), 0).toLocaleString('vi-VN')}đ
                </span>
             </div>

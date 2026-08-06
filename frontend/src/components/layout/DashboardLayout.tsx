@@ -113,7 +113,7 @@ export const DashboardLayout = ({ children, role, title }: DashboardLayoutProps)
             </Link>
             <button 
               onClick={() => setIsSidebarOpen(false)}
-              className="lg:hidden p-2 text-gray-400 hover:text-[#1C221F] transition-colors"
+              className="lg:hidden p-2 text-gray-500 hover:text-[#1C221F] transition-colors"
             >
               <X size={20} />
             </button>
@@ -128,13 +128,13 @@ export const DashboardLayout = ({ children, role, title }: DashboardLayoutProps)
                 className={cn(
                   "flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-bold transition-all group",
                   pathname === item.href 
-                    ? "bg-[#133E2B] text-white shadow-md shadow-[#133E2B]/10" 
+                    ? "bg-[#133E2B] text-[#1C221F] shadow-md shadow-[#133E2B]/10" 
                     : "text-[#1C221F]/70 hover:bg-[#FAF7F2] hover:text-[#133E2B]"
                 )}
               >
                 <span className={cn(
                   "transition-colors",
-                  pathname === item.href ? "text-white" : "text-gray-400 group-hover:text-[#133E2B]"
+                  pathname === item.href ? "text-[#1C221F]" : "text-gray-500 group-hover:text-[#133E2B]"
                 )}>
                   {item.icon}
                 </span>
@@ -146,7 +146,7 @@ export const DashboardLayout = ({ children, role, title }: DashboardLayoutProps)
           <div className="p-4 mt-auto">
             <div className="bg-[#FAF7F2] rounded-2xl p-5 border border-[#E8E3D9] mb-3">
               <p className="text-xs text-[#1C221F]/60 font-bold mb-2 uppercase tracking-tight">Cần hỗ trợ?</p>
-              <button className="w-full py-2 bg-white text-xs font-bold text-[#133E2B] rounded-xl border border-[#E8E3D9] shadow-sm hover:bg-[#133E2B] hover:text-white transition-colors">
+              <button className="w-full py-2 bg-white text-xs font-bold text-[#133E2B] rounded-xl border border-[#E8E3D9] shadow-sm hover:bg-[#133E2B] hover:text-[#1C221F] transition-colors">
                 Trung tâm hỗ trợ
               </button>
             </div>
@@ -176,11 +176,11 @@ export const DashboardLayout = ({ children, role, title }: DashboardLayoutProps)
                <Menu size={20} />
              </button>
              <div className="relative w-full lg:max-w-md">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={17} />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" size={17} />
                 <input 
                   type="text" 
                   placeholder="Tìm kiếm mọi thứ..." 
-                  className="w-full pl-10 pr-4 py-2 bg-[#FAF7F2] border border-[#E8E3D9] rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all text-[#1C221F] placeholder:text-gray-400"
+                  className="w-full pl-10 pr-4 py-2 bg-[#FAF7F2] border border-[#E8E3D9] rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all text-[#1C221F] placeholder:text-gray-500"
                 />
              </div>
           </div>
@@ -194,9 +194,9 @@ export const DashboardLayout = ({ children, role, title }: DashboardLayoutProps)
             <div className="flex items-center space-x-3 cursor-pointer group">
               <div className="text-right hidden sm:block">
                 <p className="text-sm font-bold text-[#1C221F] capitalize leading-none mb-1">{user?.name || role}</p>
-                <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider leading-none">{user?.role || role}</p>
+                <p className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider leading-none">{user?.role || role}</p>
               </div>
-              <div className="w-9 h-9 rounded-xl bg-[#133E2B] text-white flex items-center justify-center font-bold text-sm shadow-sm">
+              <div className="w-9 h-9 rounded-xl bg-[#133E2B] text-[#1C221F] flex items-center justify-center font-bold text-sm shadow-sm">
                 {user?.name?.charAt(0) || 'U'}
               </div>
             </div>

@@ -69,7 +69,7 @@ export default function ManagerDashboard() {
         head: [['Tên', 'Email', 'Khóa học', 'Doanh thu', 'Trạng thái']],
         body: reportData.instructors.map((i: any) => [i.name, i.email, i.courses, i.revenue, i.status]),
         theme: 'striped',
-        headStyles: { fillColor: [186, 255, 2] } // #baff02
+        headStyles: { fillColor: [186, 255, 2] } // #133E2B
       });
 
       // Add Students Table
@@ -107,7 +107,7 @@ export default function ManagerDashboard() {
     return (
       <DashboardLayout role="manager" title="Tổng quan quản lý">
         <div className="flex flex-col items-center justify-center py-32 space-y-4">
-          <Loader2 className="w-12 h-12 text-[#baff02] animate-spin" />
+          <Loader2 className="w-12 h-12 text-[#1C221F] animate-spin" />
           <p className="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Đang tải báo cáo hệ thống...</p>
         </div>
       </DashboardLayout>
@@ -120,13 +120,13 @@ export default function ManagerDashboard() {
         {/* Header with Print Button */}
         <div className="flex justify-between items-end">
           <div>
-            <h2 className="text-2xl font-black text-white">Báo cáo hiệu suất</h2>
+            <h2 className="text-2xl font-black text-[#1C221F]">Báo cáo hiệu suất</h2>
             <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mt-1">Dữ liệu cập nhật theo thời gian thực</p>
           </div>
           <button 
             onClick={handlePrintReport}
             disabled={isGeneratingPdf}
-            className="flex items-center space-x-2 px-6 py-3 bg-[#baff02] text-[#0f172a] rounded-2xl font-black text-sm shadow-lg shadow-[#baff02]/20 hover:scale-105 transition-all disabled:opacity-50"
+            className="flex items-center space-x-2 px-6 py-3 bg-[#133E2B] text-[#0f172a] rounded-2xl font-black text-sm shadow-lg shadow-[#133E2B]/20 hover:scale-105 transition-all disabled:opacity-50"
           >
             {isGeneratingPdf ? <Loader2 className="animate-spin" size={18} /> : <><Download size={18} /><span>Tải Báo Cáo PDF</span></>}
           </button>
@@ -135,35 +135,35 @@ export default function ManagerDashboard() {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { label: 'Doanh thu hệ thống', value: stats?.totalRevenue || '0đ', change: 'Live', icon: <DollarSign className="text-[#baff02]" />, bg: 'bg-[#baff02]/10' },
+            { label: 'Doanh thu hệ thống', value: stats?.totalRevenue || '0đ', change: 'Live', icon: <DollarSign className="text-[#1C221F]" />, bg: 'bg-[#133E2B]/10' },
             { label: 'Tổng giảng viên', value: stats?.totalInstructors || '0', change: 'Active', icon: <Users className="text-blue-500" />, bg: 'bg-blue-500/10' },
             { label: 'Tổng học viên', value: stats?.totalStudents || '0', change: 'Active', icon: <TrendingUp className="text-amber-500" />, bg: 'bg-amber-500/10' },
           ].map((stat, idx) => (
-            <div key={idx} className="bg-[#141414] p-8 rounded-3xl border border-white/5 shadow-sm transition-all hover:shadow-xl hover:border-[#baff02]/20">
+            <div key={idx} className="bg-white p-8 rounded-3xl border border-[#E8E3D9] shadow-sm transition-all hover:shadow-xl hover:border-[#133E2B]/20">
               <div className="flex justify-between items-center mb-6">
                 <div className={cn("p-3 rounded-2xl", stat.bg)}>
                   {stat.icon}
                 </div>
-                <span className="text-xs font-black text-[#baff02] bg-[#baff02]/10 px-2 py-1 rounded-lg">{stat.change}</span>
+                <span className="text-xs font-black text-[#1C221F] bg-[#133E2B]/10 px-2 py-1 rounded-lg">{stat.change}</span>
               </div>
-              <h4 className="text-3xl font-black text-white mb-1">{stat.value}</h4>
-              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">{stat.label}</p>
+              <h4 className="text-3xl font-black text-[#1C221F] mb-1">{stat.value}</h4>
+              <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">{stat.label}</p>
             </div>
           ))}
         </div>
 
         {/* Charts Section */}
-        <div className="bg-[#141414] p-8 rounded-[40px] border border-white/5 shadow-sm">
+        <div className="bg-white p-8 rounded-[40px] border border-[#E8E3D9] shadow-sm">
           <div className="flex justify-between items-center mb-8">
-            <h3 className="text-lg font-black text-white">Xu hướng tăng trưởng</h3>
+            <h3 className="text-lg font-black text-[#1C221F]">Xu hướng tăng trưởng</h3>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 rounded-full bg-[#baff02]"></div>
-                <span className="text-[10px] text-gray-400 font-bold uppercase">Doanh thu</span>
+                <div className="w-3 h-3 rounded-full bg-[#133E2B]"></div>
+                <span className="text-[10px] text-gray-500 font-bold uppercase">Doanh thu</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                <span className="text-[10px] text-gray-400 font-bold uppercase">Học viên</span>
+                <span className="text-[10px] text-gray-500 font-bold uppercase">Học viên</span>
               </div>
             </div>
           </div>
@@ -172,8 +172,8 @@ export default function ManagerDashboard() {
               <AreaChart data={stats?.monthlyStats || []}>
                 <defs>
                   <linearGradient id="colorRev" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#baff02" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#baff02" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#133E2B" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#133E2B" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
@@ -181,9 +181,9 @@ export default function ManagerDashboard() {
                 <YAxis stroke="#666" fontSize={12} tickLine={false} axisLine={false} hide />
                 <Tooltip 
                   contentStyle={{ backgroundColor: '#1f1f1f', border: 'none', borderRadius: '12px', color: '#fff' }}
-                  itemStyle={{ color: '#baff02' }}
+                  itemStyle={{ color: '#133E2B' }}
                 />
-                <Area type="monotone" dataKey="revenue" stroke="#baff02" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
+                <Area type="monotone" dataKey="revenue" stroke="#133E2B" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
                 <Area type="monotone" dataKey="students" stroke="#3b82f6" strokeWidth={3} fillOpacity={0} />
               </AreaChart>
             </ResponsiveContainer>
@@ -191,24 +191,24 @@ export default function ManagerDashboard() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-[#141414] p-8 rounded-[40px] border border-white/5 shadow-sm">
+          <div className="bg-white p-8 rounded-[40px] border border-[#E8E3D9] shadow-sm">
             <div className="flex justify-between items-center mb-8">
-              <h3 className="text-lg font-black text-white">Duyệt khóa học gần đây</h3>
+              <h3 className="text-lg font-black text-[#1C221F]">Duyệt khóa học gần đây</h3>
               <button 
                  onClick={() => window.location.href = '/dashboard/manager/review'}
-                 className="text-xs font-bold text-[#baff02] hover:underline"
+                 className="text-xs font-bold text-[#1C221F] hover:underline"
               >Xem tất cả</button>
             </div>
             <div className="space-y-6">
               {(stats?.recentCourses || []).map((item: any, idx: number) => (
                 <div key={idx} className="flex items-center justify-between group cursor-pointer">
                   <div className="flex items-center space-x-4">
-                    <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold", item.color)}>
+                    <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center text-[#1C221F] font-bold", item.color)}>
                       {item.title.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-white group-hover:text-[#baff02] transition-colors">{item.title}</p>
-                      <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Giảng viên: {item.instructor}</p>
+                      <p className="text-sm font-bold text-[#1C221F] group-hover:text-[#1C221F] transition-colors">{item.title}</p>
+                      <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Giảng viên: {item.instructor}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -219,7 +219,7 @@ export default function ManagerDashboard() {
                     )}>
                       {item.status}
                     </span>
-                    <ChevronRight size={18} className="text-gray-300 group-hover:text-[#baff02]" />
+                    <ChevronRight size={18} className="text-gray-600 group-hover:text-[#1C221F]" />
                   </div>
                 </div>
               ))}
@@ -231,20 +231,20 @@ export default function ManagerDashboard() {
             </div>
           </div>
 
-          <div className="bg-[#141414] p-8 rounded-[40px] border border-white/5 shadow-sm">
-            <h3 className="text-lg font-black text-white mb-8">Thông báo hệ thống</h3>
+          <div className="bg-white p-8 rounded-[40px] border border-[#E8E3D9] shadow-sm">
+            <h3 className="text-lg font-black text-[#1C221F] mb-8">Thông báo hệ thống</h3>
             <div className="space-y-6">
-              <div className="p-6 bg-[#0a0a0a] border border-white/5 rounded-3xl flex items-start space-x-4">
+              <div className="p-6 bg-white border border-[#E8E3D9] rounded-3xl flex items-start space-x-4">
                 <div className="p-2 bg-blue-500/10 text-blue-500 rounded-xl"><Clock size={20} /></div>
                 <div>
-                  <p className="text-sm font-bold text-white mb-1">Cập nhật hệ thống</p>
+                  <p className="text-sm font-bold text-[#1C221F] mb-1">Cập nhật hệ thống</p>
                   <p className="text-xs text-gray-500 font-medium leading-relaxed">Phiên bản 2.0 đã được triển khai thành công với nhiều tính năng mới.</p>
                 </div>
               </div>
-              <div className="p-6 bg-[#0a0a0a] border border-white/5 rounded-3xl flex items-start space-x-4">
+              <div className="p-6 bg-white border border-[#E8E3D9] rounded-3xl flex items-start space-x-4">
                 <div className="p-2 bg-rose-500/10 text-rose-500 rounded-xl"><AlertCircle size={20} /></div>
                 <div>
-                  <p className="text-sm font-bold text-white mb-1">Cảnh báo bảo mật</p>
+                  <p className="text-sm font-bold text-[#1C221F] mb-1">Cảnh báo bảo mật</p>
                   <p className="text-xs text-gray-500 font-medium leading-relaxed">Phát hiện 3 lần đăng nhập thất bại từ địa chỉ IP lạ.</p>
                 </div>
               </div>

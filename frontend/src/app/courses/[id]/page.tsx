@@ -209,8 +209,8 @@ export default function CourseDetail() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="w-12 h-12 text-[#baff02] animate-spin" />
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center space-y-4">
+        <Loader2 className="w-12 h-12 text-[#1C221F] animate-spin" />
         <p className="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Đang tải nội dung...</p>
       </div>
     );
@@ -218,25 +218,25 @@ export default function CourseDetail() {
 
   if (!course) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center">
-        <h2 className="text-white text-2xl font-bold">Không tìm thấy khóa học</h2>
-        <Link href="/courses" className="mt-4 text-[#baff02] hover:underline">Quay lại danh sách</Link>
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center">
+        <h2 className="text-[#1C221F] text-2xl font-bold">Không tìm thấy khóa học</h2>
+        <Link href="/courses" className="mt-4 text-[#1C221F] hover:underline">Quay lại danh sách</Link>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#baff02]/30 selection:text-[#baff02] font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-white text-[#1C221F] selection:bg-[#133E2B]/30 selection:text-[#1C221F] font-sans overflow-x-hidden">
       <Navbar />
       
       {/* Top Banner / Breadcrumbs */}
-      <div className="bg-[#111111] border-b border-white/5 py-4">
+      <div className="bg-[#111111] border-b border-[#E8E3D9] py-4">
         <div className="max-w-7xl mx-auto px-4 flex items-center space-x-2 text-xs font-bold text-gray-500">
-          <Link href="/" className="hover:text-white transition-colors">Trang chủ</Link>
+          <Link href="/" className="hover:text-[#1C221F] transition-colors">Trang chủ</Link>
           <ChevronRight size={12} />
-          <Link href="/courses" className="hover:text-white transition-colors">Khóa học</Link>
+          <Link href="/courses" className="hover:text-[#1C221F] transition-colors">Khóa học</Link>
           <ChevronRight size={12} />
-          <span className="text-gray-300 line-clamp-1">{course.title}</span>
+          <span className="text-gray-600 line-clamp-1">{course.title}</span>
         </div>
       </div>
 
@@ -250,7 +250,7 @@ export default function CourseDetail() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="relative aspect-video rounded-[2.5rem] overflow-hidden border border-white/5 bg-[#111111] shadow-2xl group"
+              className="relative aspect-video rounded-[2.5rem] overflow-hidden border border-[#E8E3D9] bg-[#111111] shadow-2xl group"
             >
               {course.introVideoUrl ? (
                 <iframe 
@@ -267,7 +267,7 @@ export default function CourseDetail() {
                     alt="Cover" 
                   />
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="p-6 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 text-[#baff02]">
+                    <div className="p-6 bg-white/10 backdrop-blur-xl rounded-full border border-[#E8E3D9] text-[#1C221F]">
                       <Play size={32} fill="currentColor" />
                     </div>
                   </div>
@@ -281,28 +281,28 @@ export default function CourseDetail() {
                 {course.title}
               </h1>
               {course.shortDescription && (
-                <p className="text-xl text-gray-400 font-medium leading-relaxed">
+                <p className="text-xl text-gray-500 font-medium leading-relaxed">
                   {course.shortDescription}
                 </p>
               )}
               
               <div className="flex flex-wrap items-center gap-6 pt-2">
                 <div className="flex items-center space-x-2">
-                  <span className="text-[#baff02] text-lg font-black">{randomRating}</span>
+                  <span className="text-[#1C221F] text-lg font-black">{randomRating}</span>
                   <div className="flex text-amber-400">
                     {[...Array(5)].map((_, i) => <Star key={i} size={14} fill={i < Math.floor(Number(randomRating)) ? "currentColor" : "none"} />)}
                   </div>
                   <span className="text-gray-500 text-xs font-bold">({randomReviewCount} đánh giá)</span>
                 </div>
-                <div className="flex items-center space-x-2 text-gray-400">
+                <div className="flex items-center space-x-2 text-gray-500">
                   <Users size={16} />
                   <span className="text-sm font-bold">{course.displayStudents} học viên</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-white/5">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-[#E8E3D9]">
                 <div className="flex items-center space-x-3">
-                  <div className="p-2.5 bg-white/5 rounded-xl text-gray-400">
+                  <div className="p-2.5 bg-white/5 rounded-xl text-gray-500">
                     <Play size={18} />
                   </div>
                   <div>
@@ -311,7 +311,7 @@ export default function CourseDetail() {
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="p-2.5 bg-white/5 rounded-xl text-gray-400">
+                  <div className="p-2.5 bg-white/5 rounded-xl text-gray-500">
                     <Clock size={18} />
                   </div>
                   <div>
@@ -320,7 +320,7 @@ export default function CourseDetail() {
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="p-2.5 bg-white/5 rounded-xl text-gray-400">
+                  <div className="p-2.5 bg-white/5 rounded-xl text-gray-500">
                     <BarChart size={18} />
                   </div>
                   <div>
@@ -329,7 +329,7 @@ export default function CourseDetail() {
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="p-2.5 bg-white/5 rounded-xl text-gray-400">
+                  <div className="p-2.5 bg-white/5 rounded-xl text-gray-500">
                     <Globe size={18} />
                   </div>
                   <div>
@@ -341,13 +341,13 @@ export default function CourseDetail() {
             </div>
 
             {/* 3. Giới thiệu khoá học */}
-            <div className="bg-[#111111] rounded-[2rem] p-8 lg:p-10 border border-white/5">
+            <div className="bg-[#111111] rounded-[2rem] p-8 lg:p-10 border border-[#E8E3D9]">
               <h3 className="text-xl font-black mb-6 flex items-center space-x-3">
-                <div className="w-1.5 h-6 bg-[#baff02] rounded-full" />
+                <div className="w-1.5 h-6 bg-[#133E2B] rounded-full" />
                 <span>Giới thiệu khoá học</span>
               </h3>
               <div 
-                className="prose prose-invert max-w-none text-gray-400 font-medium leading-[1.8] text-sm course-description-content"
+                className="prose prose-invert max-w-none text-gray-500 font-medium leading-[1.8] text-sm course-description-content"
                 dangerouslySetInnerHTML={{ __html: course.description }}
               />
             </div>
@@ -365,34 +365,34 @@ export default function CourseDetail() {
             `}</style>
 
             {/* 4. Khoá học bao gồm */}
-            <div className="bg-[#111111] rounded-[2rem] p-8 lg:p-10 border border-white/5">
+            <div className="bg-[#111111] rounded-[2rem] p-8 lg:p-10 border border-[#E8E3D9]">
               <h3 className="text-xl font-black mb-8 flex items-center space-x-3">
-                <div className="w-1.5 h-6 bg-[#baff02] rounded-full" />
+                <div className="w-1.5 h-6 bg-[#133E2B] rounded-full" />
                 <span>Khoá học bao gồm</span>
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
-                <div className="flex items-center space-x-4 text-gray-300">
-                  <Play size={20} className="text-[#baff02]" />
+                <div className="flex items-center space-x-4 text-gray-600">
+                  <Play size={20} className="text-[#1C221F]" />
                   <span className="text-sm font-bold">{course.totalLessons} bài học video</span>
                 </div>
-                <div className="flex items-center space-x-4 text-gray-300">
-                  <Clock size={20} className="text-[#baff02]" />
+                <div className="flex items-center space-x-4 text-gray-600">
+                  <Clock size={20} className="text-[#1C221F]" />
                   <span className="text-sm font-bold">{formatDuration(course.totalDuration)} nội dung</span>
                 </div>
-                <div className="flex items-center space-x-4 text-gray-300">
-                  <Shield size={20} className="text-[#baff02]" />
+                <div className="flex items-center space-x-4 text-gray-600">
+                  <Shield size={20} className="text-[#1C221F]" />
                   <span className="text-sm font-bold">Truy cập trọn đời</span>
                 </div>
-                <div className="flex items-center space-x-4 text-gray-300">
-                  <Smartphone size={20} className="text-[#baff02]" />
+                <div className="flex items-center space-x-4 text-gray-600">
+                  <Smartphone size={20} className="text-[#1C221F]" />
                   <span className="text-sm font-bold">Xem trên mọi thiết bị</span>
                 </div>
-                <div className="flex items-center space-x-4 text-gray-300">
-                  <Award size={20} className="text-[#baff02]" />
+                <div className="flex items-center space-x-4 text-gray-600">
+                  <Award size={20} className="text-[#1C221F]" />
                   <span className="text-sm font-bold">Cấp chứng chỉ hoàn thành</span>
                 </div>
-                <div className="flex items-center space-x-4 text-gray-300">
-                  <MessageCircle size={20} className="text-[#baff02]" />
+                <div className="flex items-center space-x-4 text-gray-600">
+                  <MessageCircle size={20} className="text-[#1C221F]" />
                   <span className="text-sm font-bold">Hỗ trợ giảng viên 24/7</span>
                 </div>
               </div>
@@ -403,7 +403,7 @@ export default function CourseDetail() {
               <div className="space-y-6">
                 <div className="flex justify-between items-end px-2">
                   <h3 className="text-xl font-black flex items-center space-x-3">
-                    <div className="w-1.5 h-6 bg-[#baff02] rounded-full" />
+                    <div className="w-1.5 h-6 bg-[#133E2B] rounded-full" />
                     <span>Các khóa học trong Combo này</span>
                   </h3>
                   <span className="text-xs font-bold text-gray-500">{course.includedCourses?.length || 0} khóa học</span>
@@ -411,7 +411,7 @@ export default function CourseDetail() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {course.includedCourses?.map((included: any) => (
-                    <Link href={`/courses/${included.id}`} key={included.id} className="bg-[#111111] p-4 rounded-2xl border border-white/5 flex items-center space-x-4 hover:border-[#baff02]/50 transition-colors group">
+                    <Link href={`/courses/${included.id}`} key={included.id} className="bg-[#111111] p-4 rounded-2xl border border-[#E8E3D9] flex items-center space-x-4 hover:border-[#133E2B]/50 transition-colors group">
                       <div className="relative w-24 h-16 rounded-lg overflow-hidden bg-white/5 flex-shrink-0">
                         {included.coverImage ? (
                           <Image src={included.coverImage} fill className="object-cover group-hover:scale-105 transition-transform" alt={included.title} />
@@ -420,10 +420,10 @@ export default function CourseDetail() {
                         )}
                       </div>
                       <div className="flex-grow">
-                        <h4 className="text-sm font-bold text-white line-clamp-1 group-hover:text-[#baff02] transition-colors">{included.title}</h4>
+                        <h4 className="text-sm font-bold text-[#1C221F] line-clamp-1 group-hover:text-[#1C221F] transition-colors">{included.title}</h4>
                         <p className="text-[10px] text-gray-500 mt-1">{included.instructor?.name}</p>
                         <div className="mt-2 flex items-baseline space-x-2">
-                          <span className="text-xs font-bold text-[#baff02]">{included.discountPrice ? formatPrice(included.discountPrice) : formatPrice(included.price)}</span>
+                          <span className="text-xs font-bold text-[#1C221F]">{included.discountPrice ? formatPrice(included.discountPrice) : formatPrice(included.price)}</span>
                           {included.discountPrice && Number(included.discountPrice) > 0 && (
                             <span className="text-[10px] text-gray-500 line-through">{formatPrice(included.price)}</span>
                           )}
@@ -437,7 +437,7 @@ export default function CourseDetail() {
               <div className="space-y-6">
                 <div className="flex justify-between items-end px-2">
                   <h3 className="text-xl font-black flex items-center space-x-3">
-                    <div className="w-1.5 h-6 bg-[#baff02] rounded-full" />
+                    <div className="w-1.5 h-6 bg-[#133E2B] rounded-full" />
                     <span>Nội dung khoá học</span>
                   </h3>
                   <span className="text-xs font-bold text-gray-500">{course.sections?.length || 0} chương • {course.totalLessons} bài học</span>
@@ -448,8 +448,8 @@ export default function CourseDetail() {
                     <div 
                       key={section.id} 
                       className={cn(
-                        "bg-[#111111] rounded-3xl border border-white/5 overflow-hidden transition-all",
-                        openSections.includes(section.id) ? "ring-1 ring-[#baff02]/20" : ""
+                        "bg-[#111111] rounded-3xl border border-[#E8E3D9] overflow-hidden transition-all",
+                        openSections.includes(section.id) ? "ring-1 ring-[#133E2B]/20" : ""
                       )}
                     >
                       <button 
@@ -457,17 +457,17 @@ export default function CourseDetail() {
                         className="w-full flex items-center justify-between p-6 hover:bg-white/5 transition-colors group"
                       >
                         <div className="flex items-center space-x-4 text-left">
-                          <div className="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-[10px] font-black group-hover:bg-[#baff02] group-hover:text-[#0a0a0a] transition-all">
+                          <div className="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-[10px] font-black group-hover:bg-[#133E2B] group-hover:text-[#0a0a0a] transition-all">
                             {idx + 1}
                           </div>
                           <div>
-                            <p className="text-sm font-black group-hover:text-[#baff02] transition-colors">{section.title}</p>
+                            <p className="text-sm font-black group-hover:text-[#1C221F] transition-colors">{section.title}</p>
                             <p className="text-[10px] text-gray-500 font-bold uppercase mt-1">{section.lessons.length} bài học</p>
                           </div>
                         </div>
                         <ChevronDown 
                           size={18} 
-                          className={cn("text-gray-500 transition-transform duration-300", openSections.includes(section.id) && "rotate-180 text-[#baff02]")} 
+                          className={cn("text-gray-500 transition-transform duration-300", openSections.includes(section.id) && "rotate-180 text-[#1C221F]")} 
                         />
                       </button>
                       
@@ -477,7 +477,7 @@ export default function CourseDetail() {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            className="border-t border-white/5 divide-y divide-white/5"
+                            className="border-t border-[#E8E3D9] divide-y divide-[#E8E3D9]"
                           >
                             {section.lessons.map((lesson, lIdx) => (
                               <div 
@@ -494,12 +494,12 @@ export default function CourseDetail() {
                               >
                                 <div className="flex items-center space-x-4">
                                   <div className="text-gray-600">
-                                    {lesson.isPreview || course.isFree ? <Play size={14} fill="currentColor" className="text-[#baff02]" /> : <Lock size={14} />}
+                                    {lesson.isPreview || course.isFree ? <Play size={14} fill="currentColor" className="text-[#1C221F]" /> : <Lock size={14} />}
                                   </div>
                                   <div className="flex flex-col">
-                                    <span className="text-sm font-bold text-gray-300">{lesson.title}</span>
+                                    <span className="text-sm font-bold text-gray-600">{lesson.title}</span>
                                     {(lesson.isPreview || course.isFree) && (
-                                      <span className="text-[9px] text-[#baff02] font-black uppercase tracking-widest mt-0.5">
+                                      <span className="text-[9px] text-[#1C221F] font-black uppercase tracking-widest mt-0.5">
                                         {course.isFree ? 'Miễn phí' : 'Học thử miễn phí'}
                                       </span>
                                     )}
@@ -518,27 +518,27 @@ export default function CourseDetail() {
             )}
 
             {/* 6. Giảng viên */}
-            <div className="bg-[#111111] rounded-[2rem] p-10 border border-white/5">
+            <div className="bg-[#111111] rounded-[2rem] p-10 border border-[#E8E3D9]">
               <h3 className="text-xl font-black mb-10 flex items-center space-x-3">
-                <div className="w-1.5 h-6 bg-[#baff02] rounded-full" />
+                <div className="w-1.5 h-6 bg-[#133E2B] rounded-full" />
                 <span>Thông tin giảng viên</span>
               </h3>
               
               <div className="flex flex-col md:flex-row gap-10">
                 <div className="flex-shrink-0">
-                  <div className="relative w-32 h-32 rounded-3xl overflow-hidden border-2 border-[#baff02]/20">
+                  <div className="relative w-32 h-32 rounded-3xl overflow-hidden border-2 border-[#133E2B]/20">
                     <Image src={course.instructor?.avatar || 'https://i.pravatar.cc/300'} fill className="object-cover" alt="Instructor" />
                   </div>
                   <div className="mt-4 flex justify-center space-x-3 text-gray-500">
-                    <Facebook size={16} className="hover:text-[#baff02] cursor-pointer" />
-                    <Twitter size={16} className="hover:text-[#baff02] cursor-pointer" />
-                    <LinkIcon size={16} className="hover:text-[#baff02] cursor-pointer" />
+                    <Facebook size={16} className="hover:text-[#1C221F] cursor-pointer" />
+                    <Twitter size={16} className="hover:text-[#1C221F] cursor-pointer" />
+                    <LinkIcon size={16} className="hover:text-[#1C221F] cursor-pointer" />
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <h4 className="text-2xl font-black text-[#baff02]">{course.instructor?.name || 'Money Lab Team'}</h4>
-                  <p className="text-xs font-black text-white/40 uppercase tracking-widest">{course.instructor?.specialization || 'Chuyên gia đào tạo AI & Business'}</p>
-                  <p className="text-sm text-gray-400 font-medium leading-relaxed italic">
+                  <h4 className="text-2xl font-black text-[#1C221F]">{course.instructor?.name || 'Money Lab Team'}</h4>
+                  <p className="text-xs font-black text-[#1C221F]/40 uppercase tracking-widest">{course.instructor?.specialization || 'Chuyên gia đào tạo AI & Business'}</p>
+                  <p className="text-sm text-gray-500 font-medium leading-relaxed italic">
                     {course.instructor?.bio || "Một dự án từ Money Studio nhầm chia sẻ những kiến thức mới nhất hiện nay."}
                   </p>
                   <div className="flex space-x-8 pt-4">
@@ -562,16 +562,16 @@ export default function CourseDetail() {
             {/* 7. Đánh giá từ học viên */}
             <div className="space-y-8">
               <h3 className="text-xl font-black flex items-center space-x-3">
-                <div className="w-1.5 h-6 bg-[#baff02] rounded-full" />
+                <div className="w-1.5 h-6 bg-[#133E2B] rounded-full" />
                 <span>Cảm nhận của học viên</span>
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {(course.reviews && course.reviews.length > 0) ? course.reviews.map(review => (
-                  <div key={review.id} className="bg-[#111111] p-6 rounded-3xl border border-white/5 space-y-4">
+                  <div key={review.id} className="bg-[#111111] p-6 rounded-3xl border border-[#E8E3D9] space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 rounded-xl bg-[#baff02]/10 relative overflow-hidden">
+                        <div className="w-10 h-10 rounded-xl bg-[#133E2B]/10 relative overflow-hidden">
                           <Image src={review.user?.avatar || 'https://i.pravatar.cc/100'} fill alt="Reviewer" />
                         </div>
                         <div>
@@ -583,14 +583,14 @@ export default function CourseDetail() {
                         {[...Array(review.rating)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                       </div>
                     </div>
-                    <p className="text-sm text-gray-400 leading-relaxed italic">"{review.content}"</p>
+                    <p className="text-sm text-gray-500 leading-relaxed italic">"{review.content}"</p>
                   </div>
                 )) : (
                   [...Array(4)].map((_, i) => (
-                    <div key={i} className="bg-[#111111] p-6 rounded-3xl border border-white/5 space-y-4">
+                    <div key={i} className="bg-[#111111] p-6 rounded-3xl border border-[#E8E3D9] space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 rounded-xl bg-[#baff02]/10 relative overflow-hidden">
+                          <div className="w-10 h-10 rounded-xl bg-[#133E2B]/10 relative overflow-hidden">
                             <Image src={`https://i.pravatar.cc/100?u=${i}`} fill alt="Reviewer" />
                           </div>
                           <div>
@@ -602,7 +602,7 @@ export default function CourseDetail() {
                           {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                         </div>
                       </div>
-                      <p className="text-sm text-gray-400 leading-relaxed italic">
+                      <p className="text-sm text-gray-500 leading-relaxed italic">
                         {[
                           "Khoá học cực kỳ thực chiến, giúp mình áp dụng AI vào công việc ngay lập tức.",
                           "Giảng viên giải thích rất dễ hiểu, lộ trình rõ ràng, đáng tiền lắm mọi người ơi.",
@@ -621,17 +621,17 @@ export default function CourseDetail() {
           {/* RIGHT SIDEBAR (4 columns) - Sticky Enrollment Card */}
           <div className="lg:col-span-4 lg:block">
             <div className="sticky top-28 space-y-6">
-              <div className="bg-[#141414] rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden">
+              <div className="bg-white rounded-[2.5rem] border border-[#E8E3D9] shadow-2xl overflow-hidden">
                 <div className="p-8 lg:p-10 space-y-8">
                   <div className="space-y-3">
                     <p className="text-[10px] text-gray-500 font-black uppercase tracking-widest">Học phí đầu tư</p>
                     <div className="flex flex-col space-y-1">
                       <div className="flex items-baseline space-x-4">
                         {course.isFree || Number(course.price) === 0 ? (
-                          <span className="text-4xl font-black text-[#baff02]">MIỄN PHÍ</span>
+                          <span className="text-4xl font-black text-[#1C221F]">MIỄN PHÍ</span>
                         ) : (
                           <>
-                            <span className="text-4xl font-black text-[#baff02]">
+                            <span className="text-4xl font-black text-[#1C221F]">
                               {course.discountPrice && Number(course.discountPrice) > 0 ? formatPrice(course.discountPrice) : formatPrice(course.price)}
                             </span>
                             {course.discountPrice && Number(course.discountPrice) > 0 && (
@@ -655,12 +655,12 @@ export default function CourseDetail() {
                           className={cn(
                             "w-full py-5 font-black rounded-2xl transition-all shadow-xl active:scale-95 uppercase tracking-[0.2em] text-xs flex items-center justify-center space-x-3",
                             isEnrolling 
-                              ? "bg-gray-800 text-gray-500 cursor-not-allowed border border-white/5" 
-                              : "bg-[#baff02] text-[#0a0a0a] hover:bg-[#8ec401] shadow-[#baff02]/20"
+                              ? "bg-gray-800 text-gray-500 cursor-not-allowed border border-[#E8E3D9]" 
+                              : "bg-[#133E2B] text-[#1C221F] hover:bg-[#8ec401] shadow-[#133E2B]/20"
                           )}
                         >
                           {isEnrolling ? (
-                            <Loader2 className="w-4 h-4 animate-spin text-[#baff02]" />
+                            <Loader2 className="w-4 h-4 animate-spin text-[#1C221F]" />
                           ) : (
                             <PlusIcon size={18} className="hidden" />
                           )}
@@ -669,39 +669,39 @@ export default function CourseDetail() {
                         <p className="text-center text-[10px] text-gray-500 font-bold">Cam kết chất lượng • Hoàn trả nếu không hài lòng</p>
                       </div>
 
-                      <div className="space-y-5 pt-4 border-t border-white/5">
-                        <div className="flex items-center justify-between text-gray-400">
+                      <div className="space-y-5 pt-4 border-t border-[#E8E3D9]">
+                        <div className="flex items-center justify-between text-gray-500">
                           <div className="flex items-center space-x-3">
                             <BookOpen size={16} />
                             <span className="text-xs font-bold">Bài học</span>
                           </div>
-                          <span className="text-xs font-black text-white">{course.totalLessons}</span>
+                          <span className="text-xs font-black text-[#1C221F]">{course.totalLessons}</span>
                         </div>
-                        <div className="flex items-center justify-between text-gray-400">
+                        <div className="flex items-center justify-between text-gray-500">
                           <div className="flex items-center space-x-3">
                             <Clock size={16} />
                             <span className="text-xs font-bold">Thời lượng</span>
                           </div>
-                          <span className="text-xs font-black text-white">{formatDuration(course.totalDuration)}</span>
+                          <span className="text-xs font-black text-[#1C221F]">{formatDuration(course.totalDuration)}</span>
                         </div>
-                        <div className="flex items-center justify-between text-gray-400">
+                        <div className="flex items-center justify-between text-gray-500">
                           <div className="flex items-center space-x-3">
                             <Smartphone size={16} />
                             <span className="text-xs font-bold">Nền tảng</span>
                           </div>
-                          <span className="text-xs font-black text-white">All devices</span>
+                          <span className="text-xs font-black text-[#1C221F]">All devices</span>
                         </div>
-                        <div className="flex items-center justify-between text-gray-400">
+                        <div className="flex items-center justify-between text-gray-500">
                           <div className="flex items-center space-x-3">
                             <Shield size={16} />
                             <span className="text-xs font-bold">Truy cập</span>
                           </div>
-                          <span className="text-xs font-black text-white">Vĩnh viễn</span>
+                          <span className="text-xs font-black text-[#1C221F]">Vĩnh viễn</span>
                         </div>
                       </div>
 
-                      <div className="pt-4 flex items-center justify-center space-x-6 text-gray-500 border-t border-white/5">
-                        <button className="flex items-center space-x-2 hover:text-[#baff02] transition-colors">
+                      <div className="pt-4 flex items-center justify-center space-x-6 text-gray-500 border-t border-[#E8E3D9]">
+                        <button className="flex items-center space-x-2 hover:text-[#1C221F] transition-colors">
                           <Share2 size={16} />
                           <span className="text-[10px] font-bold uppercase tracking-widest">Chia sẻ</span>
                         </button>
@@ -714,10 +714,10 @@ export default function CourseDetail() {
               </div>
 
               {/* Secure Info Card */}
-              <div className="bg-[#baff02]/5 border border-[#baff02]/20 rounded-3xl p-6 flex items-start space-x-4">
-                <Shield size={24} className="text-[#baff02] flex-shrink-0" />
+              <div className="bg-[#133E2B]/5 border border-[#133E2B]/20 rounded-3xl p-6 flex items-start space-x-4">
+                <Shield size={24} className="text-[#1C221F] flex-shrink-0" />
                 <div className="space-y-1">
-                  <p className="text-xs font-black text-[#baff02] uppercase tracking-widest">Thanh toán bảo mật</p>
+                  <p className="text-xs font-black text-[#1C221F] uppercase tracking-widest">Thanh toán bảo mật</p>
                   <p className="text-[10px] text-gray-500 leading-relaxed font-medium">Hệ thống thanh toán MoMo mã hoá SSL 128-bit, đảm bảo tuyệt đối thông tin giao dịch của bạn.</p>
                 </div>
               </div>

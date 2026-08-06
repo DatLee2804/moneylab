@@ -31,10 +31,10 @@ export default function InstructorPage() {
         <div className="space-y-8 animate-pulse text-gray-500">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[1, 2, 3].map(i => (
-              <div key={i} className="h-32 bg-[#141414] rounded-3xl border border-white/5"></div>
+              <div key={i} className="h-32 bg-white rounded-3xl border border-[#E8E3D9]"></div>
             ))}
           </div>
-          <div className="h-96 bg-[#141414] rounded-[40px] border border-white/5"></div>
+          <div className="h-96 bg-white rounded-[40px] border border-[#E8E3D9]"></div>
         </div>
       </DashboardLayout>
     );
@@ -46,26 +46,26 @@ export default function InstructorPage() {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { label: 'Tổng doanh thu', value: '45,200,000đ', change: '+12.5%', icon: <DollarSign className="text-[#baff02]" />, bg: 'bg-[#baff02]/10' },
+            { label: 'Tổng doanh thu', value: '45,200,000đ', change: '+12.5%', icon: <DollarSign className="text-[#1C221F]" />, bg: 'bg-[#133E2B]/10' },
             { label: 'Tổng học viên', value: '1,284', change: '+8.2%', icon: <Users className="text-blue-500" />, bg: 'bg-blue-500/10' },
             { label: 'Đánh giá trung bình', value: '4.9/5', change: 'Ổn định', icon: <TrendingUp className="text-amber-500" />, bg: 'bg-amber-500/10' },
           ].map((stat, idx) => (
-            <div key={idx} className="bg-[#141414] p-8 rounded-3xl border border-white/5 shadow-sm hover:border-[#baff02]/30 transition-all">
+            <div key={idx} className="bg-white p-8 rounded-3xl border border-[#E8E3D9] shadow-sm hover:border-[#133E2B]/30 transition-all">
               <div className="flex justify-between items-center mb-6">
                 <div className={cn("p-3 rounded-2xl", stat.bg)}>
                   {stat.icon}
                 </div>
-                <span className="text-xs font-black text-[#baff02] bg-[#baff02]/10 px-2 py-1 rounded-lg">{stat.change}</span>
+                <span className="text-xs font-black text-[#1C221F] bg-[#133E2B]/10 px-2 py-1 rounded-lg">{stat.change}</span>
               </div>
-              <h4 className="text-3xl font-black text-white mb-1">{stat.value}</h4>
-              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">{stat.label}</p>
+              <h4 className="text-3xl font-black text-[#1C221F] mb-1">{stat.value}</h4>
+              <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">{stat.label}</p>
             </div>
           ))}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-[#141414] p-8 rounded-[40px] border border-white/5 shadow-sm">
-            <h3 className="text-lg font-black text-white mb-8">Học viên mới nhất</h3>
+          <div className="bg-white p-8 rounded-[40px] border border-[#E8E3D9] shadow-sm">
+            <h3 className="text-lg font-black text-[#1C221F] mb-8">Học viên mới nhất</h3>
             <div className="space-y-6">
               {[
                 { id: 1, name: 'Nguyễn Văn B', email: 'vanb@gmail.com', courses: 2 },
@@ -74,15 +74,15 @@ export default function InstructorPage() {
               ].map((student) => (
                 <div key={student.id} className="flex items-center justify-between group cursor-pointer">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#baff02]/10 text-[#baff02] flex items-center justify-center font-bold">
+                    <div className="w-12 h-12 rounded-2xl bg-[#133E2B]/10 text-[#1C221F] flex items-center justify-center font-bold">
                       {student.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-white group-hover:text-[#baff02] transition-colors">{student.name}</p>
-                      <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Đã mua {student.courses} khóa học</p>
+                      <p className="text-sm font-bold text-[#1C221F] group-hover:text-[#1C221F] transition-colors">{student.name}</p>
+                      <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Đã mua {student.courses} khóa học</p>
                     </div>
                   </div>
-                  <button className="p-2 text-gray-300 group-hover:text-[#baff02] transition-colors">
+                  <button className="p-2 text-gray-600 group-hover:text-[#1C221F] transition-colors">
                     <ChevronRight size={20} />
                   </button>
                 </div>
@@ -90,21 +90,21 @@ export default function InstructorPage() {
             </div>
           </div>
 
-          <div className="bg-[#141414] p-8 rounded-[40px] border border-white/5 shadow-sm">
-            <h3 className="text-lg font-black text-white mb-8">Đánh giá gần đây</h3>
+          <div className="bg-white p-8 rounded-[40px] border border-[#E8E3D9] shadow-sm">
+            <h3 className="text-lg font-black text-[#1C221F] mb-8">Đánh giá gần đây</h3>
             <div className="space-y-6">
               {[1, 2].map(i => (
-                <div key={i} className="p-6 bg-[#0a0a0a] rounded-3xl border border-white/5">
+                <div key={i} className="p-6 bg-white rounded-3xl border border-[#E8E3D9]">
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex items-center space-x-3">
                       <Image src={`https://i.pravatar.cc/150?u=review${i}`} width={32} height={32} className="w-8 h-8 rounded-lg object-cover" alt="Student avatar" />
-                      <p className="text-xs font-bold text-white">Học viên {i}</p>
+                      <p className="text-xs font-bold text-[#1C221F]">Học viên {i}</p>
                     </div>
                     <div className="flex text-amber-500">
                       {[1, 2, 3, 4, 5].map(s => <Star key={s} size={10} fill="currentColor" />)}
                     </div>
                   </div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 font-medium leading-relaxed italic">
+                  <p className="text-xs text-gray-500 dark:text-gray-500 font-medium leading-relaxed italic">
                     "Khóa học rất hay và thực tế. Giảng viên hỗ trợ nhiệt tình, kiến thức dễ hiểu."
                   </p>
                 </div>

@@ -93,7 +93,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF7F2] font-sans text-[#1C221F] selection:bg-[#133E2B]/10 selection:text-[#133E2B]">
       {/* Top Banner Tag */}
-      <div className="bg-[#BAFF02] text-[#0F2E1E] py-2 px-4 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2">
+      <div className="bg-[#133E2B] text-[#1C221F] py-2 px-4 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2">
         <Sparkles size={14} className="animate-pulse" />
         <span>Ưu đãi đặc biệt: Giảm 30% cho học viên mới đăng ký trong tuần này!</span>
         <Link href="/courses" className="underline font-black hover:opacity-80 ml-2">Khám phá ngay →</Link>
@@ -146,7 +146,7 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link 
                   href="/courses" 
-                  className="px-8 py-4 bg-[#133E2B] text-white font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-lg shadow-[#133E2B]/15 flex items-center space-x-2 group"
+                  className="px-8 py-4 bg-[#133E2B] text-[#1C221F] font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-lg shadow-[#133E2B]/15 flex items-center space-x-2 group"
                 >
                   <span>Khám phá ngay</span>
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -181,13 +181,13 @@ export default function HomePage() {
                 </div>
 
                 {/* Floating Dark Box */}
-                <div className="absolute bottom-6 left-6 right-6 p-5 bg-[#0F2E1E] text-white rounded-2xl shadow-xl border border-white/10 flex items-center justify-between">
+                <div className="absolute bottom-6 left-6 right-6 p-5 bg-[#0F2E1E] text-[#1C221F] rounded-2xl shadow-xl border border-[#E8E3D9] flex items-center justify-between">
                   <div className="space-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#BAFF02]">Lộ trình chuẩn chỉnh</span>
-                    <h4 className="text-sm font-bold text-white">Chuyên gia đồng hành 1:1</h4>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#1C221F]">Lộ trình chuẩn chỉnh</span>
+                    <h4 className="text-sm font-bold text-[#1C221F]">Chuyên gia đồng hành 1:1</h4>
                     <p className="text-xs text-emerald-100/70">Học thực chiến & giải đáp thắc mắc 24/7</p>
                   </div>
-                  <div className="w-10 h-10 bg-[#BAFF02] text-[#0F2E1E] rounded-xl flex items-center justify-center shrink-0 font-bold shadow-md">
+                  <div className="w-10 h-10 bg-[#133E2B] text-[#1C221F] rounded-xl flex items-center justify-center shrink-0 font-bold shadow-md">
                     <CheckCircle size={20} />
                   </div>
                 </div>
@@ -207,7 +207,7 @@ export default function HomePage() {
                   onClick={() => setSelectedCategory(cat.id)}
                   className={`flex items-center space-x-2 px-5 py-2.5 rounded-full text-xs font-bold transition-all shrink-0 ${
                     selectedCategory === cat.id
-                      ? 'bg-[#133E2B] text-white shadow-md'
+                      ? 'bg-[#133E2B] text-[#1C221F] shadow-md'
                       : 'bg-[#FAF7F2] text-[#1C221F] hover:bg-[#E8E3D9]/60'
                   }`}
                 >
@@ -232,7 +232,7 @@ export default function HomePage() {
               className="mt-4 sm:mt-0 flex items-center space-x-2 text-sm font-bold text-[#133E2B] hover:text-[#0F2E1E] group"
             >
               <span>Xem tất cả</span>
-              <div className="w-7 h-7 rounded-full bg-[#133E2B]/10 flex items-center justify-center group-hover:bg-[#133E2B] group-hover:text-white transition-all">
+              <div className="w-7 h-7 rounded-full bg-[#133E2B]/10 flex items-center justify-center group-hover:bg-[#133E2B] group-hover:text-[#1C221F] transition-all">
                 <ArrowRight size={14} />
               </div>
             </Link>
@@ -257,7 +257,7 @@ export default function HomePage() {
                       alt={course.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <span className="absolute top-3 left-3 bg-[#0F2E1E] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
+                    <span className="absolute top-3 left-3 bg-[#0F2E1E] text-[#1C221F] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
                       {course.category || 'Tài chính'}
                     </span>
                   </div>
@@ -285,7 +285,7 @@ export default function HomePage() {
                         {course.discountPrice && Number(course.discountPrice) > 0 ? (
                           <div className="flex items-baseline space-x-2">
                             <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.discountPrice)}</span>
-                            <span className="text-xs text-gray-400 line-through">{formatPrice(course.price)}</span>
+                            <span className="text-xs text-gray-500 line-through">{formatPrice(course.price)}</span>
                           </div>
                         ) : (
                           <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.price)}</span>
@@ -294,7 +294,7 @@ export default function HomePage() {
 
                       <Link 
                         href={`/courses/${course.id}`} 
-                        className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-white hover:border-[#133E2B] transition-all"
+                        className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-[#1C221F] hover:border-[#133E2B] transition-all"
                       >
                         Chi tiết
                       </Link>
@@ -392,7 +392,7 @@ export default function HomePage() {
                   <h4 className="text-sm font-bold text-[#1C221F] line-clamp-1">{mini.title}</h4>
                   <div className="flex items-center justify-between pt-1">
                     <span className="text-xs font-bold text-[#133E2B]">{formatPrice(mini.price)}</span>
-                    <Link href={`/courses/${mini.id}`} className="text-[11px] font-bold text-[#133E2B] bg-[#BAFF02] hover:bg-[#a3e000] px-3 py-1 rounded-lg transition-colors">
+                    <Link href={`/courses/${mini.id}`} className="text-[11px] font-bold text-[#133E2B] bg-[#133E2B] hover:bg-[#a3e000] px-3 py-1 rounded-lg transition-colors">
                       Học ngay
                     </Link>
                   </div>
@@ -404,10 +404,10 @@ export default function HomePage() {
 
         {/* 7-DAY FREE TRIAL CTA BAR */}
         <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-16">
-          <div className="bg-[#0F2E1E] text-white rounded-3xl p-8 sm:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-between border border-white/10 relative overflow-hidden">
+          <div className="bg-[#0F2E1E] text-[#1C221F] rounded-3xl p-8 sm:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-between border border-[#E8E3D9] relative overflow-hidden">
             <div className="space-y-3 text-center lg:text-left z-10">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-[#BAFF02]">Bắt đầu trải nghiệm</span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-white">Học thử miễn phí trong 7 ngày</h2>
+              <span className="text-xs font-extrabold uppercase tracking-widest text-[#1C221F]">Bắt đầu trải nghiệm</span>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#1C221F]">Học thử miễn phí trong 7 ngày</h2>
               <p className="text-sm text-emerald-100/80 max-w-xl">
                 Truy cập toàn bộ hệ thống bài giảng mẫu, tài nguyên công cụ AI và cộng đồng hỗ trợ mà không tốn chi phí.
               </p>
@@ -415,7 +415,7 @@ export default function HomePage() {
             <div className="mt-8 lg:mt-0 shrink-0 z-10">
               <Link 
                 href="/auth/login" 
-                className="px-8 py-4 bg-white text-[#0F2E1E] font-bold rounded-xl hover:bg-[#BAFF02] transition-colors shadow-lg text-sm inline-block"
+                className="px-8 py-4 bg-white text-[#0F2E1E] font-bold rounded-xl hover:bg-[#133E2B] transition-colors shadow-lg text-sm inline-block"
               >
                 Bắt đầu ngay
               </Link>

@@ -100,17 +100,17 @@ export default function ManagerReviewPage() {
               <Clock size={28} />
             </div>
             <div>
-              <h4 className="text-2xl font-black text-[#0f172a] dark:text-white">12</h4>
-              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">Đang chờ duyệt</p>
+              <h4 className="text-2xl font-black text-[#0f172a] dark:text-[#1C221F]">12</h4>
+              <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">Đang chờ duyệt</p>
             </div>
           </div>
           <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm flex items-center space-x-6">
-            <div className="w-14 h-14 bg-[#baff02]/10 text-[#baff02] rounded-2xl flex items-center justify-center">
+            <div className="w-14 h-14 bg-[#133E2B]/10 text-[#1C221F] rounded-2xl flex items-center justify-center">
               <Check size={28} />
             </div>
             <div>
-              <h4 className="text-2xl font-black text-[#0f172a] dark:text-white">148</h4>
-              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">Đã duyệt tháng này</p>
+              <h4 className="text-2xl font-black text-[#0f172a] dark:text-[#1C221F]">148</h4>
+              <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">Đã duyệt tháng này</p>
             </div>
           </div>
           <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm flex items-center space-x-6">
@@ -118,8 +118,8 @@ export default function ManagerReviewPage() {
               <AlertCircle size={28} />
             </div>
             <div>
-              <h4 className="text-2xl font-black text-[#0f172a] dark:text-white">5</h4>
-              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">Bị từ chối</p>
+              <h4 className="text-2xl font-black text-[#0f172a] dark:text-[#1C221F]">5</h4>
+              <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">Bị từ chối</p>
             </div>
           </div>
         </div>
@@ -127,11 +127,11 @@ export default function ManagerReviewPage() {
         {/* Filters */}
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="relative w-full md:w-96">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
             <input 
               type="text" 
               placeholder="Tìm kiếm khóa học..." 
-              className="w-full pl-12 pr-4 py-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#baff02]/20"
+              className="w-full pl-12 pr-4 py-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20"
             />
           </div>
           <button className="px-6 py-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl text-sm font-bold flex items-center space-x-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors font-sans">
@@ -144,12 +144,12 @@ export default function ManagerReviewPage() {
         <div className="space-y-6">
           {isLoading ? (
             <div className="flex flex-col items-center justify-center py-20 space-y-4">
-              <Loader2 className="w-10 h-10 text-[#baff02] animate-spin" />
+              <Loader2 className="w-10 h-10 text-[#1C221F] animate-spin" />
               <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">Đang tải danh sách chờ duyệt...</p>
             </div>
           ) : courses.length === 0 ? (
             <div className="text-center py-20 bg-white dark:bg-gray-800 rounded-[32px] border border-gray-100 dark:border-gray-700">
-               <AlertCircle className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+               <AlertCircle className="w-12 h-12 text-gray-600 mx-auto mb-4" />
                <p className="text-sm text-gray-500 font-bold uppercase tracking-widest">Không có khóa học nào đang chờ duyệt</p>
             </div>
           ) : (
@@ -171,11 +171,11 @@ export default function ManagerReviewPage() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-300">
+                      <div className="w-full h-full flex items-center justify-center text-gray-600">
                         <BookOpen size={48} />
                       </div>
                     )}
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-black/50 backdrop-blur-md text-white text-[10px] font-black rounded-lg uppercase tracking-widest">
+                    <div className="absolute top-4 left-4 px-3 py-1 bg-black/50 backdrop-blur-md text-[#1C221F] text-[10px] font-black rounded-lg uppercase tracking-widest">
                       {course.category || 'Chưa phân loại'}
                     </div>
                   </div>
@@ -183,23 +183,23 @@ export default function ManagerReviewPage() {
                   <div className="flex-grow p-8 flex flex-col justify-between">
                     <div>
                       <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-xl font-black text-[#0f172a] dark:text-white group-hover:text-[#baff02] transition-colors">{course.title}</h3>
-                        <span className="text-sm font-black text-[#baff02]">
+                        <h3 className="text-xl font-black text-[#0f172a] dark:text-[#1C221F] group-hover:text-[#1C221F] transition-colors">{course.title}</h3>
+                        <span className="text-sm font-black text-[#1C221F]">
                           {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(course.price)}
                         </span>
                       </div>
                       
-                      <div className="flex flex-wrap gap-6 text-sm text-gray-500 dark:text-gray-400 font-medium">
+                      <div className="flex flex-wrap gap-6 text-sm text-gray-500 dark:text-gray-500 font-medium">
                         <div className="flex items-center space-x-2">
-                          <User size={16} className="text-gray-400" />
+                          <User size={16} className="text-gray-500" />
                           <span>{course.instructor?.name || 'Ẩn danh'}</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <BookOpen size={16} className="text-gray-400" />
+                          <BookOpen size={16} className="text-gray-500" />
                           <span>{course.lessons} bài học</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <Clock size={16} className="text-gray-400" />
+                          <Clock size={16} className="text-gray-500" />
                           <span>Gửi {new Date(course.createdAt).toLocaleDateString('vi-VN')}</span>
                         </div>
                       </div>
@@ -208,7 +208,7 @@ export default function ManagerReviewPage() {
                     <div className="mt-8 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-gray-50 dark:border-gray-700">
                       <button 
                         onClick={() => window.location.href = `/courses/${course.id}`}
-                        className="flex items-center space-x-2 text-sm font-bold text-gray-500 hover:text-[#baff02] transition-colors"
+                        className="flex items-center space-x-2 text-sm font-bold text-gray-500 hover:text-[#1C221F] transition-colors"
                       >
                         <Eye size={18} />
                         <span>Xem chi tiết</span>
@@ -228,7 +228,7 @@ export default function ManagerReviewPage() {
                         <button 
                           disabled={actionLoading}
                           onClick={() => handleApprove(course.id)}
-                          className="px-6 py-3 bg-[#baff02] text-[#0f172a] font-black rounded-xl hover:bg-[#a3e600] transition-all text-xs uppercase tracking-widest shadow-lg shadow-[#baff02]/20 disabled:opacity-50 flex items-center justify-center min-w-[120px]"
+                          className="px-6 py-3 bg-[#133E2B] text-[#0f172a] font-black rounded-xl hover:bg-[#a3e600] transition-all text-xs uppercase tracking-widest shadow-lg shadow-[#133E2B]/20 disabled:opacity-50 flex items-center justify-center min-w-[120px]"
                         >
                           {actionLoading ? <Loader2 size={16} className="animate-spin" /> : 'Duyệt ngay'}
                         </button>
@@ -260,7 +260,7 @@ export default function ManagerReviewPage() {
               className="relative w-full max-w-lg bg-white dark:bg-gray-800 rounded-[40px] shadow-2xl overflow-hidden"
             >
               <div className="p-8 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
-                <h3 className="text-xl font-black text-[#0f172a] dark:text-white">Lý do từ chối</h3>
+                <h3 className="text-xl font-black text-[#0f172a] dark:text-[#1C221F]">Lý do từ chối</h3>
                 <button onClick={() => setIsRejectModalOpen(false)} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors">
                   <X size={20} />
                 </button>
@@ -276,14 +276,14 @@ export default function ManagerReviewPage() {
               <div className="p-8 bg-gray-50 dark:bg-gray-900/50 flex gap-4">
                 <button 
                   onClick={() => setIsRejectModalOpen(false)}
-                  className="flex-grow py-4 text-sm font-black text-gray-500 hover:text-[#0f172a] dark:hover:text-white transition-colors"
+                  className="flex-grow py-4 text-sm font-black text-gray-500 hover:text-[#0f172a] dark:hover:text-[#1C221F] transition-colors"
                 >
                   Hủy
                 </button>
                 <button 
                   onClick={handleReject}
                   disabled={!rejectionReason.trim()}
-                  className="flex-grow py-4 bg-rose-600 text-white font-black rounded-2xl hover:bg-rose-700 transition-all shadow-xl shadow-rose-600/20 disabled:opacity-50 font-sans"
+                  className="flex-grow py-4 bg-rose-600 text-[#1C221F] font-black rounded-2xl hover:bg-rose-700 transition-all shadow-xl shadow-rose-600/20 disabled:opacity-50 font-sans"
                 >
                   Xác nhận
                 </button>

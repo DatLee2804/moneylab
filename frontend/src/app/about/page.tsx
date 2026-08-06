@@ -23,7 +23,7 @@ import { Footer } from '@/components/layout/Footer';
 
 export default function AboutPage() {
   const stats = [
-    { label: 'Học viên', value: '50,000+', icon: <Users className="text-[#baff02]" /> },
+    { label: 'Học viên', value: '50,000+', icon: <Users className="text-[#1C221F]" /> },
     { label: 'Khóa học', value: '200+', icon: <BookOpen className="text-[#059669]" /> },
     { label: 'Giảng viên', value: '150+', icon: <Award className="text-amber-500" /> },
     { label: 'Quốc gia', value: '15+', icon: <Globe className="text-blue-500" /> },
@@ -34,7 +34,7 @@ export default function AboutPage() {
       title: 'Chất lượng thực chiến',
       description: 'Chúng tôi tập trung vào những kiến thức có thể áp dụng ngay vào công việc và đầu tư thực tế.',
       icon: <Zap size={24} />,
-      color: 'bg-[#baff02]'
+      color: 'bg-[#133E2B]'
     },
     {
       title: 'Cập nhật liên tục',
@@ -46,7 +46,7 @@ export default function AboutPage() {
       title: 'Cộng đồng hỗ trợ',
       description: 'Học viên không chỉ học một mình mà còn tham gia vào mạng lưới chuyên gia và bạn học cùng chí hướng.',
       icon: <MessageSquare size={24} />,
-      color: 'bg-[#baff02]'
+      color: 'bg-[#133E2B]'
     },
     {
       title: 'Công nghệ dẫn đầu',
@@ -158,9 +158,9 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-6 -left-6 bg-[#0F2E1E] p-6 rounded-2xl shadow-xl text-white hidden md:block border border-white/10">
-                  <Target size={36} className="text-[#BAFF02] mb-2" />
-                  <p className="font-bold text-base leading-tight uppercase tracking-wider text-white">Mục tiêu 1 triệu<br />học viên vào 2030</p>
+                <div className="absolute -bottom-6 -left-6 bg-[#0F2E1E] p-6 rounded-2xl shadow-xl text-[#1C221F] hidden md:block border border-[#E8E3D9]">
+                  <Target size={36} className="text-[#1C221F] mb-2" />
+                  <p className="font-bold text-base leading-tight uppercase tracking-wider text-[#1C221F]">Mục tiêu 1 triệu<br />học viên vào 2030</p>
                 </div>
               </motion.div>
             </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
                   transition={{ delay: idx * 0.1 }}
                   className="bg-white p-8 rounded-2xl border border-[#E8E3D9] shadow-sm hover:shadow-xl transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white mb-6 bg-[#133E2B] group-hover:bg-[#0F2E1E] transition-colors">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#1C221F] mb-6 bg-[#133E2B] group-hover:bg-[#0F2E1E] transition-colors">
                     {value.icon}
                   </div>
                   <h3 className="text-lg font-bold text-[#1C221F] mb-3">{value.title}</h3>
@@ -201,20 +201,20 @@ export default function AboutPage() {
 
         {/* CTA Section */}
         <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <div className="bg-[#0F2E1E] rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden shadow-2xl border border-white/10 text-white">
+          <div className="bg-[#0F2E1E] rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden shadow-2xl border border-[#E8E3D9] text-[#1C221F]">
             <div className="relative z-10 max-w-3xl mx-auto space-y-4">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-[#BAFF02]">Hành trình làm chủ tài chính</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-[#1C221F]">Hành trình làm chủ tài chính</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1C221F]">
                 Sẵn sàng bắt đầu hành trình của bạn?
               </h2>
               <p className="text-emerald-100/80 text-sm max-w-xl mx-auto font-normal">
                 Tham gia cùng hàng ngàn học viên khác và bắt đầu làm chủ tương lai của bạn ngay hôm nay.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <Link href="/courses" className="w-full sm:w-auto px-8 py-4 bg-white text-[#0F2E1E] font-bold rounded-xl hover:bg-[#BAFF02] transition-colors text-sm shadow-md">
+                <Link href="/courses" className="w-full sm:w-auto px-8 py-4 bg-white text-[#0F2E1E] font-bold rounded-xl hover:bg-[#133E2B] transition-colors text-sm shadow-md">
                   Khám phá khóa học
                 </Link>
-                <Link href="/auth/login" className="w-full sm:w-auto px-8 py-4 bg-[#133E2B] text-white font-bold rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm">
+                <Link href="/auth/login" className="w-full sm:w-auto px-8 py-4 bg-[#133E2B] text-[#1C221F] font-bold rounded-xl border border-[#E8E3D9] hover:bg-white/10 transition-colors text-sm">
                   Tạo tài khoản ngay
                 </Link>
               </div>

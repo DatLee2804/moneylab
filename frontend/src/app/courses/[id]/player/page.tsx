@@ -219,8 +219,8 @@ export default function CoursePlayer() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="w-12 h-12 text-[#baff02] animate-spin" />
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center space-y-4">
+        <Loader2 className="w-12 h-12 text-[#1C221F] animate-spin" />
         <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">Đang tải bài học...</p>
       </div>
     );
@@ -228,9 +228,9 @@ export default function CoursePlayer() {
 
   if (!course) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
-        <h2 className="text-white text-xl">Không tìm thấy khóa học</h2>
-        <Link href={`/dashboard/${userRole === 'manager' ? 'manager/courses' : userRole === 'admin' ? 'admin/courses' : userRole === 'instructor' ? 'instructor/courses' : 'student'}`} className="ml-4 text-[#baff02] underline">Quay lại</Link>
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <h2 className="text-[#1C221F] text-xl">Không tìm thấy khóa học</h2>
+        <Link href={`/dashboard/${userRole === 'manager' ? 'manager/courses' : userRole === 'admin' ? 'admin/courses' : userRole === 'instructor' ? 'instructor/courses' : 'student'}`} className="ml-4 text-[#1C221F] underline">Quay lại</Link>
       </div>
     );
   }
@@ -241,29 +241,29 @@ export default function CoursePlayer() {
   const progressPercent = totalLessons === 0 ? 0 : Math.round((completedLessons.length / totalLessons) * 100);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex flex-col font-sans selection:bg-[#baff02]/30 selection:text-[#baff02]">
+    <div className="min-h-screen bg-white flex flex-col font-sans selection:bg-[#133E2B]/30 selection:text-[#1C221F]">
       {/* Top Navigation */}
-      <header className="h-16 bg-[#0a0a0a] border-b border-white/5 flex items-center justify-between px-4 md:px-8 shrink-0">
+      <header className="h-16 bg-white border-b border-[#E8E3D9] flex items-center justify-between px-4 md:px-8 shrink-0">
         <div className="flex items-center space-x-4">
-          <Link href={`/dashboard/${userRole === 'manager' ? 'manager/courses' : userRole === 'admin' ? 'admin/courses' : userRole === 'instructor' ? 'instructor/courses' : 'student'}`} className="p-2 text-gray-400 hover:text-white transition-colors">
+          <Link href={`/dashboard/${userRole === 'manager' ? 'manager/courses' : userRole === 'admin' ? 'admin/courses' : userRole === 'instructor' ? 'instructor/courses' : 'student'}`} className="p-2 text-gray-500 hover:text-[#1C221F] transition-colors">
             <ArrowLeft size={20} />
           </Link>
           <div className="hidden md:block">
-            <h1 className="text-sm font-bold text-white truncate max-w-md">{course.title} - {activeLesson?.title || 'Đang tải'}</h1>
+            <h1 className="text-sm font-bold text-[#1C221F] truncate max-w-md">{course.title} - {activeLesson?.title || 'Đang tải'}</h1>
             <p className="text-[10px] text-gray-500 font-black uppercase tracking-widest">Money Lab Academy</p>
           </div>
         </div>
 
         <div className="flex items-center space-x-4">
-          <div className="hidden sm:flex items-center space-x-2 px-3 py-1 bg-white/5 rounded-full border border-white/10">
+          <div className="hidden sm:flex items-center space-x-2 px-3 py-1 bg-white/5 rounded-full border border-[#E8E3D9]">
             <div className="w-24 h-1.5 bg-gray-700 rounded-full overflow-hidden">
-              <div className="h-full bg-[#baff02]" style={{ width: `${progressPercent}%` }} />
+              <div className="h-full bg-[#133E2B]" style={{ width: `${progressPercent}%` }} />
             </div>
-            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{progressPercent}% HOÀN THÀNH</span>
+            <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">{progressPercent}% HOÀN THÀNH</span>
           </div>
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-2 text-gray-400 hover:text-white transition-colors lg:hidden"
+            className="p-2 text-gray-500 hover:text-[#1C221F] transition-colors lg:hidden"
           >
             {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -283,16 +283,16 @@ export default function CoursePlayer() {
               {lessonDetail ? (
                 (!isEnrolled && !course?.isFree && !activeLesson?.isPreview) ? (
                   <div className="flex flex-col items-center justify-center h-full text-gray-500 space-y-6 px-4 text-center z-10 relative">
-                    <div className="w-20 h-20 bg-gray-900 rounded-full flex items-center justify-center border border-white/5">
-                      <Lock size={32} className="text-[#baff02]" />
+                    <div className="w-20 h-20 bg-gray-900 rounded-full flex items-center justify-center border border-[#E8E3D9]">
+                      <Lock size={32} className="text-[#1C221F]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">Nội dung trả phí</h3>
-                      <p className="text-sm text-gray-400">Bạn cần đăng ký khóa học để xem nội dung bài học này.</p>
+                      <h3 className="text-xl font-bold text-[#1C221F] mb-2">Nội dung trả phí</h3>
+                      <p className="text-sm text-gray-500">Bạn cần đăng ký khóa học để xem nội dung bài học này.</p>
                     </div>
                     <Link 
                       href={`/courses/${course?.id}`}
-                      className="px-6 py-3 bg-[#baff02] text-black font-bold rounded-xl hover:bg-[#8ec401] transition-colors mt-2"
+                      className="px-6 py-3 bg-[#133E2B] text-black font-bold rounded-xl hover:bg-[#8ec401] transition-colors mt-2"
                     >
                       Đăng ký ngay
                     </Link>
@@ -363,7 +363,7 @@ export default function CoursePlayer() {
                 transition={{ duration: 2, ease: "easeInOut" }}
                 className="absolute z-20 pointer-events-none select-none"
               >
-                <div className="px-4 py-2 bg-black/20 backdrop-blur-[2px] border border-white/10 rounded-lg text-white/30 text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
+                <div className="px-4 py-2 bg-black/20 backdrop-blur-[2px] border border-[#E8E3D9] rounded-lg text-[#1C221F]/30 text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
                   {userEmail}
                 </div>
               </motion.div>
@@ -371,19 +371,19 @@ export default function CoursePlayer() {
           </div>
 
           {/* Video Info Tabs */}
-          <div className="bg-[#0a0a0a] border-t border-white/5 p-6 md:p-10 shrink-0">
-            <div className="flex space-x-8 border-b border-white/5 mb-8 overflow-x-auto scrollbar-hide">
+          <div className="bg-white border-t border-[#E8E3D9] p-6 md:p-10 shrink-0">
+            <div className="flex space-x-8 border-b border-[#E8E3D9] mb-8 overflow-x-auto scrollbar-hide">
               {['Tổng quan', 'Thảo luận', 'Tài liệu'].map((tab) => (
                 <button 
                   key={tab} 
                   onClick={() => setActiveTab(tab)}
                   className={cn(
                     "pb-4 text-sm font-bold transition-all relative whitespace-nowrap outline-none",
-                    activeTab === tab ? "text-[#baff02]" : "text-gray-500 hover:text-gray-300"
+                    activeTab === tab ? "text-[#1C221F]" : "text-gray-500 hover:text-gray-600"
                   )}
                 >
                   {tab}
-                  {activeTab === tab && <motion.div layoutId="tab-active" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#baff02]" />}
+                  {activeTab === tab && <motion.div layoutId="tab-active" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#133E2B]" />}
                 </button>
               ))}
             </div>
@@ -392,9 +392,9 @@ export default function CoursePlayer() {
               <div className="flex-1 mr-8">
                 {activeTab === 'Tổng quan' && (
                   <div>
-                    <h2 className="text-2xl font-black text-white mb-4">{activeLesson?.title || 'Đang tải...'}</h2>
+                    <h2 className="text-2xl font-black text-[#1C221F] mb-4">{activeLesson?.title || 'Đang tải...'}</h2>
                     <div 
-                      className="text-gray-400 leading-relaxed font-bold prose dark:prose-invert prose-sm"
+                      className="text-gray-500 leading-relaxed font-bold prose dark:prose-invert prose-sm"
                       dangerouslySetInnerHTML={{ __html: lessonDetail?.content || 'Chưa có mô tả chi tiết cho bài học này.' }}
                     />
                   </div>
@@ -402,10 +402,10 @@ export default function CoursePlayer() {
 
                 {activeTab === 'Thảo luận' && (
                   <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-white mb-4">Thảo luận ({comments.length})</h3>
+                    <h3 className="text-xl font-bold text-[#1C221F] mb-4">Thảo luận ({comments.length})</h3>
                     
                     <div className="flex space-x-4 mb-8">
-                      <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white shrink-0 font-bold">
+                      <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-[#1C221F] shrink-0 font-bold">
                         {userEmail ? userEmail.charAt(0).toUpperCase() : 'U'}
                       </div>
                       <div className="flex-1 space-y-3">
@@ -413,13 +413,13 @@ export default function CoursePlayer() {
                           value={newComment}
                           onChange={(e) => setNewComment(e.target.value)}
                           placeholder="Thêm bình luận của bạn..."
-                          className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#baff02]/50 focus:ring-1 focus:ring-[#baff02]/50 min-h-[80px]"
+                          className="w-full bg-white/5 border border-[#E8E3D9] rounded-xl p-3 text-sm text-[#1C221F] placeholder-gray-500 focus:outline-none focus:border-[#133E2B]/50 focus:ring-1 focus:ring-[#133E2B]/50 min-h-[80px]"
                         />
                         <div className="flex justify-end">
                           <button
                             onClick={submitComment}
                             disabled={!newComment.trim() || isSubmittingComment}
-                            className="px-4 py-2 bg-[#baff02] text-black font-bold text-sm rounded-lg hover:bg-[#baff02]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
+                            className="px-4 py-2 bg-[#133E2B] text-black font-bold text-sm rounded-lg hover:bg-[#133E2B]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
                           >
                             {isSubmittingComment ? <Loader2 size={16} className="animate-spin" /> : <MessageSquare size={16} />}
                             <span>Gửi bình luận</span>
@@ -431,7 +431,7 @@ export default function CoursePlayer() {
                     <div className="space-y-6">
                       {comments.map((comment) => (
                         <div key={comment.id} className="flex space-x-4">
-                          <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 shrink-0 font-bold overflow-hidden border border-white/10">
+                          <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-500 shrink-0 font-bold overflow-hidden border border-[#E8E3D9]">
                             {comment.user?.avatar ? (
                               <img src={comment.user.avatar} alt={comment.user.name} className="w-full h-full object-cover" />
                             ) : (
@@ -440,12 +440,12 @@ export default function CoursePlayer() {
                           </div>
                           <div>
                             <div className="flex items-center space-x-2 mb-1">
-                              <span className="text-sm font-bold text-white">{comment.user?.name || 'Ẩn danh'}</span>
+                              <span className="text-sm font-bold text-[#1C221F]">{comment.user?.name || 'Ẩn danh'}</span>
                               <span className="text-xs text-gray-500">
                                 {new Date(comment.createdAt).toLocaleDateString('vi-VN')} {new Date(comment.createdAt).toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'})}
                               </span>
                             </div>
-                            <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap">
+                            <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">
                               {comment.content}
                             </p>
                           </div>
@@ -457,7 +457,7 @@ export default function CoursePlayer() {
                 
                 {activeTab === 'Tài liệu' && (
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-4">Tài liệu đính kèm</h3>
+                    <h3 className="text-xl font-bold text-[#1C221F] mb-4">Tài liệu đính kèm</h3>
                     <p className="text-gray-500 text-sm">Chưa có tài liệu đính kèm cho bài học này.</p>
                   </div>
                 )}
@@ -468,8 +468,8 @@ export default function CoursePlayer() {
                 className={cn(
                   "px-6 py-3 border rounded-xl font-bold uppercase text-xs transition-colors shrink-0 flex items-center space-x-2",
                   activeLesson && completedLessons.includes(activeLesson.id) 
-                    ? "bg-[#baff02] text-black border-[#baff02]"
-                    : "bg-[#baff02]/10 border-[#baff02]/20 text-[#baff02] hover:bg-[#baff02] hover:text-black"
+                    ? "bg-[#133E2B] text-black border-[#133E2B]"
+                    : "bg-[#133E2B]/10 border-[#133E2B]/20 text-[#1C221F] hover:bg-[#133E2B] hover:text-black"
                 )}
               >
                 {activeLesson && completedLessons.includes(activeLesson.id) ? (
@@ -488,26 +488,26 @@ export default function CoursePlayer() {
 
         {/* Right Column: Curriculum Sidebar */}
         <aside className={cn(
-          "fixed inset-y-0 right-0 w-full md:w-96 bg-[#141414] border-l border-white/5 z-40 transition-transform duration-300 lg:static lg:translate-x-0 flex flex-col",
+          "fixed inset-y-0 right-0 w-full md:w-96 bg-white border-l border-[#E8E3D9] z-40 transition-transform duration-300 lg:static lg:translate-x-0 flex flex-col",
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
         )}>
-          <div className="p-6 border-b border-white/5 flex justify-between items-center shrink-0">
-            <h3 className="font-black text-white uppercase tracking-widest text-sm">Nội dung khóa học</h3>
-            <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden text-gray-400">
+          <div className="p-6 border-b border-[#E8E3D9] flex justify-between items-center shrink-0">
+            <h3 className="font-black text-[#1C221F] uppercase tracking-widest text-sm">Nội dung khóa học</h3>
+            <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden text-gray-500">
               <X size={20} />
             </button>
           </div>
 
           <div className="flex-grow overflow-y-auto">
             {course.sections?.map((section: any, idx: number) => (
-              <div key={section.id} className="border-b border-white/5">
+              <div key={section.id} className="border-b border-[#E8E3D9]">
                 <button 
                   onClick={() => setActiveSection(activeSection === section.id ? null : section.id)}
                   className="w-full p-6 flex items-center justify-between hover:bg-white/5 transition-colors group border-none outline-none"
                 >
                   <div className="text-left">
                     <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">CHƯƠNG {idx + 1}</p>
-                    <h4 className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors uppercase tracking-tight">{section.title}</h4>
+                    <h4 className="text-sm font-bold text-gray-200 group-hover:text-[#1C221F] transition-colors uppercase tracking-tight">{section.title}</h4>
                   </div>
                   {activeSection === section.id ? <ChevronUp size={18} className="text-gray-500" /> : <ChevronDown size={18} className="text-gray-500" />}
                 </button>
@@ -526,12 +526,12 @@ export default function CoursePlayer() {
                           onClick={() => setActiveLesson(lesson)}
                           className={cn(
                             "w-full px-6 py-4 flex items-start space-x-4 hover:bg-white/5 transition-all text-left border-l-4 outline-none",
-                            activeLesson?.id === lesson.id ? "bg-[#baff02]/10 border-[#baff02]" : "border-transparent"
+                            activeLesson?.id === lesson.id ? "bg-[#133E2B]/10 border-[#133E2B]" : "border-transparent"
                           )}
                         >
                           <div className="mt-1">
                             {completedLessons.includes(lesson.id) ? (
-                              <CheckCircle2 size={18} className="text-[#baff02]" />
+                              <CheckCircle2 size={18} className="text-[#1C221F]" />
                             ) : (
                               <Circle size={18} className="text-gray-600" />
                             )}
@@ -539,7 +539,7 @@ export default function CoursePlayer() {
                           <div className="flex-grow">
                             <p className={cn(
                               "text-sm font-bold mb-1 transition-colors line-clamp-2",
-                              activeLesson?.id === lesson.id ? "text-white" : "text-gray-400 group-hover:text-gray-300"
+                              activeLesson?.id === lesson.id ? "text-[#1C221F]" : "text-gray-500 group-hover:text-gray-600"
                             )}>
                               {idx + 1}.{lIdx + 1} {lesson.title}
                             </p>
@@ -549,7 +549,7 @@ export default function CoursePlayer() {
                                   <span>{lesson.duration || 0}m</span>
                                 </div>
                                 {(lesson.isPreview || (course && course.isFree)) && (
-                                  <div className="flex items-center space-x-1 text-[9px] font-black text-[#baff02] uppercase tracking-widest bg-[#baff02]/10 px-1.5 py-0.5 rounded">
+                                  <div className="flex items-center space-x-1 text-[9px] font-black text-[#1C221F] uppercase tracking-widest bg-[#133E2B]/10 px-1.5 py-0.5 rounded">
                                     <Sparkles size={8} className="mr-1" />
                                     <span>{course?.isFree ? 'Miễn phí' : 'Học thử'}</span>
                                   </div>

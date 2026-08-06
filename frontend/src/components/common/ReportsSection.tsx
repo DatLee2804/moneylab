@@ -140,8 +140,8 @@ export const ReportsSection = ({ role }: { role: string }) => {
       {/* Header Info */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-black text-white uppercase tracking-tight flex items-center space-x-3">
-            <ShieldAlert className="text-[#baff02]" size={28} />
+          <h2 className="text-2xl font-black text-[#1C221F] uppercase tracking-tight flex items-center space-x-3">
+            <ShieldAlert className="text-[#1C221F]" size={28} />
             <span>Báo cáo Người dùng</span>
           </h2>
           <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Tố cáo hành vi không phù hợp của người dùng khác</p>
@@ -149,7 +149,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
         {(role === 'student' || role === 'instructor') && (
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center space-x-2 px-6 py-3 bg-[#baff02] text-[#0a0a0a] rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-[#baff02]/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            className="flex items-center space-x-2 px-6 py-3 bg-[#133E2B] text-[#1C221F] rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-[#133E2B]/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             <Plus size={18} />
             <span>Tạo báo cáo mới</span>
@@ -158,35 +158,35 @@ export const ReportsSection = ({ role }: { role: string }) => {
       </div>
 
       {/* Reports Table */}
-      <div className="bg-[#141414] rounded-[40px] border border-white/5 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-[40px] border border-[#E8E3D9] shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-[#0a0a0a]/50">
+              <tr className="bg-[#FAF7F2]">
                 {(role === 'admin' || role === 'manager') && (
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Người báo cáo</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Người báo cáo</th>
                 )}
-                <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Người bị báo cáo</th>
-                <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Ngày tạo</th>
-                <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Lý do báo cáo</th>
-                <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Trạng thái</th>
+                <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Người bị báo cáo</th>
+                <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Ngày tạo</th>
+                <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Lý do báo cáo</th>
+                <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest text-center">Trạng thái</th>
                 {(role === 'admin' || role === 'manager') && (
-                   <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Thao tác</th>
+                   <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest text-right">Thao tác</th>
                 )}
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5 text-[13px]">
+            <tbody className="divide-y divide-[#E8E3D9] text-[13px]">
               {isLoading ? (
                 <tr>
                   <td colSpan={6} className="py-20 text-center">
                     <div className="flex flex-col items-center space-y-3 px-8">
-                       <Loader2 className="w-8 h-8 text-[#baff02] animate-spin" />
-                       <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Đang tải báo cáo...</p>
+                       <Loader2 className="w-8 h-8 text-[#1C221F] animate-spin" />
+                       <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Đang tải báo cáo...</p>
                     </div>
                   </td>
                 </tr>
               ) : reports.map((report) => (
-                <tr key={report.id} className="group hover:bg-[#0a0a0a]/40 transition-colors">
+                <tr key={report.id} className="group hover:bg-[#FAF7F2]/50 transition-colors">
                   {(role === 'admin' || role === 'manager') && (
                     <td className="px-8 py-6">
                       <div className="flex items-center space-x-3">
@@ -194,13 +194,13 @@ export const ReportsSection = ({ role }: { role: string }) => {
                           <User size={18} />
                         </div>
                         <div>
-                          <p className="font-black text-white uppercase tracking-tight flex items-center">
+                          <p className="font-black text-[#1C221F] uppercase tracking-tight flex items-center">
                             {report.reporter?.name || 'Người dùng'}
                             {report.reason.includes('[ESCALATED]') && (
-                              <span className="ml-2 px-2 py-0.5 bg-rose-500 text-white text-[8px] rounded font-black animate-pulse">ESCALATED</span>
+                              <span className="ml-2 px-2 py-0.5 bg-rose-500 text-[#1C221F] text-[8px] rounded font-black animate-pulse">ESCALATED</span>
                             )}
                           </p>
-                          <p className="text-[10px] font-bold text-gray-400 uppercase truncate max-w-[150px]">{report.reporter?.email}</p>
+                          <p className="text-[10px] font-bold text-gray-500 uppercase truncate max-w-[150px]">{report.reporter?.email}</p>
                         </div>
                       </div>
                     </td>
@@ -211,8 +211,8 @@ export const ReportsSection = ({ role }: { role: string }) => {
                         <User size={18} />
                       </div>
                       <div>
-                        <p className="font-black text-white uppercase tracking-tight">{report.reportedUser?.name || 'Người dùng'}</p>
-                        <p className="text-[10px] font-bold text-gray-400 uppercase truncate max-w-[150px]">
+                        <p className="font-black text-[#1C221F] uppercase tracking-tight">{report.reportedUser?.name || 'Người dùng'}</p>
+                        <p className="text-[10px] font-bold text-gray-500 uppercase truncate max-w-[150px]">
                           {report.reportedUser?.email || report.reportedEmail}
                         </p>
                       </div>
@@ -222,7 +222,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
                     {new Date(report.createdAt).toLocaleDateString('vi-VN')}
                   </td>
                   <td className="px-8 py-6">
-                    <p className="text-gray-400 font-medium line-clamp-1 max-w-[200px] italic">"{report.reason}"</p>
+                    <p className="text-gray-500 font-medium line-clamp-1 max-w-[200px] italic">"{report.reason}"</p>
                   </td>
                   <td className="px-8 py-6 text-center">
                     <span className={cn(
@@ -243,7 +243,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
                            setSelectedReport(report);
                            setIsHandleModalOpen(true);
                          }}
-                         className="px-4 py-2 bg-white/5 border border-white/5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#baff02] hover:text-[#0a0a0a] transition-all"
+                         className="px-4 py-2 bg-white/5 border border-[#E8E3D9] rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#133E2B] hover:text-[#0a0a0a] transition-all"
                        >
                          Xử lý
                        </button>
@@ -256,7 +256,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
           {reports.length === 0 && (
             <div className="p-20 text-center space-y-4">
               <FileText className="mx-auto text-gray-200" size={60} />
-              <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Chưa có báo cáo nào được tạo</p>
+              <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">Chưa có báo cáo nào được tạo</p>
             </div>
           )}
         </div>
@@ -266,7 +266,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
       <AnimatePresence>
         {isHandleModalOpen && selectedReport && (
           <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsHandleModalOpen(false)} className="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-md" />
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsHandleModalOpen(false)} className="absolute inset-0 bg-[#1C221F]/80 backdrop-blur-md" />
             <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="relative bg-white rounded-[40px] shadow-2xl max-w-2xl w-full border border-gray-100 overflow-hidden">
                {/* Modal Header */}
                <div className="p-8 bg-white border-b border-gray-100 flex items-center justify-between">
@@ -277,7 +277,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
                      <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-none mt-1">ID: {selectedReport.id}</p>
                    </div>
                  </div>
-                 <button onClick={() => setIsHandleModalOpen(false)} className="p-2 text-gray-400 hover:bg-gray-100 rounded-full transition-colors"><X size={24} /></button>
+                 <button onClick={() => setIsHandleModalOpen(false)} className="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-colors"><X size={24} /></button>
                </div>
 
                {/* Modal Content */}
@@ -288,13 +288,13 @@ export const ReportsSection = ({ role }: { role: string }) => {
                       <span className="px-3 py-1 bg-rose-50 rounded-lg text-[10px] font-black text-rose-500 uppercase tracking-[0.2em]">
                         REPORT / USER VIOLATION
                       </span>
-                      <div className="flex items-center space-x-2 text-[10px] font-black text-gray-400 uppercase">
+                      <div className="flex items-center space-x-2 text-[10px] font-black text-gray-500 uppercase">
                         <Calendar size={12} />
                         <span>{new Date(selectedReport.createdAt).toLocaleString('vi-VN')}</span>
                       </div>
                    </div>
                    <div className="bg-gray-50 rounded-3xl p-6 border border-gray-100">
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Lý do báo cáo:</p>
+                      <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-3">Lý do báo cáo:</p>
                       <p className="text-sm text-gray-700 leading-relaxed font-bold italic">"{selectedReport.reason}"</p>
                    </div>
                  </div>
@@ -315,12 +315,12 @@ export const ReportsSection = ({ role }: { role: string }) => {
 
                  {/* Resolution Section */}
                  <div className="space-y-4">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest pl-2">Nội dung cảnh báo (Gửi email)</label>
+                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-2">Nội dung cảnh báo (Gửi email)</label>
                     <textarea 
                       value={replyMessage}
                       onChange={(e) => setReplyMessage(e.target.value)}
                       placeholder="Nhập nội dung cảnh báo vi phạm sẽ gửi đến email người bị tố cáo..."
-                      className="w-full px-8 py-5 bg-gray-50 border border-gray-200 rounded-3xl text-sm font-medium focus:ring-4 focus:ring-[#baff02]/20 focus:border-[#baff02] outline-none transition-all resize-none text-black h-32 placeholder:text-gray-400"
+                      className="w-full px-8 py-5 bg-gray-50 border border-gray-200 rounded-3xl text-sm font-medium focus:ring-4 focus:ring-[#133E2B]/20 focus:border-[#133E2B] outline-none transition-all resize-none text-black h-32 placeholder:text-gray-500"
                     ></textarea>
                  </div>
 
@@ -329,21 +329,21 @@ export const ReportsSection = ({ role }: { role: string }) => {
                     <button 
                       onClick={() => handleUpdateStatus(selectedReport.id, 'IN_PROGRESS')}
                       disabled={isProcessing}
-                      className="py-4 bg-blue-50 text-blue-600 border border-blue-200 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all"
+                      className="py-4 bg-blue-50 text-blue-600 border border-blue-200 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-[#1C221F] transition-all"
                     >
                       Bắt đầu xử lý
                     </button>
                     <button 
                       onClick={() => handleNotifyAndResolve(selectedReport.id)}
                       disabled={isProcessing || !replyMessage.trim()}
-                      className="py-4 bg-[#baff02] text-[#0a0a0a] rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-[#baff02]/20 hover:bg-[#8ec401] transition-all"
+                      className="py-4 bg-[#133E2B] text-[#1C221F] rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all"
                     >
                       Gửi cảnh báo & Đóng
                     </button>
                     <button 
                       onClick={() => handleUpdateStatus(selectedReport.id, 'RESOLVED')}
                       disabled={isProcessing}
-                      className="py-4 bg-emerald-50 text-emerald-600 border border-emerald-200 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all"
+                      className="py-4 bg-emerald-50 text-emerald-600 border border-emerald-200 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-[#1C221F] transition-all"
                     >
                       Xác nhận: Không có lỗi
                     </button>
@@ -358,7 +358,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
                       <button 
                         onClick={() => handleEscalate(selectedReport.id)}
                         disabled={isProcessing}
-                        className="col-span-2 py-4 bg-amber-50 text-amber-600 border border-amber-200 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center space-x-2"
+                        className="col-span-2 py-4 bg-amber-50 text-amber-600 border border-amber-200 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-amber-500 hover:text-[#1C221F] transition-all flex items-center justify-center space-x-2"
                       >
                          <AlertTriangle size={14} />
                         <span>Chuyển tiếp cho Admin hệ thống</span>
@@ -380,7 +380,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#1C221F]/80 backdrop-blur-sm"
             />
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
@@ -388,12 +388,12 @@ export const ReportsSection = ({ role }: { role: string }) => {
               exit={{ scale: 0.9, opacity: 0 }}
               className="relative bg-white rounded-[40px] overflow-hidden shadow-2xl max-w-xl w-full border border-gray-100"
             >
-              <div className="p-8 bg-[#baff02] text-[#0a0a0a] flex items-center justify-between">
+              <div className="p-8 bg-[#133E2B] text-[#1C221F] flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <ShieldAlert size={24} />
                   <h3 className="text-xl font-black uppercase tracking-tight">Tố cáo Người dùng</h3>
                 </div>
-                <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-[#0a0a0a]/10 rounded-xl transition-all">
+                <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white/10 rounded-xl transition-all">
                   <X size={20} />
                 </button>
               </div>
@@ -404,13 +404,13 @@ export const ReportsSection = ({ role }: { role: string }) => {
                     <div className="space-y-1">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-2">Tên người bị báo cáo</label>
                         <div className="relative">
-                          <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                          <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
                           <input 
                             required
                             type="text" 
                             value={formData.reportedUser}
                             onChange={(e) => setFormData({...formData, reportedUser: e.target.value})}
-                            className="w-full pl-12 pr-6 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-xs font-bold focus:ring-2 focus:ring-[#baff02]/50 transition-all text-black placeholder:text-gray-400 outline-none"
+                            className="w-full pl-12 pr-6 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-xs font-bold focus:ring-2 focus:ring-[#133E2B]/50 transition-all text-black placeholder:text-gray-500 outline-none"
                             placeholder="Nhập tên..."
                           />
                         </div>
@@ -418,13 +418,13 @@ export const ReportsSection = ({ role }: { role: string }) => {
                     <div className="space-y-1">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-2">Địa chỉ Email</label>
                         <div className="relative">
-                          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
                           <input 
                             required
                             type="email" 
                             value={formData.reportedEmail}
                             onChange={(e) => setFormData({...formData, reportedEmail: e.target.value})}
-                            className="w-full pl-12 pr-6 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-xs font-bold focus:ring-2 focus:ring-[#baff02]/50 transition-all text-black placeholder:text-gray-400 outline-none"
+                            className="w-full pl-12 pr-6 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-xs font-bold focus:ring-2 focus:ring-[#133E2B]/50 transition-all text-black placeholder:text-gray-500 outline-none"
                             placeholder="example@gmail.com"
                           />
                         </div>
@@ -451,7 +451,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
                           />
                           <div className={cn(
                             "px-6 py-3.5 bg-gray-50 rounded-2xl text-xs font-black flex items-center space-x-2 transition-all border-2 border-dashed",
-                            formData.evidence ? "border-[#baff02] text-[#baff02]" : "border-gray-200 text-gray-500 group-hover:border-[#baff02]/50"
+                            formData.evidence ? "border-[#133E2B] text-[#1C221F]" : "border-gray-200 text-gray-500 group-hover:border-[#133E2B]/50"
                           )}>
                              <ImageIcon size={14} />
                              <span className="truncate">{formData.evidence ? formData.evidence.name : "Chọn tệp tin..."}</span>
@@ -467,14 +467,14 @@ export const ReportsSection = ({ role }: { role: string }) => {
                       value={formData.reason}
                       onChange={(e) => setFormData({...formData, reason: e.target.value})}
                       rows={5}
-                      className="w-full px-8 py-5 bg-gray-50 border border-gray-200 rounded-3xl text-sm font-medium focus:ring-2 focus:ring-[#baff02]/50 transition-all resize-none italic text-black placeholder:text-gray-400 outline-none"
+                      className="w-full px-8 py-5 bg-gray-50 border border-gray-200 rounded-3xl text-sm font-medium focus:ring-2 focus:ring-[#133E2B]/50 transition-all resize-none italic text-black placeholder:text-gray-500 outline-none"
                       placeholder="Mô tả cụ thể hành vi vi phạm..."
                     />
                  </div>
 
                  <button 
                   type="submit"
-                  className="w-full py-5 bg-[#baff02] text-[#0a0a0a] rounded-[32px] font-black text-xs uppercase tracking-widest shadow-xl shadow-[#baff02]/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2"
+                  className="w-full py-5 bg-[#133E2B] text-[#1C221F] rounded-[32px] font-black text-xs uppercase tracking-widest shadow-xl shadow-[#133E2B]/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2"
                  >
                    <Send size={18} />
                    <span>Gửi yêu cầu tố cáo</span>

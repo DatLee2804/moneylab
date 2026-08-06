@@ -45,8 +45,8 @@ function CallbackHandler() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-black">
       <div className="text-center space-y-4">
-        <Loader2 className="w-12 h-12 animate-spin text-[#baff02] mx-auto" />
-        <p className="text-white font-medium">Đang xác thực, vui lòng chờ...</p>
+        <Loader2 className="w-12 h-12 animate-spin text-[#1C221F] mx-auto" />
+        <p className="text-[#1C221F] font-medium">Đang xác thực, vui lòng chờ...</p>
       </div>
     </div>
   );
@@ -56,7 +56,7 @@ export default function CallbackPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center bg-black">
-        <Loader2 className="w-12 h-12 animate-spin text-[#baff02] mx-auto" />
+        <Loader2 className="w-12 h-12 animate-spin text-[#1C221F] mx-auto" />
       </div>
     }>
       <CallbackHandler />

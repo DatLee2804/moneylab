@@ -95,9 +95,9 @@ export default function LoginPage() {
                       placeholder="email@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full px-4 py-3.5 bg-[#FAF7F2] border border-[#E8E3D9] rounded-xl text-xs font-semibold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none transition-all text-[#1C221F] placeholder:text-gray-400"
+                      className="w-full px-4 py-3.5 bg-[#FAF7F2] border border-[#E8E3D9] rounded-xl text-xs font-semibold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none transition-all text-[#1C221F] placeholder:text-gray-500"
                     />
-                    <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" size={17} />
+                    <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500" size={17} />
                   </div>
                 </div>
 
@@ -117,12 +117,12 @@ export default function LoginPage() {
                       placeholder="••••••••"
                       value={formData.password}
                       onChange={(e) => setFormData({...formData, password: e.target.value})}
-                      className="w-full px-4 py-3.5 bg-[#FAF7F2] border border-[#E8E3D9] rounded-xl text-xs font-semibold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none transition-all text-[#1C221F] placeholder:text-gray-400"
+                      className="w-full px-4 py-3.5 bg-[#FAF7F2] border border-[#E8E3D9] rounded-xl text-xs font-semibold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none transition-all text-[#1C221F] placeholder:text-gray-500"
                     />
                     <button 
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#133E2B] transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#133E2B] transition-colors"
                     >
                       <ShieldCheck size={17} className={showPassword ? "text-[#133E2B]" : ""} />
                     </button>
@@ -133,14 +133,14 @@ export default function LoginPage() {
               <button 
                 type="submit" 
                 disabled={isLoading}
-                className="w-full py-3.5 bg-[#133E2B] text-white rounded-xl font-bold shadow-md hover:bg-[#0F2E1E] transition-all text-xs active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50"
+                className="w-full py-3.5 bg-[#133E2B] text-[#1C221F] rounded-xl font-bold shadow-md hover:bg-[#0F2E1E] transition-all text-xs active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50"
               >
                 {isLoading ? <Loader2 className="animate-spin" size={18} /> : <span>Đăng nhập</span>}
               </button>
 
               <div className="relative py-2 flex items-center justify-center">
                 <div className="absolute w-full h-[1px] bg-[#E8E3D9]" />
-                <span className="relative z-10 px-3 bg-white text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                <span className="relative z-10 px-3 bg-white text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                   Hoặc
                 </span>
               </div>
@@ -200,14 +200,14 @@ export default function LoginPage() {
                 className="group relative p-5 bg-white border border-[#E8E3D9] rounded-2xl text-left hover:border-[#133E2B] transition-all shadow-sm hover:shadow-md active:scale-[0.98]"
               >
                 <div className="flex items-center space-x-4">
-                  <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-sm", item.color)}>
+                  <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-[#1C221F] shadow-sm", item.color)}>
                     {item.icon}
                   </div>
                   <div className="flex-grow">
                     <h3 className="font-bold text-[#1C221F]">{item.label}</h3>
                     <p className="text-xs font-normal text-gray-500">{item.desc}</p>
                   </div>
-                  <ChevronRight className="text-gray-400 group-hover:text-[#133E2B] transition-colors" size={18} />
+                  <ChevronRight className="text-gray-500 group-hover:text-[#133E2B] transition-colors" size={18} />
                 </div>
               </button>
             ))}

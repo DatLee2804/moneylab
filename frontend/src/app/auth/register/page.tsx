@@ -98,7 +98,7 @@ export default function RegisterPage() {
   return (
     <div className={cn("space-y-8 transition-all duration-500", role ? "max-w-2xl mx-auto" : "max-w-md")}>
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-black text-white leading-tight">
+        <h1 className="text-3xl font-black text-[#1C221F] leading-tight">
           {role ? `Đăng ký ${role === 'student' ? 'Học viên' : 'Giảng viên'}` : 'Tham gia cùng chúng tôi'}
         </h1>
         <p className="text-sm font-medium text-gray-500">
@@ -117,22 +117,22 @@ export default function RegisterPage() {
           >
             {[
               { id: 'student', label: 'Học viên', desc: 'Học tập và phát triển kỹ năng mới', icon: <User size={24} />, color: 'bg-blue-500' },
-              { id: 'instructor', label: 'Giảng viên', desc: 'Chia sẻ kiến thức và tạo thu nhập', icon: <GraduationCap size={24} />, color: 'bg-[#baff02]' }
+              { id: 'instructor', label: 'Giảng viên', desc: 'Chia sẻ kiến thức và tạo thu nhập', icon: <GraduationCap size={24} />, color: 'bg-[#133E2B]' }
             ].map((item) => (
               <button
                 key={item.id}
                 onClick={() => setRole(item.id as Role)}
-                className="group relative p-6 bg-[#141414] border border-white/5 rounded-[32px] text-left hover:border-[#baff02] transition-all shadow-sm hover:shadow-xl active:scale-[0.98]"
+                className="group relative p-6 bg-white border border-[#E8E3D9] rounded-[32px] text-left hover:border-[#133E2B] transition-all shadow-sm hover:shadow-xl active:scale-[0.98]"
               >
                 <div className="flex items-center space-x-4">
-                  <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-lg", item.color)}>
+                  <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center text-[#1C221F] shadow-lg", item.color)}>
                     {item.icon}
                   </div>
                   <div className="flex-grow">
-                    <h3 className="font-black text-white uppercase tracking-tight">{item.label}</h3>
-                    <p className="text-xs font-medium text-gray-400">{item.desc}</p>
+                    <h3 className="font-black text-[#1C221F] uppercase tracking-tight">{item.label}</h3>
+                    <p className="text-xs font-medium text-gray-500">{item.desc}</p>
                   </div>
-                  <ChevronRight className="text-gray-300 group-hover:text-[#baff02] transition-colors" size={20} />
+                  <ChevronRight className="text-gray-600 group-hover:text-[#1C221F] transition-colors" size={20} />
                 </div>
               </button>
             ))}
@@ -142,13 +142,13 @@ export default function RegisterPage() {
             key="registration-form"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-[#141414] p-8 rounded-[40px] border border-white/5 shadow-2xl relative overflow-hidden"
+            className="bg-white p-8 rounded-[40px] border border-[#E8E3D9] shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute top-0 left-0 w-full h-[6px] bg-[#baff02] opacity-80" />
+            <div className="absolute top-0 left-0 w-full h-[6px] bg-[#133E2B] opacity-80" />
             
             <button 
               onClick={() => setRole(null)}
-              className="flex items-center space-x-2 text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-[#baff02] transition-colors mb-8"
+              className="flex items-center space-x-2 text-[10px] font-black text-gray-500 uppercase tracking-widest hover:text-[#1C221F] transition-colors mb-8"
             >
               <ArrowLeft size={14} />
               <span>Quay lại chọn vai trò</span>
@@ -166,7 +166,7 @@ export default function RegisterPage() {
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-4">Họ và Tên</label>
                   <div className="relative">
-                    <input name="name" required onChange={handleInputChange} placeholder="Nguyễn Văn A" value={formData.name} className="w-full px-6 py-4 bg-[#0a0a0a] border border-white/5 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 focus:outline-none text-white placeholder:text-gray-700" />
+                    <input name="name" required onChange={handleInputChange} placeholder="Nguyễn Văn A" value={formData.name} className="w-full px-6 py-4 bg-white border border-[#E8E3D9] rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none text-[#1C221F] placeholder:text-gray-700" />
                     <User className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                   </div>
                 </div>
@@ -174,7 +174,7 @@ export default function RegisterPage() {
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-4">Số điện thoại</label>
                   <div className="relative">
-                    <input name="phone" type="tel" onChange={handleInputChange} placeholder="0901234567" value={formData.phone} className="w-full px-6 py-4 bg-[#0a0a0a] border border-white/5 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 focus:outline-none text-white placeholder:text-gray-700" />
+                    <input name="phone" type="tel" onChange={handleInputChange} placeholder="0901234567" value={formData.phone} className="w-full px-6 py-4 bg-white border border-[#E8E3D9] rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none text-[#1C221F] placeholder:text-gray-700" />
                     <Phone className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                   </div>
                 </div>
@@ -182,7 +182,7 @@ export default function RegisterPage() {
                 <div className="col-span-1 md:col-span-2 space-y-2">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-4">Email</label>
                   <div className="relative">
-                    <input name="email" type="email" required onChange={handleInputChange} placeholder="email@example.com" value={formData.email} className="w-full px-6 py-4 bg-[#0a0a0a] border border-white/5 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 focus:outline-none text-white placeholder:text-gray-700" />
+                    <input name="email" type="email" required onChange={handleInputChange} placeholder="email@example.com" value={formData.email} className="w-full px-6 py-4 bg-white border border-[#E8E3D9] rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none text-[#1C221F] placeholder:text-gray-700" />
                     <Mail className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                   </div>
                 </div>
@@ -197,12 +197,12 @@ export default function RegisterPage() {
                       onChange={handleInputChange} 
                       placeholder="••••••••" 
                       value={formData.password}
-                      className="w-full px-6 py-4 bg-[#0a0a0a] border border-white/5 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 focus:outline-none text-white placeholder:text-gray-700" 
+                      className="w-full px-6 py-4 bg-white border border-[#E8E3D9] rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none text-[#1C221F] placeholder:text-gray-700" 
                     />
                     <button 
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#baff02] transition-colors"
+                      className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#1C221F] transition-colors"
                     >
                       {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                     </button>
@@ -221,14 +221,14 @@ export default function RegisterPage() {
                       <div className="space-y-2">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-4">Số tài khoản</label>
                         <div className="relative">
-                          <input name="bankAccount" onChange={handleInputChange} placeholder="0123456789" value={formData.bankAccount} className="w-full px-6 py-4 bg-[#0a0a0a] border border-white/5 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 focus:outline-none text-white placeholder:text-gray-700" />
+                          <input name="bankAccount" onChange={handleInputChange} placeholder="0123456789" value={formData.bankAccount} className="w-full px-6 py-4 bg-white border border-[#E8E3D9] rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none text-[#1C221F] placeholder:text-gray-700" />
                           <CreditCard className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-4">Ngân hàng</label>
                         <div className="relative">
-                          <input name="bankName" onChange={handleInputChange} placeholder="Vietcombank" value={formData.bankName} className="w-full px-6 py-4 bg-[#0a0a0a] border border-white/5 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 focus:outline-none text-white placeholder:text-gray-700" />
+                          <input name="bankName" onChange={handleInputChange} placeholder="Vietcombank" value={formData.bankName} className="w-full px-6 py-4 bg-white border border-[#E8E3D9] rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none text-[#1C221F] placeholder:text-gray-700" />
                           <Building2 className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                         </div>
                       </div>
@@ -241,15 +241,15 @@ export default function RegisterPage() {
                 <button 
                   type="submit" 
                   disabled={isLoading}
-                  className="w-full py-4 bg-[#baff02] text-[#0a0a0a] rounded-2xl font-black shadow-lg shadow-[#baff02]/20 hover:bg-[#8ec401] transition-all font-sans active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50"
+                  className="w-full py-4 bg-[#133E2B] text-[#1C221F] rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all font-sans active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50"
                 >
                   {isLoading ? <Loader2 className="animate-spin" size={20} /> : <span>Đăng ký ngay</span>}
                 </button>
                 <div className="relative py-4 flex items-center justify-center">
                   <div className="absolute w-full h-[1px] bg-white/5" />
-                  <span className="relative z-10 px-4 bg-[#141414] text-[10px] font-black text-gray-500 uppercase tracking-widest">Hoặc</span>
+                  <span className="relative z-10 px-4 bg-white text-[10px] font-black text-gray-500 uppercase tracking-widest">Hoặc</span>
                 </div>
-                <button type="button" onClick={() => window.location.href = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/auth/google?role=${role === 'instructor' ? 'INSTRUCTOR' : 'STUDENT'}`} className="w-full py-4 bg-[#0a0a0a] border border-white/5 text-white rounded-2xl font-bold flex items-center justify-center space-x-3 hover:bg-white/5 transition-all shadow-sm active:scale-[0.98]">
+                <button type="button" onClick={() => window.location.href = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/auth/google?role=${role === 'instructor' ? 'INSTRUCTOR' : 'STUDENT'}`} className="w-full py-4 bg-white border border-[#E8E3D9] text-[#1C221F] rounded-2xl font-bold flex items-center justify-center space-x-3 hover:bg-white/5 transition-all shadow-sm active:scale-[0.98]">
                   <svg viewBox="0 0 24 24" className="w-5 h-5">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" />
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -267,7 +267,7 @@ export default function RegisterPage() {
       <div className="text-center">
         <p className="text-sm font-medium text-gray-500">
           Đã có tài khoản?{' '}
-          <Link href="/auth/login" className="text-[#baff02] font-black hover:underline">
+          <Link href="/auth/login" className="text-[#1C221F] font-black hover:underline">
             Đăng nhập ngay
           </Link>
         </p>

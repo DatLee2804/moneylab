@@ -135,7 +135,7 @@ export default function InstructorSettingsPage() {
     return (
       <DashboardLayout role="instructor" title="Cài đặt tài khoản">
         <div className="flex items-center justify-center h-[60vh]">
-          <Loader2 className="w-10 h-10 text-[#baff02] animate-spin" />
+          <Loader2 className="w-10 h-10 text-[#1C221F] animate-spin" />
         </div>
       </DashboardLayout>
     );
@@ -163,7 +163,7 @@ export default function InstructorSettingsPage() {
                     className="rounded-3xl object-cover border-4 border-gray-50 dark:border-gray-700"
                   />
                   {isUploading && (
-                    <div className="absolute inset-0 bg-black/40 rounded-3xl flex items-center justify-center text-white">
+                    <div className="absolute inset-0 bg-black/40 rounded-3xl flex items-center justify-center text-[#1C221F]">
                       <Loader2 className="animate-spin" size={24} />
                     </div>
                   )}
@@ -171,59 +171,59 @@ export default function InstructorSettingsPage() {
                 {isEditingProfile && !isUploading && (
                   <button 
                     onClick={handleUploadClick}
-                    className="absolute inset-0 bg-black/40 rounded-3xl flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute inset-0 bg-black/40 rounded-3xl flex items-center justify-center text-[#1C221F] opacity-0 group-hover:opacity-100 transition-opacity"
                   >
                     <Upload size={24} />
                   </button>
                 )}
               </div>
               <div className="text-center">
-                <h3 className="text-lg font-bold text-[#0f172a] dark:text-white">{instructorInfo.fullName}</h3>
+                <h3 className="text-lg font-bold text-[#0f172a] dark:text-[#1C221F]">{instructorInfo.fullName}</h3>
                 <p className="text-sm text-gray-500">Giảng viên chuyên nghiệp</p>
               </div>
             </div>
 
             <div className="flex-grow grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Họ và Tên</label>
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Họ và Tên</label>
                 <div className="relative">
                   <input 
                     type="text" 
                     disabled={!isEditingProfile}
                     value={instructorInfo.fullName}
                     onChange={(e) => setInstructorInfo({...instructorInfo, fullName: e.target.value})}
-                    className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-10 py-3 text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 text-black dark:text-white"
+                    className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-10 py-3 text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 text-black dark:text-[#1C221F]"
                   />
-                  <UserCircle className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                  <UserCircle className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Email</label>
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Email</label>
                 <div className="relative">
                   <input 
                     type="email" 
                     disabled={true}
                     value={instructorInfo.email}
-                    className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-10 py-3 text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 text-black dark:text-white"
+                    className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-10 py-3 text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 text-black dark:text-[#1C221F]"
                   />
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Số điện thoại</label>
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Số điện thoại</label>
                 <div className="relative">
                   <input 
                     type="text" 
                     disabled={!isEditingProfile}
                     value={instructorInfo.phone}
                     onChange={(e) => setInstructorInfo({...instructorInfo, phone: e.target.value})}
-                    className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-10 py-3 text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 text-black dark:text-white"
+                    className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-10 py-3 text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 text-black dark:text-[#1C221F]"
                   />
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Thể loại giảng dạy</label>
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Thể loại giảng dạy</label>
                 <div className="flex flex-wrap gap-2">
                   {['Đầu Tư', 'Tài chính', 'Marketing', 'AI'].map(cat => (
                     <button 
@@ -238,7 +238,7 @@ export default function InstructorSettingsPage() {
                       className={cn(
                         "px-3 py-1.5 rounded-lg text-xs font-bold transition-all",
                         instructorInfo.categories.includes(cat)
-                          ? "bg-[#baff02] text-[#0f172a]"
+                          ? "bg-[#133E2B] text-[#0f172a]"
                           : "bg-gray-100 dark:bg-gray-700 text-gray-500"
                       )}
                     >
@@ -252,71 +252,71 @@ export default function InstructorSettingsPage() {
 
           <div className="mt-8 space-y-6">
             <div className="space-y-2">
-              <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Tóm tắt giới thiệu</label>
+              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Tóm tắt giới thiệu</label>
               <textarea 
                 disabled={!isEditingProfile}
                 value={instructorInfo.summary}
                 onChange={(e) => setInstructorInfo({...instructorInfo, summary: e.target.value})}
                 rows={3}
-                className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 resize-none text-black dark:text-white"
+                className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 resize-none text-black dark:text-[#1C221F]"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Thành tích đạt được</label>
+              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Thành tích đạt được</label>
               <div className="relative">
                 <textarea 
                   disabled={!isEditingProfile}
                   value={instructorInfo.achievements}
                   onChange={(e) => setInstructorInfo({...instructorInfo, achievements: e.target.value})}
                   rows={2}
-                  className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-10 py-3 text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 resize-none text-black dark:text-white"
+                  className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-10 py-3 text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 resize-none text-black dark:text-[#1C221F]"
                 />
-                <Award className="absolute left-3 top-4 text-gray-400" size={18} />
+                <Award className="absolute left-3 top-4 text-gray-500" size={18} />
               </div>
             </div>
           </div>
         </div>
 
         <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm">
-          <h3 className="text-lg font-bold text-[#0f172a] dark:text-white mb-6 flex items-center space-x-2">
-            <CreditCard size={20} className="text-[#baff02]" />
+          <h3 className="text-lg font-bold text-[#0f172a] dark:text-[#1C221F] mb-6 flex items-center space-x-2">
+            <CreditCard size={20} className="text-[#1C221F]" />
             <span>Thông tin thanh toán</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Tên ngân hàng</label>
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Tên ngân hàng</label>
                 <input 
                   type="text" 
                   disabled={!isEditingProfile}
                   value={instructorInfo.bankName}
                   onChange={(e) => setInstructorInfo({...instructorInfo, bankName: e.target.value})}
-                  className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 disabled:opacity-60 text-gray-900 dark:text-white"
+                  className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 disabled:opacity-60 text-gray-900 dark:text-[#1C221F]"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Số tài khoản</label>
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Số tài khoản</label>
                 <input 
                   type="text" 
                   disabled={!isEditingProfile}
                   value={instructorInfo.bankAccount}
                   onChange={(e) => setInstructorInfo({...instructorInfo, bankAccount: e.target.value})}
-                  className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 disabled:opacity-60 text-gray-900 dark:text-white"
+                  className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 disabled:opacity-60 text-gray-900 dark:text-[#1C221F]"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Chi nhánh</label>
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Chi nhánh</label>
                 <input 
                   type="text" 
                   disabled={!isEditingProfile}
                   value={instructorInfo.bankBranch}
                   onChange={(e) => setInstructorInfo({...instructorInfo, bankBranch: e.target.value})}
-                  className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 disabled:opacity-60 text-gray-900 dark:text-white"
+                  className="w-full bg-gray-50 dark:bg-gray-900 border-none rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 disabled:opacity-60 text-gray-900 dark:text-[#1C221F]"
                 />
               </div>
             </div>
             <div className="flex flex-col items-center space-y-4">
-              <label className="text-xs font-bold text-gray-400 uppercase tracking-wider self-start">Mã QR thanh toán</label>
+              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider self-start">Mã QR thanh toán</label>
               <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm relative w-32 h-32">
                 <Image 
                   src={instructorInfo.qrCode} 
@@ -326,7 +326,7 @@ export default function InstructorSettingsPage() {
                 />
               </div>
               {isEditingProfile && (
-                <button className="text-xs font-bold text-[#baff02] hover:underline flex items-center space-x-1">
+                <button className="text-xs font-bold text-[#1C221F] hover:underline flex items-center space-x-1">
                   <QrCode size={14} />
                   <span>Cập nhật mã QR</span>
                 </button>
@@ -339,7 +339,7 @@ export default function InstructorSettingsPage() {
           {!isEditingProfile ? (
             <button 
               onClick={() => setIsEditingProfile(true)}
-              className="flex items-center space-x-2 px-8 py-3 bg-[#baff02] text-[#0f172a] rounded-xl font-bold shadow-lg shadow-[#baff02]/20 hover:bg-[#baff02]/90 transition-all font-sans"
+              className="flex items-center space-x-2 px-8 py-3 bg-[#133E2B] text-[#0f172a] rounded-xl font-bold shadow-lg shadow-[#133E2B]/20 hover:bg-[#133E2B]/90 transition-all font-sans"
             >
               <Edit2 size={18} />
               <span>Chỉnh sửa thông tin</span>
@@ -349,14 +349,14 @@ export default function InstructorSettingsPage() {
               <button 
                 onClick={() => setIsEditingProfile(false)}
                 disabled={isSaving}
-                className="px-8 py-3 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-all font-sans disabled:opacity-50"
+                className="px-8 py-3 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-500 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-all font-sans disabled:opacity-50"
               >
                 Hủy
               </button>
               <button 
                 onClick={handleSave}
                 disabled={isSaving}
-                className="flex items-center space-x-2 px-8 py-3 bg-[#baff02] text-[#0f172a] rounded-xl font-bold shadow-lg shadow-[#baff02]/20 hover:bg-[#8ec401] transition-all font-sans disabled:opacity-50"
+                className="flex items-center space-x-2 px-8 py-3 bg-[#133E2B] text-[#0f172a] rounded-xl font-bold shadow-lg shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all font-sans disabled:opacity-50"
               >
                 {isSaving ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
                 <span>Lưu thay đổi</span>

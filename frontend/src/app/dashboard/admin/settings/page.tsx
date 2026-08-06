@@ -64,13 +64,13 @@ export default function AdminSettingsPage() {
     <DashboardLayout role="admin" title="Cài đặt Hệ thống">
       <div className="max-w-4xl space-y-10">
         {/* Header Section */}
-        <div className="bg-[#141414] rounded-[40px] border border-white/5 p-10">
+        <div className="bg-white rounded-[40px] border border-[#E8E3D9] p-10">
             <div className="flex items-center space-x-4 mb-8">
-                <div className="p-4 bg-[#baff02]/10 rounded-3xl text-[#baff02]">
+                <div className="p-4 bg-[#133E2B]/10 rounded-3xl text-[#1C221F]">
                     <Globe size={32} />
                 </div>
                 <div>
-                    <h2 className="text-2xl font-black text-white uppercase tracking-tight">Cấu hình Nền tảng</h2>
+                    <h2 className="text-2xl font-black text-[#1C221F] uppercase tracking-tight">Cấu hình Nền tảng</h2>
                     <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Điều chỉnh các tham số vận hành hệ thống</p>
                 </div>
             </div>
@@ -87,14 +87,14 @@ export default function AdminSettingsPage() {
 
             <div className="space-y-8">
                 {/* Commission Rate Setting */}
-                <div className="group bg-[#0a0a0a] rounded-[32px] p-8 border border-white/5 hover:border-[#baff02]/20 transition-all">
+                <div className="group bg-white rounded-[32px] p-8 border border-[#E8E3D9] hover:border-[#133E2B]/20 transition-all">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                         <div className="flex items-start space-x-4">
-                            <div className="p-3 bg-white/5 rounded-2xl text-gray-400 group-hover:text-[#baff02] transition-colors">
+                            <div className="p-3 bg-white/5 rounded-2xl text-gray-500 group-hover:text-[#1C221F] transition-colors">
                                 <Percent size={24} />
                             </div>
                             <div>
-                                <h3 className="text-lg font-black text-white uppercase tracking-tight">Tỷ lệ phí hoa hồng Giảng viên</h3>
+                                <h3 className="text-lg font-black text-[#1C221F] uppercase tracking-tight">Tỷ lệ phí hoa hồng Giảng viên</h3>
                                 <p className="text-xs text-gray-500 font-medium max-w-md mt-1 leading-relaxed">
                                     Phần trăm doanh thu giảng viên sẽ nhận được từ mỗi đơn hàng. Ví dụ: 70 có nghĩa giảng viên nhận 70%, nền tảng nhận 30%.
                                 </p>
@@ -110,23 +110,23 @@ export default function AdminSettingsPage() {
                                             handleUpdateSetting('instructor_commission_rate', e.target.value);
                                         }
                                     }}
-                                    className="w-24 px-4 py-3 bg-[#141414] border border-white/10 rounded-xl text-center text-white font-black text-xl focus:ring-2 focus:ring-[#baff02]/20 transition-all outline-none"
+                                    className="w-24 px-4 py-3 bg-white border border-[#E8E3D9] rounded-xl text-center text-[#1C221F] font-black text-xl focus:ring-2 focus:ring-[#133E2B]/20 transition-all outline-none"
                                 />
-                                <span className="absolute -top-3 -right-2 bg-[#baff02] text-[#0a0a0a] text-[10px] font-black px-2 py-0.5 rounded-lg shadow-lg">%</span>
+                                <span className="absolute -top-3 -right-2 bg-[#133E2B] text-[#1C221F] text-[10px] font-black px-2 py-0.5 rounded-lg shadow-lg">%</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Placeholder for other settings */}
-                <div className="opacity-40 grayscale pointer-events-none bg-[#0a0a0a] rounded-[32px] p-8 border border-white/5">
+                <div className="opacity-40 grayscale pointer-events-none bg-white rounded-[32px] p-8 border border-[#E8E3D9]">
                     <div className="flex items-center justify-between">
                         <div className="flex items-start space-x-4">
-                            <div className="p-3 bg-white/5 rounded-2xl text-gray-400">
+                            <div className="p-3 bg-white/5 rounded-2xl text-gray-500">
                                 <ShieldCheck size={24} />
                             </div>
                             <div>
-                                <h3 className="text-lg font-black text-white uppercase tracking-tight">Hạn mức rút tiền tối thiểu</h3>
+                                <h3 className="text-lg font-black text-[#1C221F] uppercase tracking-tight">Hạn mức rút tiền tối thiểu</h3>
                                 <p className="text-xs text-gray-500 font-medium">Số dư tối thiểu để giảng viên có thể gửi yêu cầu rút tiền.</p>
                             </div>
                         </div>
@@ -134,14 +134,14 @@ export default function AdminSettingsPage() {
                     </div>
                 </div>
 
-                <div className="opacity-40 grayscale pointer-events-none bg-[#0a0a0a] rounded-[32px] p-8 border border-white/5">
+                <div className="opacity-40 grayscale pointer-events-none bg-white rounded-[32px] p-8 border border-[#E8E3D9]">
                     <div className="flex items-center justify-between">
                         <div className="flex items-start space-x-4">
-                            <div className="p-3 bg-white/5 rounded-2xl text-gray-400">
+                            <div className="p-3 bg-white/5 rounded-2xl text-gray-500">
                                 <Bell size={24} />
                             </div>
                             <div>
-                                <h3 className="text-lg font-black text-white uppercase tracking-tight">Thông báo hệ thống</h3>
+                                <h3 className="text-lg font-black text-[#1C221F] uppercase tracking-tight">Thông báo hệ thống</h3>
                                 <p className="text-xs text-gray-500 font-medium">Tự động gửi email khi có yêu cầu mớI.</p>
                             </div>
                         </div>
@@ -163,8 +163,8 @@ export default function AdminSettingsPage() {
         </div>
 
         {isLoading && (
-            <div className="fixed inset-0 bg-[#0a0a0a]/60 backdrop-blur-sm z-[100] flex items-center justify-center">
-                <Loader2 className="animate-spin text-[#baff02]" size={48} />
+            <div className="fixed inset-0 bg-white/60 backdrop-blur-sm z-[100] flex items-center justify-center">
+                <Loader2 className="animate-spin text-[#1C221F]" size={48} />
             </div>
         )}
       </div>

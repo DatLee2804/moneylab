@@ -37,7 +37,7 @@ export default function AffiliateDashboard() {
   const stats = [
     { label: 'Lượt click', value: '1,284', change: '+12.5%', icon: <MousePointer2 size={20} />, color: 'text-blue-500', bg: 'bg-blue-500/10' },
     { label: 'Đăng ký mới', value: '156', change: '+8.2%', icon: <Users size={20} />, color: 'text-purple-500', bg: 'bg-purple-500/10' },
-    { label: 'Đơn hàng thành công', value: '42', change: '+15.4%', icon: <ShoppingBag size={20} />, color: 'text-[#baff02]', bg: 'bg-[#baff02]/10' },
+    { label: 'Đơn hàng thành công', value: '42', change: '+15.4%', icon: <ShoppingBag size={20} />, color: 'text-[#1C221F]', bg: 'bg-[#133E2B]/10' },
     { label: 'Hoa hồng tạm tính', value: '12,500,000đ', change: '+22.1%', icon: <Wallet size={20} />, color: 'text-amber-500', bg: 'bg-amber-500/10' },
   ];
 
@@ -69,7 +69,7 @@ export default function AffiliateDashboard() {
     <DashboardLayout role="affiliate" title="Affiliate Dashboard">
       <div className="space-y-8">
         {/* Referral Link Generator */}
-        <section className="bg-[#baff02] p-8 md:p-12 rounded-[40px] text-[#0f172a] relative overflow-hidden shadow-2xl shadow-[#baff02]/20">
+        <section className="bg-[#133E2B] p-8 md:p-12 rounded-[40px] text-[#0f172a] relative overflow-hidden shadow-2xl shadow-[#133E2B]/20">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
           <div className="relative z-10 max-w-2xl">
             <h3 className="text-2xl font-black mb-4">Chia sẻ & Nhận hoa hồng</h3>
@@ -82,12 +82,12 @@ export default function AffiliateDashboard() {
                   type="text" 
                   readOnly 
                   value={referralLink}
-                  className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-sm font-bold focus:outline-none backdrop-blur-md"
+                  className="w-full bg-white/10 border border-[#E8E3D9] rounded-2xl px-6 py-4 text-sm font-bold focus:outline-none backdrop-blur-md"
                 />
               </div>
               <button 
                 onClick={copyToClipboard}
-                className="px-8 py-4 bg-white text-[#baff02] font-black rounded-2xl hover:bg-gray-100 transition-all shadow-xl flex items-center justify-center space-x-2 shrink-0"
+                className="px-8 py-4 bg-white text-[#1C221F] font-black rounded-2xl hover:bg-gray-100 transition-all shadow-xl flex items-center justify-center space-x-2 shrink-0"
               >
                 {isCopied ? <Check size={20} /> : <Copy size={20} />}
                 <span>{isCopied ? 'Đã sao chép' : 'Sao chép link'}</span>
@@ -110,10 +110,10 @@ export default function AffiliateDashboard() {
                 <div className={cn("p-3 rounded-2xl", stat.bg, stat.color)}>
                   {stat.icon}
                 </div>
-                <span className="text-xs font-black text-[#baff02] bg-[#baff02]/10 px-2 py-1 rounded-lg">{stat.change}</span>
+                <span className="text-xs font-black text-[#1C221F] bg-[#133E2B]/10 px-2 py-1 rounded-lg">{stat.change}</span>
               </div>
-              <h4 className="text-3xl font-black text-[#0f172a] dark:text-white mb-1">{stat.value}</h4>
-              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">{stat.label}</p>
+              <h4 className="text-3xl font-black text-[#0f172a] dark:text-[#1C221F] mb-1">{stat.value}</h4>
+              <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">{stat.label}</p>
             </motion.div>
           ))}
         </div>
@@ -122,16 +122,16 @@ export default function AffiliateDashboard() {
         <section className="bg-white dark:bg-gray-800 rounded-[40px] border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
           <div className="p-8 border-b border-gray-50 dark:border-gray-700 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h3 className="text-xl font-black text-[#0f172a] dark:text-white">Danh sách giới thiệu</h3>
-              <p className="text-sm text-gray-400 font-medium">Theo dõi các lượt đăng ký từ link của bạn</p>
+              <h3 className="text-xl font-black text-[#0f172a] dark:text-[#1C221F]">Danh sách giới thiệu</h3>
+              <p className="text-sm text-gray-500 font-medium">Theo dõi các lượt đăng ký từ link của bạn</p>
             </div>
             <div className="flex items-center space-x-3">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
                 <input 
                   type="text" 
                   placeholder="Tìm kiếm..." 
-                  className="pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#baff02]/20"
+                  className="pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20"
                 />
               </div>
               <button className="p-2.5 bg-gray-50 dark:bg-gray-900 text-gray-500 rounded-xl border border-gray-200 dark:border-gray-700">
@@ -144,12 +144,12 @@ export default function AffiliateDashboard() {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-gray-50/50 dark:bg-gray-900/50">
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Người dùng</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Ngày đăng ký</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Khóa học</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Hoa hồng</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Trạng thái</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest"></th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Người dùng</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Ngày đăng ký</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Khóa học</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Hoa hồng</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Trạng thái</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest"></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50 dark:divide-gray-700">
@@ -157,15 +157,15 @@ export default function AffiliateDashboard() {
                   <tr key={item.id} className="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group">
                     <td className="px-8 py-6">
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 rounded-xl bg-[#baff02]/10 text-[#baff02] flex items-center justify-center font-bold text-sm">
+                        <div className="w-10 h-10 rounded-xl bg-[#133E2B]/10 text-[#1C221F] flex items-center justify-center font-bold text-sm">
                           {item.user.charAt(0)}
                         </div>
-                        <span className="text-sm font-bold text-[#0f172a] dark:text-white">{item.user}</span>
+                        <span className="text-sm font-bold text-[#0f172a] dark:text-[#1C221F]">{item.user}</span>
                       </div>
                     </td>
-                    <td className="px-8 py-6 text-sm text-gray-500 dark:text-gray-400 font-medium">{item.date}</td>
-                    <td className="px-8 py-6 text-sm text-gray-500 dark:text-gray-400 font-medium">{item.course}</td>
-                    <td className="px-8 py-6 text-sm font-black text-[#baff02]">{item.commission}</td>
+                    <td className="px-8 py-6 text-sm text-gray-500 dark:text-gray-500 font-medium">{item.date}</td>
+                    <td className="px-8 py-6 text-sm text-gray-500 dark:text-gray-500 font-medium">{item.course}</td>
+                    <td className="px-8 py-6 text-sm font-black text-[#1C221F]">{item.commission}</td>
                     <td className="px-8 py-6">
                       <span className={cn(
                         "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
@@ -177,7 +177,7 @@ export default function AffiliateDashboard() {
                       </span>
                     </td>
                     <td className="px-8 py-6 text-right">
-                      <button className="p-2 text-gray-400 hover:text-[#baff02] transition-colors">
+                      <button className="p-2 text-gray-500 hover:text-[#1C221F] transition-colors">
                         <ArrowUpRight size={18} />
                       </button>
                     </td>
@@ -188,7 +188,7 @@ export default function AffiliateDashboard() {
           </div>
           
           <div className="p-6 bg-gray-50/50 dark:bg-gray-900/50 border-t border-gray-50 dark:border-gray-700 text-center">
-            <button className="text-sm font-bold text-gray-500 hover:text-[#baff02] transition-colors flex items-center justify-center mx-auto space-x-2">
+            <button className="text-sm font-bold text-gray-500 hover:text-[#1C221F] transition-colors flex items-center justify-center mx-auto space-x-2">
               <span>Xem thêm lịch sử</span>
               <ChevronRight size={16} />
             </button>

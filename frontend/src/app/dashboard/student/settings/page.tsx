@@ -124,7 +124,7 @@ export default function StudentSettingsPage() {
     return (
       <DashboardLayout role="student" title="Cài đặt tài khoản">
         <div className="flex items-center justify-center h-[60vh]">
-          <Loader2 className="w-10 h-10 text-[#baff02] animate-spin" />
+          <Loader2 className="w-10 h-10 text-[#1C221F] animate-spin" />
         </div>
       </DashboardLayout>
     );
@@ -147,7 +147,7 @@ export default function StudentSettingsPage() {
                 <div className="w-32 h-32 rounded-3xl bg-gray-100 dark:bg-gray-700 overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl relative">
                   <Image src={studentInfo.avatar} alt="Avatar" fill className="object-cover" />
                   {isUploading && (
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white">
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-[#1C221F]">
                       <Loader2 className="animate-spin" size={24} />
                     </div>
                   )}
@@ -155,14 +155,14 @@ export default function StudentSettingsPage() {
                 {isEditing && !isUploading && (
                   <button 
                     onClick={handleUploadClick}
-                    className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#baff02] text-[#0f172a] rounded-xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+                    className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#133E2B] text-[#0f172a] rounded-xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
                   >
                     <Upload size={18} />
                   </button>
                 )}
               </div>
               <div className="text-center md:text-left">
-                <h3 className="text-2xl font-bold text-[#0f172a] dark:text-white">{studentInfo.fullName}</h3>
+                <h3 className="text-2xl font-bold text-[#0f172a] dark:text-[#1C221F]">{studentInfo.fullName}</h3>
                 <p className="text-gray-500 font-medium">Học viên tại Money Lab</p>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function StudentSettingsPage() {
           <div className="p-8 space-y-10">
             {/* Personal Info */}
             <section>
-              <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+              <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
                 <User size={16} />
                 Thông tin cá nhân
               </h4>
@@ -183,7 +183,7 @@ export default function StudentSettingsPage() {
                     value={studentInfo.fullName} 
                     onChange={(e) => setStudentInfo({...studentInfo, fullName: e.target.value})}
                     disabled={!isEditing}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#baff02]/20 text-black dark:text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 text-black dark:text-[#1C221F]"
                   />
                 </div>
                 <div className="space-y-2">
@@ -192,7 +192,7 @@ export default function StudentSettingsPage() {
                     type="email" 
                     value={studentInfo.email} 
                     disabled={true}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#baff02]/20 text-black dark:text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 text-black dark:text-[#1C221F]"
                   />
                 </div>
                 <div className="space-y-2">
@@ -202,7 +202,7 @@ export default function StudentSettingsPage() {
                     value={studentInfo.birthDate} 
                     onChange={(e) => setStudentInfo({...studentInfo, birthDate: e.target.value})}
                     disabled={!isEditing}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#baff02]/20 text-black dark:text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 text-black dark:text-[#1C221F]"
                   />
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function StudentSettingsPage() {
 
             {/* Bank Info */}
             <section>
-              <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+              <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
                 <CreditCard size={16} />
                 Thông tin nhà tài trợ
               </h4>
@@ -223,7 +223,7 @@ export default function StudentSettingsPage() {
                       value={studentInfo.bankName} 
                       onChange={(e) => setStudentInfo({...studentInfo, bankName: e.target.value})}
                       disabled={!isEditing}
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#baff02]/20 text-black dark:text-white"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 text-black dark:text-[#1C221F]"
                     />
                   </div>
                   <div className="space-y-2">
@@ -233,17 +233,17 @@ export default function StudentSettingsPage() {
                       value={studentInfo.bankAccount} 
                       onChange={(e) => setStudentInfo({...studentInfo, bankAccount: e.target.value})}
                       disabled={!isEditing}
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#baff02]/20 text-black dark:text-white"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 text-black dark:text-[#1C221F]"
                     />
                   </div>
                 </div>
                 <div className="flex flex-col items-center justify-center p-6 bg-gray-50 dark:bg-gray-900 rounded-3xl border-2 border-dashed border-gray-200 dark:border-gray-700">
-                  <p className="text-xs font-bold text-gray-400 mb-4 uppercase tracking-wider">Mã QR cá nhân</p>
+                  <p className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-wider">Mã QR cá nhân</p>
                   <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-md flex items-center justify-center">
                     <QrCode size={100} className="text-[#0f172a]" />
                   </div>
                   {isEditing && (
-                    <button className="mt-4 text-xs font-bold text-[#baff02] hover:underline">Tải lên</button>
+                    <button className="mt-4 text-xs font-bold text-[#1C221F] hover:underline">Tải lên</button>
                   )}
                 </div>
               </div>
@@ -254,7 +254,7 @@ export default function StudentSettingsPage() {
               {!isEditing ? (
                 <button 
                   onClick={() => setIsEditing(true)}
-                  className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-[#0f172a] dark:text-white font-bold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all flex items-center gap-2 font-sans"
+                  className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-[#0f172a] dark:text-[#1C221F] font-bold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all flex items-center gap-2 font-sans"
                 >
                   <Edit2 size={18} />
                   Chỉnh sửa
@@ -264,14 +264,14 @@ export default function StudentSettingsPage() {
                   <button 
                     onClick={() => setIsEditing(false)}
                     disabled={isSaving}
-                    className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-[#0f172a] dark:text-white font-bold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all font-sans disabled:opacity-50"
+                    className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-[#0f172a] dark:text-[#1C221F] font-bold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all font-sans disabled:opacity-50"
                   >
                     Hủy
                   </button>
                   <button 
                     onClick={handleSave}
                     disabled={isSaving}
-                    className="px-8 py-3 bg-[#baff02] text-[#0f172a] font-bold rounded-xl hover:bg-[#8ec401] transition-all shadow-lg shadow-[#baff02]/20 flex items-center gap-2 font-sans disabled:opacity-50"
+                    className="px-8 py-3 bg-[#133E2B] text-[#0f172a] font-bold rounded-xl hover:bg-[#8ec401] transition-all shadow-lg shadow-[#133E2B]/20 flex items-center gap-2 font-sans disabled:opacity-50"
                   >
                     {isSaving ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
                     Lưu thay đổi

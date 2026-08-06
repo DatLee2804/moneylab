@@ -87,13 +87,13 @@ export default function InstructorsPage() {
               {/* Search & Filter */}
               <div className="flex flex-col md:flex-row gap-4 max-w-xl mx-auto">
                 <div className="relative flex-grow">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
                   <input 
                     type="text" 
                     placeholder="Tìm kiếm giảng viên..." 
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3.5 bg-[#FAF7F2] border border-[#E8E3D9] rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all font-semibold text-[#1C221F] text-sm placeholder:text-gray-400"
+                    className="w-full pl-11 pr-4 py-3.5 bg-[#FAF7F2] border border-[#E8E3D9] rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all font-semibold text-[#1C221F] text-sm placeholder:text-gray-500"
                   />
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function InstructorsPage() {
                               <span className="text-xs font-semibold">{(inst as any).coursesCount || 5}</span>
                             </div>
                           </div>
-                          <Link href="/courses" className="w-9 h-9 bg-[#FAF7F2] border border-[#E8E3D9] text-[#133E2B] hover:bg-[#133E2B] hover:text-white rounded-xl flex items-center justify-center transition-all shadow-sm">
+                          <Link href="/courses" className="w-9 h-9 bg-[#FAF7F2] border border-[#E8E3D9] text-[#133E2B] hover:bg-[#133E2B] hover:text-[#1C221F] rounded-xl flex items-center justify-center transition-all shadow-sm">
                             <ChevronRight size={18} />
                           </Link>
                         </div>
@@ -172,7 +172,7 @@ export default function InstructorsPage() {
             ) : (
               <div className="text-center py-16 bg-white rounded-2xl border border-[#E8E3D9]">
                 <div className="w-16 h-16 bg-[#FAF7F2] border border-[#E8E3D9] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Search size={28} className="text-gray-400" />
+                  <Search size={28} className="text-gray-500" />
                 </div>
                 <h3 className="text-lg font-bold text-[#1C221F] mb-1">Không tìm thấy giảng viên</h3>
                 <p className="text-xs text-[#1C221F]/60 font-medium">Vui lòng thử lại với từ khóa khác.</p>

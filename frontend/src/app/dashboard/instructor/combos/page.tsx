@@ -159,12 +159,12 @@ export default function InstructorCombosPage() {
           <input 
             type="text" 
             placeholder="Tìm kiếm combo..." 
-            className="w-full pl-10 pr-4 py-2 bg-[#141414] border border-white/5 rounded-xl text-sm focus:ring-2 focus:ring-[#baff02]/20 text-white placeholder:text-gray-600 transition-all"
+            className="w-full pl-10 pr-4 py-2 bg-white border border-[#E8E3D9] rounded-xl text-sm focus:ring-2 focus:ring-[#133E2B]/20 text-[#1C221F] placeholder:text-gray-600 transition-all"
           />
         </div>
         <button 
           onClick={handleOpenCreateModal}
-          className="flex items-center space-x-2 px-4 py-2 bg-[#baff02] text-[#0a0a0a] rounded-xl font-bold hover:bg-[#d0ff00] transition-colors whitespace-nowrap"
+          className="flex items-center space-x-2 px-4 py-2 bg-[#133E2B] text-[#1C221F] rounded-xl font-bold hover:bg-[#d0ff00] transition-colors whitespace-nowrap"
         >
           <Plus size={18} />
           <span>Tạo Combo Mới</span>
@@ -173,25 +173,25 @@ export default function InstructorCombosPage() {
 
       {loading ? (
         <div className="flex justify-center items-center h-64">
-          <div className="w-8 h-8 border-4 border-[#baff02]/20 border-t-[#baff02] rounded-full animate-spin"></div>
+          <div className="w-8 h-8 border-4 border-[#133E2B]/20 border-t-[#133E2B] rounded-full animate-spin"></div>
         </div>
       ) : combos.length === 0 ? (
-        <div className="text-center py-20 bg-[#141414] rounded-3xl border border-white/5">
+        <div className="text-center py-20 bg-white rounded-3xl border border-[#E8E3D9]">
           <BadgePercent size={48} className="mx-auto text-gray-600 mb-4" />
-          <h3 className="text-xl font-black text-white mb-2">Chưa có combo nào</h3>
+          <h3 className="text-xl font-black text-[#1C221F] mb-2">Chưa có combo nào</h3>
           <p className="text-gray-500 mb-6">Bạn có thể tạo các combo để tăng doanh số bán hàng.</p>
           <button 
             onClick={handleOpenCreateModal}
-            className="px-6 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold transition-colors"
+            className="px-6 py-3 bg-white/5 hover:bg-white/10 text-[#1C221F] rounded-xl font-bold transition-colors"
           >
             Tạo combo đầu tiên
           </button>
         </div>
       ) : (
-        <div className="bg-[#141414] rounded-none border-y border-white/5 overflow-hidden -mx-8 lg:-mx-12">
+        <div className="bg-white rounded-none border-y border-[#E8E3D9] overflow-hidden -mx-8 lg:-mx-12">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm text-gray-400">
-              <thead className="bg-[#0a0a0a] text-xs uppercase font-black tracking-wider text-gray-500 border-b border-white/5">
+            <table className="w-full text-left text-sm text-gray-500">
+              <thead className="bg-white text-xs uppercase font-black tracking-wider text-gray-500 border-b border-[#E8E3D9]">
                 <tr>
                   <th className="px-6 py-4">Tên Combo</th>
                   <th className="px-6 py-4">Trạng Thái</th>
@@ -200,7 +200,7 @@ export default function InstructorCombosPage() {
                   <th className="px-6 py-4 text-right">Thao tác</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5">
+              <tbody className="divide-y divide-[#E8E3D9]">
                 {combos.map((combo: any) => (
                   <tr key={combo.id} className="hover:bg-white/[0.02] transition-colors">
                     <td className="px-6 py-4">
@@ -213,7 +213,7 @@ export default function InstructorCombosPage() {
                           </div>
                         )}
                         <div>
-                          <div className="font-bold text-white">{combo.title}</div>
+                          <div className="font-bold text-[#1C221F]">{combo.title}</div>
                           <div className="text-xs text-gray-500">{combo.category}</div>
                         </div>
                       </div>
@@ -228,18 +228,18 @@ export default function InstructorCombosPage() {
                         {combo.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 font-bold text-white">
+                    <td className="px-6 py-4 font-bold text-[#1C221F]">
                       {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(combo.discountPrice || combo.price)}
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center space-x-1">
-                        <span className="font-bold text-white">{combo.includedCourses?.length || 0}</span>
+                        <span className="font-bold text-[#1C221F]">{combo.includedCourses?.length || 0}</span>
                         <span className="text-gray-500">khóa học</span>
                       </div>
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end space-x-2">
-                        <button onClick={() => handleEditClick(combo)} className="p-2 text-gray-500 hover:text-[#baff02] hover:bg-[#baff02]/10 rounded-lg transition-colors">
+                        <button onClick={() => handleEditClick(combo)} className="p-2 text-gray-500 hover:text-[#1C221F] hover:bg-[#133E2B]/10 rounded-lg transition-colors">
                           <Edit size={16} />
                         </button>
                         <button onClick={() => handleDeleteCombo(combo.id)} className="p-2 text-gray-500 hover:text-rose-500 hover:bg-rose-500/10 rounded-lg transition-colors">
@@ -262,7 +262,7 @@ export default function InstructorCombosPage() {
           <div className="relative bg-white rounded-[2.5rem] border border-gray-100 w-full max-w-2xl max-h-[90vh] overflow-y-auto flex flex-col shadow-2xl custom-scrollbar">
             <div className="sticky top-0 bg-white z-10 px-8 py-6 border-b border-gray-100 flex items-center justify-between">
               <h2 className="text-2xl font-black text-gray-900 tracking-tight">{isEditMode ? 'Chỉnh Sửa Combo' : 'Tạo Combo Mới'}</h2>
-              <button onClick={() => setIsCreateModalOpen(false)} className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors">
+              <button onClick={() => setIsCreateModalOpen(false)} className="p-2 text-gray-500 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors">
                 <X size={20} />
               </button>
             </div>
@@ -270,19 +270,19 @@ export default function InstructorCombosPage() {
             <form onSubmit={handleSubmitCombo} className="p-8 space-y-6">
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Tên Combo</label>
+                  <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Tên Combo</label>
                   <input 
                     type="text" 
                     required
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] transition-all outline-none placeholder:text-gray-400"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#133E2B]/20 focus:border-[#133E2B] transition-all outline-none placeholder:text-gray-500"
                     placeholder="VD: Combo Frontend Master"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Mô tả ngắn</label>
+                  <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Mô tả ngắn</label>
                   <RichTextEditor 
                     content={description}
                     onChange={(content) => setDescription(content)}
@@ -292,46 +292,46 @@ export default function InstructorCombosPage() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Giá bán (Khuyến mãi) (VNĐ)</label>
+                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Giá bán (Khuyến mãi) (VNĐ)</label>
                     <input 
                       type="number" 
                       required
                       min="0"
                       value={discountPrice}
                       onChange={(e) => setDiscountPrice(e.target.value)}
-                      className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] transition-all outline-none placeholder:text-gray-400"
+                      className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#133E2B]/20 focus:border-[#133E2B] transition-all outline-none placeholder:text-gray-500"
                       placeholder="0"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Giá gốc (VNĐ) - Tùy chọn</label>
+                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Giá gốc (VNĐ) - Tùy chọn</label>
                     <input 
                       type="number" 
                       min="0"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
-                      className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] transition-all outline-none placeholder:text-gray-400"
+                      className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#133E2B]/20 focus:border-[#133E2B] transition-all outline-none placeholder:text-gray-500"
                       placeholder="0"
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Danh mục</label>
+                  <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Danh mục</label>
                   <input 
                     type="text" 
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#baff02]/20 focus:border-[#baff02] transition-all outline-none placeholder:text-gray-400"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:ring-2 focus:ring-[#133E2B]/20 focus:border-[#133E2B] transition-all outline-none placeholder:text-gray-500"
                     placeholder="VD: Web Development"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Ảnh bìa</label>
+                  <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Ảnh bìa</label>
                   <div 
                     onClick={() => document.getElementById('combo-cover-upload')?.click()}
-                    className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed border-gray-200 rounded-[2rem] bg-gray-50 hover:bg-gray-100 hover:border-[#baff02] cursor-pointer transition-all overflow-hidden relative group"
+                    className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed border-gray-200 rounded-[2rem] bg-gray-50 hover:bg-gray-100 hover:border-[#133E2B] cursor-pointer transition-all overflow-hidden relative group"
                   >
                     <div className="space-y-1 w-full text-center flex flex-col items-center">
                       {(coverImageBase64 || existingCoverImageUrl) ? (
@@ -351,12 +351,12 @@ export default function InstructorCombosPage() {
                         </>
                       ) : (
                         <div className="flex flex-col items-center space-y-3">
-                          <div className="p-4 bg-white rounded-2xl shadow-sm text-gray-400">
+                          <div className="p-4 bg-white rounded-2xl shadow-sm text-gray-500">
                             <ImageIcon size={24} />
                           </div>
                           <div className="text-center">
                             <p className="text-sm font-bold text-gray-900">Click để tải lên ảnh bìa</p>
-                            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">PNG, JPG up to 10MB</p>
+                            <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">PNG, JPG up to 10MB</p>
                           </div>
                         </div>
                       )}
@@ -366,7 +366,7 @@ export default function InstructorCombosPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Chọn khóa học để gộp</label>
+                  <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Chọn khóa học để gộp</label>
                   {availableCourses.length === 0 ? (
                     <div className="text-sm text-gray-500 bg-gray-50 p-4 rounded-xl border border-gray-100">
                       Bạn chưa có khóa học nào để tạo combo.
@@ -387,7 +387,7 @@ export default function InstructorCombosPage() {
                           <div className={cn(
                             "w-5 h-5 rounded flex items-center justify-center border",
                             selectedCourses.includes(course.id) 
-                              ? "bg-[#baff02] border-[#baff02] text-[#0a0a0a]" 
+                              ? "bg-[#133E2B] border-[#133E2B] text-[#0a0a0a]" 
                               : "border-gray-300 bg-transparent"
                           )}>
                             {selectedCourses.includes(course.id) && <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>}
@@ -414,7 +414,7 @@ export default function InstructorCombosPage() {
                 <button 
                   type="submit"
                   disabled={selectedCourses.length === 0}
-                  className="px-10 py-4 bg-[#baff02] text-[#0f172a] font-black rounded-2xl hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-[#baff02]/20"
+                  className="px-10 py-4 bg-[#133E2B] text-[#0f172a] font-black rounded-2xl hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-[#133E2B]/20"
                 >
                   {isEditMode ? 'Lưu Thay Đổi' : 'Tạo Combo'}
                 </button>

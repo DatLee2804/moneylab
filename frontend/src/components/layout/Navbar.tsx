@@ -46,11 +46,11 @@ export const Navbar = () => {
           {/* Search Bar - Desktop */}
           <div className="hidden lg:flex max-w-[240px] xl:max-w-xs mx-6">
             <div className="relative w-full">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
               <input 
                 type="text" 
                 placeholder="Tìm kiếm khóa học..." 
-                className="w-full pl-9 pr-4 py-2 bg-white border border-[#E8E3D9] rounded-full text-xs text-[#1C221F] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all shadow-sm"
+                className="w-full pl-9 pr-4 py-2 bg-white border border-[#E8E3D9] rounded-full text-xs text-[#1C221F] placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all shadow-sm"
               />
             </div>
           </div>
@@ -74,16 +74,16 @@ export const Navbar = () => {
               <>
                 <Link 
                   href={getDashboardPath()} 
-                  className="flex items-center space-x-2 px-4 py-2.5 bg-[#133E2B] text-white rounded-xl hover:bg-[#0F2E1E] transition-all shadow-sm whitespace-nowrap"
+                  className="flex items-center space-x-2 px-4 py-2.5 bg-[#133E2B] text-[#1C221F] rounded-xl hover:bg-[#0F2E1E] transition-all shadow-sm whitespace-nowrap"
                   title="Vào Dashboard"
                 >
-                  <LayoutDashboard size={17} className="text-[#BAFF02]" />
+                  <LayoutDashboard size={17} className="text-[#1C221F]" />
                   <span className="text-xs font-bold uppercase tracking-wider">Dashboard</span>
                 </Link>
                 <NotificationBell />
                 <button 
                   onClick={() => logout()}
-                  className="w-9 h-9 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center border border-rose-200 hover:bg-rose-600 hover:text-white transition-all text-sm shrink-0"
+                  className="w-9 h-9 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center border border-rose-200 hover:bg-rose-600 hover:text-[#1C221F] transition-all text-sm shrink-0"
                   title="Đăng xuất"
                 >
                   <LogOut size={16} />
@@ -94,7 +94,7 @@ export const Navbar = () => {
                 <Link href="/auth/login" className="px-3 py-2 text-sm font-bold text-[#133E2B] hover:text-[#0F2E1E] transition-colors whitespace-nowrap">
                   Đăng nhập
                 </Link>
-                <Link href="/auth/login" className="px-5 py-2.5 bg-[#133E2B] text-white text-sm font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md shadow-[#133E2B]/10 active:scale-95 whitespace-nowrap">
+                <Link href="/auth/login" className="px-5 py-2.5 bg-[#133E2B] text-[#1C221F] text-sm font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md shadow-[#133E2B]/10 active:scale-95 whitespace-nowrap">
                   Đăng ký ngay
                 </Link>
               </>
@@ -119,7 +119,7 @@ export const Navbar = () => {
         <div className="lg:hidden bg-[#FAF7F2] border-t border-[#E8E3D9] px-4 pt-2 pb-6 space-y-2 shadow-xl">
           <div className="py-3">
             <div className="relative w-full">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
               <input 
                 type="text" 
                 placeholder="Tìm kiếm khóa học..." 
@@ -140,7 +140,7 @@ export const Navbar = () => {
           <div className="pt-4 flex flex-col space-y-2.5">
             {isAuthenticated ? (
                <>
-                 <Link href={getDashboardPath()} className="w-full py-3 text-center text-sm font-bold bg-[#133E2B] text-white rounded-xl shadow-md" onClick={() => setIsMenuOpen(false)}>
+                 <Link href={getDashboardPath()} className="w-full py-3 text-center text-sm font-bold bg-[#133E2B] text-[#1C221F] rounded-xl shadow-md" onClick={() => setIsMenuOpen(false)}>
                     Vào Dashboard của bạn
                  </Link>
                  <button 
@@ -158,7 +158,7 @@ export const Navbar = () => {
                 <Link href="/auth/login" className="w-full py-3 text-center text-sm font-bold text-[#133E2B] bg-white border border-[#E8E3D9] rounded-xl" onClick={() => setIsMenuOpen(false)}>
                   Đăng nhập
                 </Link>
-                <Link href="/auth/login" className="w-full py-3 text-center text-sm font-bold bg-[#133E2B] text-white rounded-xl shadow-md">
+                <Link href="/auth/login" className="w-full py-3 text-center text-sm font-bold bg-[#133E2B] text-[#1C221F] rounded-xl shadow-md">
                   Đăng ký ngay
                 </Link>
               </>

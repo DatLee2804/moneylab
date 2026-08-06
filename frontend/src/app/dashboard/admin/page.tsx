@@ -47,7 +47,7 @@ export default function AdminDashboard() {
     return (
       <DashboardLayout role="admin" title="Tổng quan hệ thống">
         <div className="flex flex-col items-center justify-center py-32 space-y-4">
-          <Loader2 className="w-12 h-12 text-[#baff02] animate-spin" />
+          <Loader2 className="w-12 h-12 text-[#1C221F] animate-spin" />
           <p className="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Đang tải báo cáo hệ thống...</p>
         </div>
       </DashboardLayout>
@@ -59,27 +59,27 @@ export default function AdminDashboard() {
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { label: 'Doanh số toàn sàn', value: stats?.totalRevenue || '0đ', change: 'Real-time', icon: <DollarSign size={20} />, color: 'text-[#baff02]', bg: 'bg-[#baff02]/10' },
+            { label: 'Doanh số toàn sàn', value: stats?.totalRevenue || '0đ', change: 'Real-time', icon: <DollarSign size={20} />, color: 'text-[#1C221F]', bg: 'bg-[#133E2B]/10' },
             { label: 'Tổng người dùng', value: stats?.totalUsers || 0, change: 'Active', icon: <Users size={20} />, color: 'text-blue-500', bg: 'bg-blue-500/10' },
             { label: 'Số lượng khóa học', value: stats?.totalCourses || 0, change: 'Approved', icon: <BookOpen size={20} />, color: 'text-purple-500', bg: 'bg-purple-500/10' },
           ].map((stat, idx) => (
-            <div key={idx} className="bg-[#141414] p-8 rounded-3xl border border-white/5 shadow-sm transition-all hover:shadow-xl hover:border-[#baff02]/20">
+            <div key={idx} className="bg-white p-8 rounded-3xl border border-[#E8E3D9] shadow-sm transition-all hover:shadow-xl hover:border-[#133E2B]/20">
               <div className="flex justify-between items-center mb-6">
                 <div className={cn("p-3 rounded-2xl", stat.bg, stat.color)}>
                   {stat.icon}
                 </div>
-                <span className="text-xs font-black text-[#baff02] bg-[#baff02]/10 px-2 py-1 rounded-lg">{stat.change}</span>
+                <span className="text-xs font-black text-[#1C221F] bg-[#133E2B]/10 px-2 py-1 rounded-lg">{stat.change}</span>
               </div>
-              <h3 className="text-3xl font-black text-white mb-1">{stat.value}</h3>
-              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">{stat.label}</p>
+              <h3 className="text-3xl font-black text-[#1C221F] mb-1">{stat.value}</h3>
+              <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">{stat.label}</p>
             </div>
           ))}
         </div>
 
-        <div className="bg-[#141414] p-10 rounded-[40px] border border-white/5 shadow-sm">
+        <div className="bg-white p-10 rounded-[40px] border border-[#E8E3D9] shadow-sm">
           <div className="flex justify-between items-center mb-10">
-            <h3 className="text-xl font-black text-white uppercase tracking-tight">Tăng trưởng doanh thu</h3>
-            <div className="flex items-center space-x-2 px-4 py-2 bg-[#0a0a0a] border border-white/5 rounded-xl text-[10px] font-black uppercase tracking-widest text-[#baff02]">
+            <h3 className="text-xl font-black text-[#1C221F] uppercase tracking-tight">Tăng trưởng doanh thu</h3>
+            <div className="flex items-center space-x-2 px-4 py-2 bg-white border border-[#E8E3D9] rounded-xl text-[10px] font-black uppercase tracking-widest text-[#1C221F]">
               Dữ liệu mô phỏng
             </div>
           </div>
@@ -91,7 +91,7 @@ export default function AdminDashboard() {
                 <YAxis axisLine={false} tickLine={false} tick={{fontSize: 10, fill: '#64748b', fontWeight: 900}} />
                 <Tooltip cursor={{fill: 'rgba(255, 255, 255, 0.03)'}} contentStyle={{ backgroundColor: '#0a0a0a', border: '1px solid rgba(255, 255, 255, 0.05)', borderRadius: '16px', color: '#fff', fontWeight: 900, fontSize: '12px' }} />
                 <Bar dataKey="value" radius={[8, 8, 0, 0]}>
-                  {defaultGraphData.map((entry, index) => <Cell key={`cell-${index}`} fill={index === defaultGraphData.length - 1 ? '#baff02' : 'rgba(255, 255, 255, 0.1)'} />)}
+                  {defaultGraphData.map((entry, index) => <Cell key={`cell-${index}`} fill={index === defaultGraphData.length - 1 ? '#133E2B' : 'rgba(255, 255, 255, 0.1)'} />)}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>

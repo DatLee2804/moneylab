@@ -139,22 +139,22 @@ export default function InstructorPayoutsPage() {
           <StatCard 
             title="Doanh thu tuần" 
             value={formatCurrency(stats.weekly)} 
-            icon={<TrendingUp className="text-[#baff02]" size={24} />} 
+            icon={<TrendingUp className="text-[#1C221F]" size={24} />} 
           />
           <StatCard 
             title="Doanh thu tháng" 
             value={formatCurrency(stats.monthly)} 
-            icon={<TrendingUp className="text-[#baff02]" size={24} />} 
+            icon={<TrendingUp className="text-[#1C221F]" size={24} />} 
           />
           <StatCard 
             title="Doanh thu năm" 
             value={formatCurrency(stats.yearly)} 
-            icon={<TrendingUp className="text-[#baff02]" size={24} />} 
+            icon={<TrendingUp className="text-[#1C221F]" size={24} />} 
           />
           <StatCard 
             title="Số dư hiện tại" 
             value={formatCurrency(balance)} 
-            icon={<Wallet className="text-[#baff02]" size={24} />} 
+            icon={<Wallet className="text-[#1C221F]" size={24} />} 
             highlight
           />
         </div>
@@ -179,7 +179,7 @@ export default function InstructorPayoutsPage() {
                     value={bankInfo.bankName}
                     onChange={(e) => setBankInfo({...bankInfo, bankName: e.target.value})}
                     placeholder="VD: Vietcombank"
-                    className="w-full px-6 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-black font-bold focus:ring-2 focus:ring-[#baff02]/50 transition-all outline-none text-sm placeholder:text-gray-400"
+                    className="w-full px-6 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-black font-bold focus:ring-2 focus:ring-[#133E2B]/50 transition-all outline-none text-sm placeholder:text-gray-500"
                     required
                   />
                 </div>
@@ -190,7 +190,7 @@ export default function InstructorPayoutsPage() {
                     value={bankInfo.bankAccount}
                     onChange={(e) => setBankInfo({...bankInfo, bankAccount: e.target.value})}
                     placeholder="VD: 0123456789"
-                    className="w-full px-6 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-black font-bold focus:ring-2 focus:ring-[#baff02]/50 transition-all outline-none text-sm placeholder:text-gray-400"
+                    className="w-full px-6 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-black font-bold focus:ring-2 focus:ring-[#133E2B]/50 transition-all outline-none text-sm placeholder:text-gray-500"
                     required
                   />
                 </div>
@@ -201,14 +201,14 @@ export default function InstructorPayoutsPage() {
                     value={bankInfo.bankOwner}
                     onChange={(e) => setBankInfo({...bankInfo, bankOwner: e.target.value})}
                     placeholder="VD: NGUYEN VAN A"
-                    className="w-full px-6 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-black font-bold focus:ring-2 focus:ring-[#baff02]/50 transition-all outline-none text-sm uppercase placeholder:text-gray-400 placeholder:normal-case"
+                    className="w-full px-6 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-black font-bold focus:ring-2 focus:ring-[#133E2B]/50 transition-all outline-none text-sm uppercase placeholder:text-gray-500 placeholder:normal-case"
                     required
                   />
                 </div>
 
                 <button 
                   disabled={isSavingBank || isLoading}
-                  className="w-full py-4 mt-2 bg-blue-50 text-blue-600 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all disabled:opacity-50 flex items-center justify-center space-x-2"
+                  className="w-full py-4 mt-2 bg-blue-50 text-blue-600 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-blue-500 hover:text-[#1C221F] transition-all disabled:opacity-50 flex items-center justify-center space-x-2"
                 >
                   {isSavingBank ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
                   <span>Lưu Thông Tin</span>
@@ -219,7 +219,7 @@ export default function InstructorPayoutsPage() {
             {/* Withdrawal Form */}
             <div className="bg-white rounded-[40px] border border-gray-100 p-8 shadow-sm">
               <div className="flex items-center space-x-3 mb-8">
-                <div className="p-3 bg-[#baff02]/20 rounded-2xl text-[#8ec401]">
+                <div className="p-3 bg-[#133E2B]/20 rounded-2xl text-[#8ec401]">
                   <ArrowUpRight size={24} />
                 </div>
                 <h2 className="text-xl font-black text-black uppercase tracking-tight">Yêu cầu Rút tiền</h2>
@@ -233,7 +233,7 @@ export default function InstructorPayoutsPage() {
                     value={withdrawAmount}
                     onChange={(e) => setWithdrawAmount(e.target.value)}
                     placeholder="VD: 500000"
-                    className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-black font-bold focus:ring-2 focus:ring-[#baff02]/50 transition-all outline-none placeholder:text-gray-400"
+                    className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-black font-bold focus:ring-2 focus:ring-[#133E2B]/50 transition-all outline-none placeholder:text-gray-500"
                     required
                   />
                 </div>
@@ -251,13 +251,13 @@ export default function InstructorPayoutsPage() {
 
                 <button 
                   disabled={isSubmitting || isLoading || !user?.bankName}
-                  className="w-full py-4 bg-[#baff02] text-[#0a0a0a] rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center space-x-2 shadow-lg shadow-[#baff02]/20"
+                  className="w-full py-4 bg-[#133E2B] text-[#1C221F] rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center space-x-2 shadow-lg shadow-[#133E2B]/20"
                 >
                   {isSubmitting ? <Loader2 className="animate-spin" size={18} /> : <Plus size={18} />}
                   <span>Gửi yêu cầu rút tiền</span>
                 </button>
 
-                <p className="text-[10px] text-gray-400 font-medium text-center italic">
+                <p className="text-[10px] text-gray-500 font-medium text-center italic">
                   * Yêu cầu sẽ được Admin phê duyệt trong vòng 24h làm việc.
                 </p>
               </form>
@@ -288,20 +288,20 @@ export default function InstructorPayoutsPage() {
                     {isLoading ? (
                       <tr>
                         <td colSpan={4} className="py-20 text-center">
-                          <Loader2 className="animate-spin text-[#baff02] mx-auto mb-3" size={32} />
-                          <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Đang tải lịch sử...</p>
+                          <Loader2 className="animate-spin text-[#1C221F] mx-auto mb-3" size={32} />
+                          <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Đang tải lịch sử...</p>
                         </td>
                       </tr>
                     ) : history.length === 0 ? (
                       <tr>
                         <td colSpan={4} className="py-20 text-center">
-                          <AlertCircle className="text-gray-300 mx-auto mb-3" size={40} />
-                          <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Chưa có giao dịch rút tiền nào</p>
+                          <AlertCircle className="text-gray-600 mx-auto mb-3" size={40} />
+                          <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Chưa có giao dịch rút tiền nào</p>
                         </td>
                       </tr>
                     ) : history.map((tx) => (
                       <tr key={tx.id} className="hover:bg-gray-50 transition-colors">
-                        <td className="px-8 py-6 text-center font-mono text-[10px] text-gray-400">
+                        <td className="px-8 py-6 text-center font-mono text-[10px] text-gray-500">
                           {tx.id.split('-')[0].toUpperCase()}
                         </td>
                         <td className="px-8 py-6">
@@ -333,7 +333,7 @@ export default function InstructorPayoutsPage() {
             <select 
               value={selectedMonth} 
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="bg-gray-50 border border-gray-200 text-black font-bold text-sm rounded-xl focus:ring-[#baff02] focus:border-[#baff02] block p-3 outline-none"
+              className="bg-gray-50 border border-gray-200 text-black font-bold text-sm rounded-xl focus:ring-[#133E2B] focus:border-[#133E2B] block p-3 outline-none"
             >
               {Array.from(new Set(revenueList.map(r => new Date(r.date).toLocaleDateString('vi-VN', { month: '2-digit', year: 'numeric' })))).map(m => (
                 <option key={m as string} value={m as string}>Tháng {m as string}</option>
@@ -357,15 +357,15 @@ export default function InstructorPayoutsPage() {
                 {isLoading ? (
                   <tr>
                     <td colSpan={5} className="py-20 text-center">
-                      <Loader2 className="animate-spin text-[#baff02] mx-auto mb-3" size={32} />
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Đang tải...</p>
+                      <Loader2 className="animate-spin text-[#1C221F] mx-auto mb-3" size={32} />
+                      <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Đang tải...</p>
                     </td>
                   </tr>
                 ) : revenueList.length === 0 ? (
                   <tr>
                     <td colSpan={5} className="py-20 text-center">
-                      <AlertCircle className="text-gray-300 mx-auto mb-3" size={40} />
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Chưa có giao dịch nào</p>
+                      <AlertCircle className="text-gray-600 mx-auto mb-3" size={40} />
+                      <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Chưa có giao dịch nào</p>
                     </td>
                   </tr>
                 ) : revenueList.filter(r => new Date(r.date).toLocaleDateString('vi-VN', { month: '2-digit', year: 'numeric' }) === selectedMonth).map(r => (
@@ -408,20 +408,20 @@ function StatCard({ title, value, icon, highlight = false }: any) {
     <div className={cn(
       "p-8 rounded-[32px] border transition-all shadow-sm",
       highlight 
-        ? "bg-[#baff02] border-[#baff02] shadow-xl shadow-[#baff02]/20" 
+        ? "bg-[#133E2B] border-[#133E2B] shadow-xl shadow-[#133E2B]/20" 
         : "bg-white border-gray-100 hover:border-gray-200"
     )}>
       <div className="flex justify-between items-start mb-4">
         <div className={cn(
           "p-3 rounded-2xl",
-          highlight ? "bg-[#0a0a0a]/10 text-[#0a0a0a]" : "bg-gray-50"
+          highlight ? "bg-white/10 text-[#0a0a0a]" : "bg-gray-50"
         )}>
           {icon}
         </div>
       </div>
       <p className={cn(
         "text-[10px] font-black uppercase tracking-widest mb-1",
-        highlight ? "text-[#0a0a0a]/60" : "text-gray-400"
+        highlight ? "text-[#0a0a0a]/60" : "text-gray-500"
       )}>
         {title}
       </p>

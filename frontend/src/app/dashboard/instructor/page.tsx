@@ -49,7 +49,7 @@ export default function InstructorDashboard() {
     return (
       <DashboardLayout role="instructor" title="Đang tải...">
         <div className="flex flex-col items-center justify-center py-32 space-y-4">
-          <Loader2 className="w-12 h-12 text-[#baff02] animate-spin" />
+          <Loader2 className="w-12 h-12 text-[#1C221F] animate-spin" />
           <p className="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Đang đồng bộ thu nhập và học viên...</p>
         </div>
       </DashboardLayout>
@@ -86,7 +86,7 @@ export default function InstructorDashboard() {
               {students.map((student) => (
                 <div key={student.id} className="flex items-center justify-between p-3.5 bg-[#FAF7F2] rounded-xl border border-[#E8E3D9] group cursor-pointer hover:border-[#133E2B]/30 transition-all">
                   <div className="flex items-center space-x-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[#133E2B] text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                    <div className="w-10 h-10 rounded-xl bg-[#133E2B] text-[#1C221F] flex items-center justify-center font-bold text-sm shadow-sm">
                       {student.name.charAt(0)}
                     </div>
                     <div>
@@ -94,7 +94,7 @@ export default function InstructorDashboard() {
                       <p className="text-xs text-[#1C221F]/60 font-normal">Đã tham gia {student.courses} khóa học</p>
                     </div>
                   </div>
-                  <button className="p-2 text-gray-400 group-hover:text-[#133E2B] transition-colors">
+                  <button className="p-2 text-gray-500 group-hover:text-[#133E2B] transition-colors">
                     <ChevronRight size={18} />
                   </button>
                 </div>
@@ -110,7 +110,7 @@ export default function InstructorDashboard() {
             <p className="text-xs text-[#1C221F]/60 leading-relaxed mb-6 max-w-sm">
               Bắt đầu xây dựng nội dung mới hoặc chỉnh sửa các khóa học hiện có để tối ưu hóa doanh thu.
             </p>
-            <Link href="/dashboard/instructor/courses" className="px-6 py-3 bg-[#133E2B] text-white font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md text-xs">
+            <Link href="/dashboard/instructor/courses" className="px-6 py-3 bg-[#133E2B] text-[#1C221F] font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md text-xs">
               Vào danh sách khóa học
             </Link>
           </div>

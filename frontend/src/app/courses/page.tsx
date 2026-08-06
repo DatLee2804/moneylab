@@ -78,13 +78,13 @@ export default function CourseCatalog() {
           {/* Filters & Search */}
           <div className="flex flex-col lg:flex-row gap-6 mb-12">
             <div className="flex-grow relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#133E2B] transition-colors" size={18} />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#133E2B] transition-colors" size={18} />
               <input 
                 type="text" 
                 placeholder="Tìm kiếm khóa học..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3.5 bg-white border border-[#E8E3D9] rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all text-sm font-semibold text-[#1C221F] placeholder:text-gray-400"
+                className="w-full pl-11 pr-4 py-3.5 bg-white border border-[#E8E3D9] rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all text-sm font-semibold text-[#1C221F] placeholder:text-gray-500"
               />
             </div>
             <div className="flex items-center space-x-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide">
@@ -95,7 +95,7 @@ export default function CourseCatalog() {
                   className={cn(
                     "px-5 py-3 rounded-xl text-xs font-bold whitespace-nowrap transition-all",
                     activeCategory === cat 
-                      ? "bg-[#133E2B] text-white shadow-md" 
+                      ? "bg-[#133E2B] text-[#1C221F] shadow-md" 
                       : "bg-white text-[#1C221F] border border-[#E8E3D9] hover:bg-[#E8E3D9]/40"
                   )}
                 >
@@ -128,7 +128,7 @@ export default function CourseCatalog() {
                       alt={course.title} 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#0F2E1E] text-white text-[10px] font-bold rounded-md shadow-sm uppercase tracking-wider">
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#0F2E1E] text-[#1C221F] text-[10px] font-bold rounded-md shadow-sm uppercase tracking-wider">
                       {course.category || 'Tài chính'}
                     </div>
                   </div>
@@ -157,14 +157,14 @@ export default function CourseCatalog() {
                           ) : course.discountPrice && Number(course.discountPrice) > 0 ? (
                             <>
                               <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.discountPrice)}</span>
-                              <span className="text-xs text-gray-400 line-through font-normal">{formatPrice(course.price)}</span>
+                              <span className="text-xs text-gray-500 line-through font-normal">{formatPrice(course.price)}</span>
                             </>
                           ) : (
                             <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.price)}</span>
                           )}
                         </div>
                       </div>
-                      <Link href={`/courses/${course.id}`} className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-white hover:border-[#133E2B] transition-all">
+                      <Link href={`/courses/${course.id}`} className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-[#1C221F] hover:border-[#133E2B] transition-all">
                         Chi tiết
                       </Link>
                     </div>
@@ -175,7 +175,7 @@ export default function CourseCatalog() {
           ) : (
             <div className="text-center py-16 bg-white rounded-2xl border border-[#E8E3D9] shadow-sm">
               <div className="w-16 h-16 bg-[#FAF7F2] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#E8E3D9]">
-                <Search size={28} className="text-gray-400" />
+                <Search size={28} className="text-gray-500" />
               </div>
               <h3 className="text-lg font-bold text-[#1C221F] mb-1">Không tìm thấy khóa học</h3>
               <p className="text-xs text-[#1C221F]/60 font-medium">Hệ thống không tìm thấy kết quả phù hợp với từ khóa tìm kiếm của bạn.</p>

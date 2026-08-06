@@ -78,7 +78,7 @@ export default function AdminPayoutsPage() {
             </div>
             <div className="flex space-x-3">
               <button className="px-6 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-black hover:bg-gray-100 transition-colors font-sans">Tất cả</button>
-              <button className="px-6 py-2.5 bg-[#baff02]/20 text-[#8ec401] rounded-xl text-[10px] font-black uppercase tracking-widest font-sans">Chờ duyệt</button>
+              <button className="px-6 py-2.5 bg-[#133E2B]/20 text-[#8ec401] rounded-xl text-[10px] font-black uppercase tracking-widest font-sans">Chờ duyệt</button>
             </div>
           </div>
           <div className="overflow-x-auto">
@@ -96,7 +96,7 @@ export default function AdminPayoutsPage() {
               <tbody className="divide-y divide-gray-100">
                 {isLoading ? (
                   <tr>
-                    <td colSpan={6} className="py-20 text-center font-black text-gray-400 uppercase tracking-widest animate-pulse">Đang tải dữ liệu tài chính...</td>
+                    <td colSpan={6} className="py-20 text-center font-black text-gray-500 uppercase tracking-widest animate-pulse">Đang tải dữ liệu tài chính...</td>
                   </tr>
                 ) : payouts.map((p) => (
                   <tr key={p.id} className="transition-all hover:bg-gray-50">
@@ -138,14 +138,14 @@ export default function AdminPayoutsPage() {
                         <div className="flex items-center justify-end space-x-2">
                           <button 
                             onClick={() => setConfirmModal({ isOpen: true, type: 'approve', payout: p })}
-                            className="p-2.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm" 
+                            className="p-2.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-xl hover:bg-emerald-500 hover:text-[#1C221F] transition-all shadow-sm" 
                             title="Chấp nhận thanh toán"
                           >
                             <Check size={18} />
                           </button>
                           <button 
                             onClick={() => setConfirmModal({ isOpen: true, type: 'reject', payout: p })}
-                            className="p-2.5 bg-rose-50 text-rose-600 border border-rose-100 rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-sm" 
+                            className="p-2.5 bg-rose-50 text-rose-600 border border-rose-100 rounded-xl hover:bg-rose-500 hover:text-[#1C221F] transition-all shadow-sm" 
                             title="Từ chối thanh toán"
                           >
                             <X size={18} />
@@ -190,7 +190,7 @@ export default function AdminPayoutsPage() {
                 <button 
                   onClick={handleAction}
                   className={cn(
-                    "flex-[2] py-4 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-md transition-all px-8",
+                    "flex-[2] py-4 text-[#1C221F] rounded-2xl font-black text-xs uppercase tracking-widest shadow-md transition-all px-8",
                     confirmModal.type === 'approve' ? "bg-emerald-500 shadow-emerald-500/20 hover:bg-emerald-600" : "bg-rose-500 shadow-rose-500/20 hover:bg-rose-600"
                   )}
                 >

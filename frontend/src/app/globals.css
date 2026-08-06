@@ -5,7 +5,7 @@
   
   --color-primary: #133E2B;
   --color-secondary: #0F2E1E;
-  --color-accent: #BAFF02;
+  --color-accent: #133E2B;
   --color-accent-lime: #C6F10E;
   --color-dark: #1C221F;
   --color-cream: #FAF7F2;
@@ -38,7 +38,7 @@
 }
 
 @utility btn-accent {
-  @apply px-6 py-3 bg-[#BAFF02] text-[#0F2E1E] font-black rounded-xl hover:bg-[#a3e000] transition-all shadow-lg active:scale-95;
+  @apply px-6 py-3 bg-[#133E2B] text-white font-black rounded-xl hover:bg-[#a3e000] transition-all shadow-lg active:scale-95;
 }
 
 @utility btn-secondary {
