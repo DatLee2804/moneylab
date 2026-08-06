@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi" suppressHydrationWarning>
-      <body suppressHydrationWarning className={cn(beVietnamPro.variable, "font-sans antialiased bg-[#0a0a0a] text-white selection:bg-[#baff02]/30 selection:text-[#baff02]")}>
+      <body suppressHydrationWarning className={cn(beVietnamPro.variable, "font-sans antialiased bg-[#FAF7F2] text-[#1C221F] selection:bg-[#133E2B]/20 selection:text-[#133E2B]")}>
         <Providers>
           {children}
         </Providers>

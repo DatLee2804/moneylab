@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Menu, X, User, Search, Globe, Moon, Sun, LayoutDashboard, LogOut } from 'lucide-react';
+import { Menu, X, User, Search, LayoutDashboard, LogOut } from 'lucide-react';
 import { cn } from '@/utils/utils';
 import { useAuthStore } from '@/store/authStore';
 import { NotificationBell } from '../NotificationBell';
@@ -12,7 +12,9 @@ export const Navbar = () => {
   const { isAuthenticated, user, logout } = useAuthStore();
 
   const navLinks = [
+    { name: 'Trang chủ', href: '/' },
     { name: 'Khóa học', href: '/courses' },
+    { name: 'Lộ trình', href: '#roadmap' },
     { name: 'Giảng viên', href: '/instructors' },
     { name: 'Affiliate', href: '/affiliate' },
     { name: 'Về chúng tôi', href: '/about' },
@@ -32,34 +34,36 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-50 transition-all">
+    <header className="bg-[#FAF7F2]/90 backdrop-blur-md border-b border-[#E8E3D9] sticky top-0 z-50 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
+          {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <img src="/images/logo.jpg" alt="Money Lab Logo" className="h-8 md:h-10 w-auto object-contain" />
+            <Link href="/" className="flex items-center space-x-3">
+              <img src="/images/logo.jpg" alt="Money Lab Logo" className="h-9 md:h-11 w-auto object-contain rounded-lg shadow-sm" />
+              <span className="text-xl font-black text-[#133E2B] tracking-tight hidden sm:inline-block">MONEY LAB</span>
             </Link>
           </div>
 
           {/* Search Bar - Desktop */}
-          <div className="hidden lg:flex flex-grow max-w-md mx-8">
+          <div className="hidden lg:flex flex-grow max-w-sm mx-8">
             <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={17} />
               <input 
                 type="text" 
                 placeholder="Tìm kiếm khóa học AI, Tài chính..." 
-                className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-[#baff02]/20 transition-all text-white placeholder:text-gray-600"
+                className="w-full pl-10 pr-4 py-2 bg-white border border-[#E8E3D9] rounded-full text-sm text-[#1C221F] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all shadow-sm"
               />
             </div>
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-7">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-gray-400 hover:text-[#baff02] transition-colors"
+                className="text-sm font-semibold text-[#1C221F]/80 hover:text-[#133E2B] transition-colors"
               >
                 {link.name}
               </Link>
@@ -67,44 +71,44 @@ export const Navbar = () => {
           </nav>
 
           {/* Actions */}
-          <div className="hidden lg:flex items-center space-x-5 ml-8">
+          <div className="hidden lg:flex items-center space-x-4 ml-6">
             {isAuthenticated ? (
               <>
                 <Link 
                   href={getDashboardPath()} 
-                  className="flex items-center space-x-2 px-4 py-2 bg-white/5 border border-white/10 text-white rounded-xl hover:bg-white/10 transition-all group"
+                  className="flex items-center space-x-2 px-4 py-2.5 bg-[#133E2B] text-white rounded-xl hover:bg-[#0F2E1E] transition-all shadow-sm"
                   title="Vào Dashboard"
                 >
-                  <LayoutDashboard size={18} className="text-[#baff02]" />
-                  <span className="text-xs font-bold">Dashboard</span>
+                  <LayoutDashboard size={17} className="text-[#BAFF02]" />
+                  <span className="text-xs font-bold uppercase tracking-wider">Dashboard</span>
                 </Link>
                 <NotificationBell />
                 <button 
                   onClick={() => logout()}
-                  className="w-10 h-10 bg-rose-500/10 text-rose-500 rounded-full flex items-center justify-center border border-rose-500/20 hover:bg-rose-500 hover:text-white transition-all overflow-hidden font-black text-sm"
+                  className="w-9 h-9 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center border border-rose-200 hover:bg-rose-600 hover:text-white transition-all text-sm"
                   title="Đăng xuất"
                 >
-                  <LogOut size={18} />
+                  <LogOut size={16} />
                 </button>
               </>
             ) : (
               <>
-                <Link href="/auth/login" className="p-2 text-gray-400 hover:bg-white/5 rounded-full transition-colors">
-                  <User size={20} />
-                </Link>
-                <Link href="/auth/login" className="px-6 py-2.5 bg-[#baff02] text-[#0a0a0a] text-sm font-black rounded-xl hover:bg-[#8ec401] transition-all shadow-lg shadow-[#baff02]/20">
+                <Link href="/auth/login" className="px-4 py-2 text-sm font-bold text-[#133E2B] hover:text-[#0F2E1E] transition-colors">
                   Đăng nhập
+                </Link>
+                <Link href="/auth/login" className="px-6 py-2.5 bg-[#133E2B] text-white text-sm font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md shadow-[#133E2B]/10 active:scale-95">
+                  Đăng ký ngay
                 </Link>
               </>
             )}
           </div>
 
           {/* Mobile actions */}
-          <div className="lg:hidden flex items-center space-x-4">
+          <div className="lg:hidden flex items-center space-x-3">
             {isAuthenticated && <NotificationBell />}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-400"
+              className="p-2 text-[#1C221F] hover:bg-black/5 rounded-lg"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -114,14 +118,14 @@ export const Navbar = () => {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-[#0a0a0a] border-t border-white/5 px-4 pt-2 pb-6 space-y-1 shadow-xl">
-          <div className="py-4">
+        <div className="lg:hidden bg-[#FAF7F2] border-t border-[#E8E3D9] px-4 pt-2 pb-6 space-y-2 shadow-xl">
+          <div className="py-3">
             <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
               <input 
                 type="text" 
                 placeholder="Tìm kiếm khóa học..." 
-                className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-sm text-white"
+                className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#E8E3D9] rounded-xl text-sm text-[#1C221F]"
               />
             </div>
           </div>
@@ -129,16 +133,16 @@ export const Navbar = () => {
             <Link
               key={link.name}
               href={link.href}
-              className="block px-3 py-4 text-base font-medium text-gray-400 hover:text-[#baff02] hover:bg-white/5 rounded-lg"
+              className="block px-3 py-3 text-base font-semibold text-[#1C221F] hover:text-[#133E2B] hover:bg-black/5 rounded-lg transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {link.name}
             </Link>
           ))}
-          <div className="pt-4 flex flex-col space-y-3">
+          <div className="pt-4 flex flex-col space-y-2.5">
             {isAuthenticated ? (
                <>
-                 <Link href={getDashboardPath()} className="w-full py-4 text-center text-sm font-black bg-[#baff02] text-[#0a0a0a] rounded-lg shadow-lg" onClick={() => setIsMenuOpen(false)}>
+                 <Link href={getDashboardPath()} className="w-full py-3 text-center text-sm font-bold bg-[#133E2B] text-white rounded-xl shadow-md" onClick={() => setIsMenuOpen(false)}>
                     Vào Dashboard của bạn
                  </Link>
                  <button 
@@ -146,17 +150,17 @@ export const Navbar = () => {
                     logout();
                     setIsMenuOpen(false);
                   }} 
-                  className="w-full py-4 text-center text-sm font-black bg-rose-500/10 text-rose-500 border border-rose-500/20 rounded-lg"
+                  className="w-full py-3 text-center text-sm font-bold bg-rose-50 text-rose-600 border border-rose-200 rounded-xl"
                 >
                    Đăng xuất tài khoản
                 </button>
                </>
             ) : (
               <>
-                <Link href="/auth/login" className="w-full py-3 text-center text-sm font-semibold text-[#baff02] border border-[#baff02]/30 rounded-lg" onClick={() => setIsMenuOpen(false)}>
+                <Link href="/auth/login" className="w-full py-3 text-center text-sm font-bold text-[#133E2B] bg-white border border-[#E8E3D9] rounded-xl" onClick={() => setIsMenuOpen(false)}>
                   Đăng nhập
                 </Link>
-                <Link href="/auth/register" className="w-full py-3 text-center text-sm font-black bg-[#baff02] text-[#0a0a0a] rounded-lg shadow-lg shadow-[#baff02]/20">
+                <Link href="/auth/login" className="w-full py-3 text-center text-sm font-bold bg-[#133E2B] text-white rounded-xl shadow-md">
                   Đăng ký ngay
                 </Link>
               </>
@@ -167,3 +171,4 @@ export const Navbar = () => {
     </header>
   );
 };
+
