@@ -214,11 +214,4 @@ export const DashboardLayout = ({ children, role, title }: DashboardLayoutProps)
       </div>
     </div>
   );
-};est mt-1">Chào mừng bạn quay trở lại!</p>
-          </div>
-          {children}
-        </main>
-      </div>
-    </div>
-  );
 };

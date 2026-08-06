@@ -56,7 +56,10 @@ export default function InstructorsPage() {
   const getAvatarUrl = (avatar?: string, id?: string) => {
     if (!avatar) return `https://i.pravatar.cc/400?u=${id}`;
     if (avatar.startsWith('http')) return avatar;
-    return `${API_URL}${av  return (
+    return `${API_URL}${avatar}`;
+  };
+
+  return (
     <div className="min-h-screen bg-[#FAF7F2] transition-colors font-sans text-[#1C221F] selection:bg-[#133E2B]/10 selection:text-[#133E2B]">
       <Navbar />
 
@@ -173,16 +176,6 @@ export default function InstructorsPage() {
                 </div>
                 <h3 className="text-lg font-bold text-[#1C221F] mb-1">Không tìm thấy giảng viên</h3>
                 <p className="text-xs text-[#1C221F]/60 font-medium">Vui lòng thử lại với từ khóa khác.</p>
-              </div>
-            )}
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
-  );
-}.</p>
               </div>
             )}
           </div>

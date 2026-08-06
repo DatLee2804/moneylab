@@ -62,55 +62,55 @@ export default function InstructorDashboard() {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { label: 'Tổng doanh thu', value: stats?.totalRevenue || '0đ', change: 'Real-time', icon: <DollarSign className="text-[#baff02]" />, bg: 'bg-[#baff02]/10' },
-            { label: 'Tổng học viên', value: stats?.studentCount || 0, change: 'Theo dõi', icon: <Users className="text-blue-500" />, bg: 'bg-blue-500/10' },
-            { label: 'Đánh giá trung bình', value: stats?.averageRating || '4.9/5', change: 'Học viên tin tưởng', icon: <TrendingUp className="text-amber-500" />, bg: 'bg-amber-500/10' },
+            { label: 'Tổng doanh thu', value: stats?.totalRevenue || '0đ', change: 'Real-time', icon: <DollarSign className="text-[#133E2B]" />, bg: 'bg-[#133E2B]/10' },
+            { label: 'Tổng học viên', value: stats?.studentCount || 0, change: 'Theo dõi', icon: <Users className="text-blue-600" />, bg: 'bg-blue-50' },
+            { label: 'Đánh giá trung bình', value: stats?.averageRating || '4.9/5', change: 'Học viên tin tưởng', icon: <TrendingUp className="text-amber-500" />, bg: 'bg-amber-50' },
           ].map((stat, idx) => (
-            <div key={idx} className="bg-[#141414] p-8 rounded-3xl border border-white/5 shadow-sm transition-all hover:shadow-xl hover:border-[#baff02]/20">
-              <div className="flex justify-between items-center mb-6">
-                <div className={cn("p-3 rounded-2xl", stat.bg)}>
+            <div key={idx} className="bg-white p-6 rounded-2xl border border-[#E8E3D9] shadow-sm transition-all hover:shadow-lg">
+              <div className="flex justify-between items-center mb-4">
+                <div className={cn("p-3 rounded-xl", stat.bg)}>
                   {stat.icon}
                 </div>
-                <span className="text-[10px] font-black text-[#baff02] bg-[#baff02]/10 px-2 py-1 rounded-lg uppercase tracking-widest">{stat.change}</span>
+                <span className="text-[11px] font-bold text-[#133E2B] bg-[#133E2B]/10 px-2.5 py-1 rounded-md uppercase tracking-wider">{stat.change}</span>
               </div>
-              <h4 className="text-3xl font-black text-white mb-1">{stat.value}</h4>
-              <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">{stat.label}</p>
+              <h4 className="text-2xl lg:text-3xl font-extrabold text-[#1C221F] mb-1">{stat.value}</h4>
+              <p className="text-xs text-[#1C221F]/60 font-medium">{stat.label}</p>
             </div>
           ))}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-[#141414] p-8 rounded-[40px] border border-white/5 shadow-sm">
-            <h3 className="text-lg font-black text-white mb-8 uppercase tracking-tight">Học viên mới (Dữ liệu mẫu)</h3>
-            <div className="space-y-6">
+          <div className="bg-white p-8 rounded-2xl border border-[#E8E3D9] shadow-sm">
+            <h3 className="text-lg font-bold text-[#1C221F] mb-6">Học viên mới</h3>
+            <div className="space-y-4">
               {students.map((student) => (
-                <div key={student.id} className="flex items-center justify-between group cursor-pointer">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#baff02]/10 text-[#baff02] flex items-center justify-center font-black">
+                <div key={student.id} className="flex items-center justify-between p-3.5 bg-[#FAF7F2] rounded-xl border border-[#E8E3D9] group cursor-pointer hover:border-[#133E2B]/30 transition-all">
+                  <div className="flex items-center space-x-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-[#133E2B] text-white flex items-center justify-center font-bold text-sm shadow-sm">
                       {student.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-sm font-black text-white group-hover:text-[#baff02] transition-colors">{student.name}</p>
-                      <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Đã tham gia {student.courses} khóa học</p>
+                      <p className="text-sm font-bold text-[#1C221F] group-hover:text-[#133E2B] transition-colors">{student.name}</p>
+                      <p className="text-xs text-[#1C221F]/60 font-normal">Đã tham gia {student.courses} khóa học</p>
                     </div>
                   </div>
-                  <button className="p-2 text-gray-700 group-hover:text-[#baff02] transition-colors">
-                    <ChevronRight size={20} />
+                  <button className="p-2 text-gray-400 group-hover:text-[#133E2B] transition-colors">
+                    <ChevronRight size={18} />
                   </button>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-[#141414] p-8 rounded-[40px] border border-white/5 shadow-sm flex flex-col items-center justify-center text-center">
-            <div className="w-16 h-16 bg-[#baff02]/10 text-[#baff02] rounded-full flex items-center justify-center mb-6">
-              <BookOpen size={32} />
+          <div className="bg-white p-8 rounded-2xl border border-[#E8E3D9] shadow-sm flex flex-col items-center justify-center text-center">
+            <div className="w-14 h-14 bg-[#FAF7F2] text-[#133E2B] border border-[#E8E3D9] rounded-2xl flex items-center justify-center mb-4">
+              <BookOpen size={28} />
             </div>
-            <h3 className="text-xl font-black text-white mb-4 uppercase tracking-tight">Quản lý khóa học</h3>
-            <p className="text-gray-500 font-bold text-xs uppercase tracking-widest leading-relaxed mb-8">
+            <h3 className="text-lg font-bold text-[#1C221F] mb-2">Quản lý khóa học</h3>
+            <p className="text-xs text-[#1C221F]/60 leading-relaxed mb-6 max-w-sm">
               Bắt đầu xây dựng nội dung mới hoặc chỉnh sửa các khóa học hiện có để tối ưu hóa doanh thu.
             </p>
-            <Link href="/dashboard/instructor/courses" className="px-8 py-4 bg-[#baff02] text-[#0a0a0a] font-black rounded-xl hover:bg-[#8ec401] transition-all shadow-xl shadow-[#baff02]/20 uppercase tracking-widest text-[10px]">
+            <Link href="/dashboard/instructor/courses" className="px-6 py-3 bg-[#133E2B] text-white font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md text-xs">
               Vào danh sách khóa học
             </Link>
           </div>

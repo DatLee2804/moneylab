@@ -16,7 +16,6 @@ export const Navbar = () => {
     { name: 'Khóa học', href: '/courses' },
     { name: 'Lộ trình', href: '#roadmap' },
     { name: 'Giảng viên', href: '/instructors' },
-    { name: 'Affiliate', href: '/affiliate' },
     { name: 'Về chúng tôi', href: '/about' },
   ];
 

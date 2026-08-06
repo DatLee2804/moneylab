@@ -45,8 +45,7 @@ export const Footer = () => {
           <div>
             <h4 className="text-base font-bold mb-6 text-white uppercase tracking-wider">Dành cho đối tác</h4>
             <ul className="space-y-3.5">
-              <li><Link href="/instructor" className="text-sm text-emerald-100/70 hover:text-[#BAFF02] transition-colors">Trở thành giảng viên</Link></li>
-              <li><Link href="/affiliate" className="text-sm text-emerald-100/70 hover:text-[#BAFF02] transition-colors">Chương trình Affiliate</Link></li>
+              <li><Link href="/instructors" className="text-sm text-emerald-100/70 hover:text-[#BAFF02] transition-colors">Trở thành giảng viên</Link></li>
               <li><Link href="/about" className="text-sm text-emerald-100/70 hover:text-[#BAFF02] transition-colors">Hợp tác doanh nghiệp</Link></li>
               <li><Link href="/auth/login" className="text-sm text-emerald-100/70 hover:text-[#BAFF02] transition-colors">Hỗ trợ & Lộ trình học</Link></li>
             </ul>
