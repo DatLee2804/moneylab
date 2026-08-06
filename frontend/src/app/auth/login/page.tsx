@@ -55,12 +55,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className={cn("space-y-10 transition-all duration-500", isSocialRoleSelection ? "max-w-2xl mx-auto" : "max-w-md mx-auto")}>
+    <div className={cn("space-y-8 transition-all duration-500", isSocialRoleSelection ? "max-w-2xl mx-auto" : "max-w-md mx-auto")}>
       <div className="text-center">
-        <h1 className="text-3xl font-black text-white mb-2 leading-tight">
+        <h1 className="text-2xl lg:text-3xl font-extrabold text-[#1C221F] mb-2 leading-tight">
           {isSocialRoleSelection ? 'Chọn vai trò của bạn' : 'Chào mừng trở lại!'}
         </h1>
-        <p className="text-sm font-medium text-gray-500">
+        <p className="text-xs text-[#1C221F]/60 font-medium">
           {isSocialRoleSelection ? 'Vui lòng chọn vai trò để tiếp tục đăng nhập với Google' : 'Đăng nhập ngay để tiếp tục hành trình của bạn'}
         </p>
       </div>
@@ -72,20 +72,20 @@ export default function LoginPage() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="bg-[#141414] p-8 rounded-[40px] border border-white/5 shadow-2xl overflow-hidden relative group"
+            className="bg-white p-8 rounded-3xl border border-[#E8E3D9] shadow-xl overflow-hidden relative group"
           >
-            <div className="absolute top-0 left-0 w-full h-[6px] bg-[#baff02] opacity-80" />
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-[#133E2B]" />
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {error && (
-                <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-2xl text-rose-400 text-xs font-bold text-center">
+                <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-xl text-rose-600 text-xs font-bold text-center">
                   {error}
                 </div>
               )}
               
               <div className="space-y-4">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-4">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-[#1C221F] pl-1">
                     Email của bạn
                   </label>
                   <div className="relative">
@@ -95,18 +95,18 @@ export default function LoginPage() {
                       placeholder="email@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full px-6 py-4 bg-[#0a0a0a] border border-white/5 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 focus:outline-none transition-all text-white placeholder:text-gray-700"
+                      className="w-full px-4 py-3.5 bg-[#FAF7F2] border border-[#E8E3D9] rounded-xl text-xs font-semibold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none transition-all text-[#1C221F] placeholder:text-gray-400"
                     />
-                    <Mail className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+                    <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" size={17} />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center px-4">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">
+                <div className="space-y-1.5">
+                  <div className="flex justify-between items-center px-1">
+                    <label className="text-xs font-bold text-[#1C221F]">
                       Mật khẩu
                     </label>
-                    <Link href="#" className="text-[10px] font-black text-[#baff02] uppercase tracking-widest hover:underline">
+                    <Link href="#" className="text-xs font-bold text-[#133E2B] hover:underline">
                       Quên mật khẩu?
                     </Link>
                   </div>
@@ -117,14 +117,14 @@ export default function LoginPage() {
                       placeholder="••••••••"
                       value={formData.password}
                       onChange={(e) => setFormData({...formData, password: e.target.value})}
-                      className="w-full px-6 py-4 bg-[#0a0a0a] border border-white/5 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#baff02]/20 focus:outline-none transition-all text-white placeholder:text-gray-700"
+                      className="w-full px-4 py-3.5 bg-[#FAF7F2] border border-[#E8E3D9] rounded-xl text-xs font-semibold focus:ring-2 focus:ring-[#133E2B]/20 focus:outline-none transition-all text-[#1C221F] placeholder:text-gray-400"
                     />
                     <button 
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#baff02] transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#133E2B] transition-colors"
                     >
-                      <ShieldCheck size={18} className={showPassword ? "text-[#baff02]" : ""} />
+                      <ShieldCheck size={17} className={showPassword ? "text-[#133E2B]" : ""} />
                     </button>
                   </div>
                 </div>
@@ -133,14 +133,14 @@ export default function LoginPage() {
               <button 
                 type="submit" 
                 disabled={isLoading}
-                className="w-full py-4 bg-[#baff02] text-[#0a0a0a] rounded-2xl font-black shadow-lg shadow-[#baff02]/20 hover:bg-[#8ec401] active:bg-[#baff02] transition-all font-sans active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50 disabled:scale-100"
+                className="w-full py-3.5 bg-[#133E2B] text-white rounded-xl font-bold shadow-md hover:bg-[#0F2E1E] transition-all text-xs active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50"
               >
-                {isLoading ? <Loader2 className="animate-spin" size={20} /> : <span>Đăng nhập</span>}
+                {isLoading ? <Loader2 className="animate-spin" size={18} /> : <span>Đăng nhập</span>}
               </button>
 
-              <div className="relative py-4 flex items-center justify-center">
-                <div className="absolute w-full h-[1px] bg-white/5" />
-                <span className="relative z-10 px-4 bg-[#141414] text-[10px] font-black text-gray-500 uppercase tracking-widest">
+              <div className="relative py-2 flex items-center justify-center">
+                <div className="absolute w-full h-[1px] bg-[#E8E3D9]" />
+                <span className="relative z-10 px-3 bg-white text-[10px] font-bold text-gray-400 uppercase tracking-wider">
                   Hoặc
                 </span>
               </div>
@@ -148,10 +148,10 @@ export default function LoginPage() {
               <button 
                 type="button"
                 onClick={() => setIsSocialRoleSelection(true)}
-                className="w-full py-4 bg-[#0a0a0a] border border-white/5 text-white rounded-2xl font-bold flex items-center justify-center space-x-3 hover:bg-white/5 transition-all shadow-sm group active:scale-[0.98]"
+                className="w-full py-3.5 bg-[#FAF7F2] border border-[#E8E3D9] text-[#1C221F] rounded-xl font-bold text-xs flex items-center justify-center space-x-3 hover:bg-[#E8E3D9]/40 transition-all shadow-sm group active:scale-[0.98]"
               >
-                <div className="w-5 h-5 flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5">
+                <div className="w-4 h-4 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4">
                       <path
                         fill="#4285F4"
                         d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"
@@ -184,30 +184,30 @@ export default function LoginPage() {
           >
             <button 
               onClick={() => setIsSocialRoleSelection(false)}
-              className="flex items-center space-x-2 text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-[#baff02] transition-colors mb-2 w-fit"
+              className="flex items-center space-x-2 text-xs font-bold text-gray-500 hover:text-[#133E2B] transition-colors mb-2 w-fit"
             >
               <ArrowLeft size={14} />
               <span>Quay lại đăng nhập thường</span>
             </button>
 
             {[
-              { id: 'STUDENT', label: 'Học viên', desc: 'Sử dụng tài khoản Google để học tập', icon: <UserIcon size={24} />, color: 'bg-blue-500' },
-              { id: 'INSTRUCTOR', label: 'Giảng viên', desc: 'Sử dụng tài khoản Google để giảng dạy', icon: <GraduationCap size={24} />, color: 'bg-[#baff02]' }
+              { id: 'STUDENT', label: 'Học viên', desc: 'Sử dụng tài khoản Google để học tập', icon: <UserIcon size={22} />, color: 'bg-[#133E2B]' },
+              { id: 'INSTRUCTOR', label: 'Giảng viên', desc: 'Sử dụng tài khoản Google để giảng dạy', icon: <GraduationCap size={22} />, color: 'bg-[#0F2E1E]' }
             ].map((item) => (
               <button
                 key={item.id}
                 onClick={() => window.location.href = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/auth/google?role=${item.id}`}
-                className="group relative p-6 bg-[#141414] border border-white/5 rounded-[32px] text-left hover:border-[#baff02] transition-all shadow-sm hover:shadow-xl active:scale-[0.98]"
+                className="group relative p-5 bg-white border border-[#E8E3D9] rounded-2xl text-left hover:border-[#133E2B] transition-all shadow-sm hover:shadow-md active:scale-[0.98]"
               >
                 <div className="flex items-center space-x-4">
-                  <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-lg", item.color)}>
+                  <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-sm", item.color)}>
                     {item.icon}
                   </div>
                   <div className="flex-grow">
-                    <h3 className="font-black text-white uppercase tracking-tight">{item.label}</h3>
-                    <p className="text-xs font-medium text-gray-500">{item.desc}</p>
+                    <h3 className="font-bold text-[#1C221F]">{item.label}</h3>
+                    <p className="text-xs font-normal text-gray-500">{item.desc}</p>
                   </div>
-                  <ChevronRight className="text-gray-300 group-hover:text-[#baff02] transition-colors" size={20} />
+                  <ChevronRight className="text-gray-400 group-hover:text-[#133E2B] transition-colors" size={18} />
                 </div>
               </button>
             ))}
@@ -217,11 +217,11 @@ export default function LoginPage() {
 
       <div className="text-center">
         {!isSocialRoleSelection && (
-          <p className="text-sm font-medium text-gray-500">
+          <p className="text-xs font-medium text-gray-500">
             Chưa có tài khoản?{' '}
             <Link 
               href="/auth/register" 
-              className="text-[#baff02] font-black hover:underline"
+              className="text-[#133E2B] font-bold hover:underline"
             >
               Đăng ký ngay
             </Link>

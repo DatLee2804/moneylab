@@ -11,19 +11,15 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex flex-col relative overflow-hidden selection:bg-[#baff02]/30 selection:text-[#baff02]">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#baff02]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-
+    <div className="min-h-screen bg-[#FAF7F2] text-[#1C221F] flex flex-col relative overflow-hidden selection:bg-[#133E2B]/10 selection:text-[#133E2B]">
       {/* Header */}
-      <header className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
+      <header className="relative z-10 w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
         <Link href="/" className="flex items-center group">
-          <img src="/images/logo.jpg" alt="Money Lab Logo" className="h-10 w-auto object-contain rounded-xl group-hover:scale-105 transition-transform" />
+          <img src="/images/logo.jpg" alt="Money Lab Logo" className="h-10 w-auto object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform" />
         </Link>
         <Link 
           href="/" 
-          className="flex items-center space-x-2 text-sm font-bold text-gray-500 hover:text-[#baff02] transition-colors"
+          className="flex items-center space-x-2 text-sm font-bold text-[#1C221F]/70 hover:text-[#133E2B] transition-colors"
         >
           <ArrowLeft size={16} />
           <span>Về trang chủ</span>
@@ -43,9 +39,9 @@ export default function AuthLayout({
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 py-8 text-center">
-        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-          &copy; 2024 Money Lab - Nền tảng đào tạo Tài chính & AI thực chiến
+      <footer className="relative z-10 py-6 text-center text-xs font-medium text-[#1C221F]/50 border-t border-[#E8E3D9]">
+        <p>
+          &copy; 2026 Money Lab Academy. Tất cả quyền được bảo lưu.
         </p>
       </footer>
     </div>

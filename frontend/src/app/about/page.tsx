@@ -56,29 +56,25 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] transition-colors font-sans selection:bg-[#baff02]/30 selection:text-[#baff02]">
+    <div className="min-h-screen bg-[#FAF7F2] transition-colors font-sans text-[#1C221F] selection:bg-[#133E2B]/10 selection:text-[#133E2B]">
       <Navbar />
       
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 lg:py-32 overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-10 dark:opacity-5">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#baff02] via-transparent to-transparent" />
-          </div>
-          
+        <section className="relative py-20 lg:py-32 bg-white border-b border-[#E8E3D9]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="px-4 py-1.5 bg-[#baff02]/10 text-[#baff02] text-[10px] font-black rounded-full uppercase tracking-widest mb-6 inline-block">
+              <span className="px-4 py-1.5 bg-[#133E2B]/10 text-[#133E2B] text-xs font-bold rounded-full uppercase tracking-wider mb-6 inline-block">
                 Về Money Lab
               </span>
-              <h1 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tight">
-                Kiến tạo tương lai bằng <span className="text-[#baff02]">Trí tuệ</span> và <span className="text-[#059669]">Tài chính</span>
+              <h1 className="text-4xl md:text-6xl font-extrabold text-[#1C221F] mb-6 tracking-tight leading-tight">
+                Kiến tạo tương lai bằng <span className="text-[#133E2B]">Trí tuệ</span> và <span className="text-[#133E2B]">Tài chính</span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-bold">
+              <p className="text-base md:text-lg text-[#1C221F]/70 max-w-3xl mx-auto leading-relaxed font-normal">
                 Money Lab là nền tảng giáo dục trực tuyến hàng đầu, nơi hội tụ những chuyên gia thực chiến trong lĩnh vực AI và Tài chính, giúp bạn làm chủ công nghệ và tự chủ tài chính trong kỷ nguyên số.
               </p>
             </motion.div>
@@ -86,7 +82,7 @@ export default function AboutPage() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-12 bg-[#141414]/50 border-y border-white/5">
+        <section className="py-12 bg-[#FAF7F2] border-b border-[#E8E3D9]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, idx) => (
@@ -98,11 +94,11 @@ export default function AboutPage() {
                   transition={{ delay: idx * 0.1 }}
                   className="text-center"
                 >
-                  <div className="w-14 h-14 bg-[#141414] rounded-2xl shadow-sm flex items-center justify-center mx-auto mb-4 border border-white/5">
+                  <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mx-auto mb-3 border border-[#E8E3D9]">
                     {stat.icon}
                   </div>
-                  <h3 className="text-3xl font-black text-white mb-1">{stat.value}</h3>
-                  <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest">{stat.label}</p>
+                  <h3 className="text-2xl lg:text-3xl font-extrabold text-[#133E2B] mb-1">{stat.value}</h3>
+                  <p className="text-xs text-[#1C221F]/60 font-semibold uppercase tracking-wider">{stat.label}</p>
                 </motion.div>
               ))}
             </div>
@@ -110,7 +106,7 @@ export default function AboutPage() {
         </section>
 
         {/* Our Story Section */}
-        <section className="py-24 lg:py-32">
+        <section className="py-20 lg:py-28 bg-white border-b border-[#E8E3D9]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <motion.div
@@ -118,10 +114,10 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl md:text-4xl font-black text-white mb-8 leading-tight">
-                  Câu chuyện của chúng tôi bắt đầu từ một <span className="text-[#baff02]">Khát vọng</span>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-[#1C221F] mb-6 leading-tight">
+                  Câu chuyện của chúng tôi bắt đầu từ một <span className="text-[#133E2B]">Khát vọng</span>
                 </h2>
-                <div className="space-y-6 text-gray-500 font-bold leading-relaxed">
+                <div className="space-y-5 text-[#1C221F]/70 font-normal leading-relaxed text-sm">
                   <p>
                     Được thành lập vào năm 2023, Money Lab ra đời trong bối cảnh làn sóng Trí tuệ nhân tạo (AI) đang thay đổi mọi khía cạnh của đời sống và kinh tế. Chúng tôi nhận thấy một khoảng cách lớn giữa kiến thức hàn lâm và nhu cầu thực tế của thị trường.
                   </p>
@@ -132,17 +128,17 @@ export default function AboutPage() {
                     Tại Money Lab, mỗi khóa học là một lộ trình được thiết kế tỉ mỉ, từ cơ bản đến nâng cao, đảm bảo học viên có thể thực hành ngay sau mỗi bài giảng.
                   </p>
                 </div>
-                <div className="mt-10 flex items-center gap-4">
-                  <div className="flex -space-x-4">
+                <div className="mt-8 flex items-center gap-4">
+                  <div className="flex -space-x-3">
                     {[1, 2, 3, 4].map(i => (
-                      <div key={i} className="w-12 h-12 rounded-full border-4 border-white dark:border-[#0f172a] overflow-hidden bg-gray-200 relative">
+                      <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-gray-200 relative">
                         <Image src={`https://i.pravatar.cc/100?u=founder${i}`} alt="Founder" fill className="object-cover" />
                       </div>
                     ))}
                   </div>
                   <div>
-                    <p className="text-sm font-black text-white uppercase tracking-tight">Đội ngũ sáng lập</p>
-                    <p className="text-xs text-gray-400 font-bold">Hơn 15 năm kinh nghiệm Tài chính & Công nghệ</p>
+                    <p className="text-xs font-bold text-[#1C221F] uppercase tracking-tight">Đội ngũ sáng lập</p>
+                    <p className="text-[11px] text-[#1C221F]/60">Hơn 15 năm kinh nghiệm Tài chính & Công nghệ</p>
                   </div>
                 </div>
               </motion.div>
@@ -153,7 +149,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 className="relative"
               >
-                <div className="aspect-square rounded-[40px] overflow-hidden shadow-2xl rotate-3 relative">
+                <div className="aspect-square rounded-3xl overflow-hidden shadow-xl border border-[#E8E3D9] relative">
                   <Image 
                     src="https://picsum.photos/seed/team/1000/1000" 
                     alt="Team working" 
@@ -161,9 +157,9 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-8 -left-8 bg-[#059669] p-8 rounded-3xl shadow-xl -rotate-3 hidden md:block">
-                  <Target size={48} className="text-white mb-4" />
-                  <p className="text-white font-black text-xl leading-tight uppercase tracking-widest">Mục tiêu 1 triệu<br />học viên vào 2030</p>
+                <div className="absolute -bottom-6 -left-6 bg-[#0F2E1E] p-6 rounded-2xl shadow-xl text-white hidden md:block border border-white/10">
+                  <Target size={36} className="text-[#BAFF02] mb-2" />
+                  <p className="font-bold text-base leading-tight uppercase tracking-wider text-white">Mục tiêu 1 triệu<br />học viên vào 2030</p>
                 </div>
               </motion.div>
             </div>
@@ -171,11 +167,12 @@ export default function AboutPage() {
         </section>
 
         {/* Values Section */}
-        <section className="py-24 bg-[#141414]/50">
+        <section className="py-20 lg:py-28 bg-[#FAF7F2]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">Giá trị cốt lõi</h2>
-              <p className="text-gray-500 font-bold max-w-2xl mx-auto">Những nguyên tắc định hướng cho mọi hoạt động và quyết định của chúng tôi tại Money Lab.</p>
+            <div className="text-center mb-16 max-w-2xl mx-auto">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#133E2B] bg-[#133E2B]/10 px-3 py-1 rounded-full">Nguyên tắc hoạt động</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[#1C221F] mt-3">Giá trị cốt lõi</h2>
+              <p className="text-sm text-[#1C221F]/60 mt-2">Những nguyên tắc định hướng cho mọi hoạt động và quyết định của chúng tôi tại Money Lab.</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -186,14 +183,14 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-[#141414] p-8 rounded-3xl border border-white/5 shadow-sm hover:shadow-2xl transition-all group hover:border-[#baff02]/20"
+                  className="bg-white p-8 rounded-2xl border border-[#E8E3D9] shadow-sm hover:shadow-xl transition-all group"
                 >
-                  <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300", value.color)}>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white mb-6 bg-[#133E2B] group-hover:bg-[#0F2E1E] transition-colors">
                     {value.icon}
                   </div>
-                  <h3 className="text-xl font-black text-white mb-4 uppercase tracking-tight">{value.title}</h3>
-                  <p className="text-sm text-gray-400 dark:text-gray-400 leading-relaxed font-bold italic">
-                    "{value.description}"
+                  <h3 className="text-lg font-bold text-[#1C221F] mb-3">{value.title}</h3>
+                  <p className="text-xs text-[#1C221F]/70 leading-relaxed font-normal">
+                    {value.description}
                   </p>
                 </motion.div>
               ))}
@@ -202,27 +199,23 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-[#baff02] rounded-[40px] p-10 md:p-20 text-center relative overflow-hidden shadow-2xl shadow-[#baff02]/30">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#059669]/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
-              
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-5xl font-black text-white mb-8 leading-tight uppercase tracking-tight">
-                  Sẵn sàng bắt đầu hành trình của bạn?
-                </h2>
-                <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto font-bold uppercase tracking-widest text-sm">
-                  Tham gia cùng hàng ngàn học viên khác và bắt đầu làm chủ tương lai của bạn ngay hôm nay.
-                </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <button className="w-full sm:w-auto px-10 py-5 bg-white text-[#baff02] font-black rounded-2xl hover:bg-gray-100 transition-all shadow-xl uppercase tracking-widest text-xs">
-                    Khám phá khóa học
-                  </button>
-                  <button className="w-full sm:w-auto px-10 py-5 bg-[#baff02] border-2 border-white/20 text-[#0a0a0a] font-black rounded-2xl hover:bg-white/10 transition-all uppercase tracking-widest text-xs">
-                    Liên hệ tư vấn
-                  </button>
-                </div>
+        <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+          <div className="bg-[#0F2E1E] rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden shadow-2xl border border-white/10 text-white">
+            <div className="relative z-10 max-w-3xl mx-auto space-y-4">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-[#BAFF02]">Hành trình làm chủ tài chính</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+                Sẵn sàng bắt đầu hành trình của bạn?
+              </h2>
+              <p className="text-emerald-100/80 text-sm max-w-xl mx-auto font-normal">
+                Tham gia cùng hàng ngàn học viên khác và bắt đầu làm chủ tương lai của bạn ngay hôm nay.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <Link href="/courses" className="w-full sm:w-auto px-8 py-4 bg-white text-[#0F2E1E] font-bold rounded-xl hover:bg-[#BAFF02] transition-colors text-sm shadow-md">
+                  Khám phá khóa học
+                </Link>
+                <Link href="/auth/login" className="w-full sm:w-auto px-8 py-4 bg-[#133E2B] text-white font-bold rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm">
+                  Tạo tài khoản ngay
+                </Link>
               </div>
             </div>
           </div>
