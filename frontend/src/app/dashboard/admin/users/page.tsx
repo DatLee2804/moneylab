@@ -254,7 +254,7 @@ export default function AdminUsersPage() {
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsEmailModalOpen(false)} className="absolute inset-0 bg-black/80 backdrop-blur-md" />
             <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative bg-white rounded-[40px] overflow-hidden shadow-2xl max-w-lg w-full border border-[#E8E3D9]">
-              <div className="p-8 bg-[#133E2B] text-[#1C221F]">
+              <div className="p-8 bg-[#133E2B] text-white">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center space-x-3">
                     <Mail size={24} />
@@ -275,7 +275,7 @@ export default function AdminUsersPage() {
                     <textarea required rows={6} value={emailForm.content} onChange={(e) => setEmailForm({...emailForm, content: e.target.value})} placeholder="Viết nội dung tin nhắn tại đây..." className="w-full px-6 py-4 bg-white border border-[#E8E3D9] rounded-2xl text-sm font-bold focus:ring-2 focus:ring-[#133E2B]/20 transition-all outline-none resize-none text-[#1C221F]" />
                   </div>
                 </div>
-                <button type="submit" disabled={isSending} className="w-full py-5 bg-[#133E2B] text-[#1C221F] rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all flex items-center justify-center space-x-2">
+                <button type="submit" disabled={isSending} className="w-full py-5 bg-[#133E2B] text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all flex items-center justify-center space-x-2">
                   {isSending ? <Loader2 className="animate-spin" size={18} /> : (
                     <>
                       <Send size={18} />
@@ -297,7 +297,7 @@ export default function AdminUsersPage() {
             <motion.div initial={{ scale: 0.9, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0, y: 20 }} className="relative bg-white rounded-[40px] overflow-x-hidden overflow-y-auto max-h-[90vh] shadow-2xl max-w-2xl w-full border border-[#E8E3D9] custom-scrollbar">
               <div className="p-10 bg-white text-[#1C221F] flex items-center justify-between sticky top-0 z-10 border-b border-[#E8E3D9]">
                 <div className="flex items-center space-x-4">
-                  <div className="w-14 h-14 bg-[#133E2B] text-[#1C221F] rounded-[22px] flex items-center justify-center shadow-lg"><UserIcon size={32} /></div>
+                  <div className="w-14 h-14 bg-[#133E2B] text-white rounded-[22px] flex items-center justify-center shadow-lg"><UserIcon size={32} /></div>
                   <div>
                     <h3 className="text-2xl font-black uppercase tracking-tight">Chỉnh sửa hồ sơ</h3>
                     <p className="text-xs font-bold text-[#1C221F]/60 uppercase tracking-widest">ID: ...{editForm.id.substring(0, 8)} • {editForm.role}</p>
@@ -352,7 +352,7 @@ export default function AdminUsersPage() {
                 {/* Footer Actions */}
                 <div className="flex gap-4 pt-4">
                   <button type="button" onClick={() => setIsEditModalOpen(false)} className="flex-1 py-5 bg-white text-gray-500 rounded-3xl font-black text-xs uppercase tracking-widest hover:bg-white/5 transition-all">Hủy bỏ</button>
-                  <button type="submit" className="flex-[2] py-5 bg-[#133E2B] text-[#1C221F] rounded-3xl font-black text-xs uppercase tracking-widest shadow-xl shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all flex items-center justify-center space-x-2">
+                  <button type="submit" className="flex-[2] py-5 bg-[#133E2B] text-white rounded-3xl font-black text-xs uppercase tracking-widest shadow-xl shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all flex items-center justify-center space-x-2">
                     <ShieldCheck size={18} />
                     <span>Lưu thay đổi hồ sơ</span>
                   </button>

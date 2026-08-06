@@ -251,7 +251,7 @@ export default function InstructorPayoutsPage() {
 
                 <button 
                   disabled={isSubmitting || isLoading || !user?.bankName}
-                  className="w-full py-4 bg-[#133E2B] text-[#1C221F] rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center space-x-2 shadow-lg shadow-[#133E2B]/20"
+                  className="w-full py-4 bg-[#133E2B] text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center space-x-2 shadow-lg shadow-[#133E2B]/20"
                 >
                   {isSubmitting ? <Loader2 className="animate-spin" size={18} /> : <Plus size={18} />}
                   <span>Gửi yêu cầu rút tiền</span>

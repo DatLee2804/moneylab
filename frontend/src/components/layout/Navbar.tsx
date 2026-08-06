@@ -74,7 +74,7 @@ export const Navbar = () => {
               <>
                 <Link 
                   href={getDashboardPath()} 
-                  className="flex items-center space-x-2 px-4 py-2.5 bg-[#133E2B] text-[#1C221F] rounded-xl hover:bg-[#0F2E1E] transition-all shadow-sm whitespace-nowrap"
+                  className="flex items-center space-x-2 px-4 py-2.5 bg-[#133E2B] text-white rounded-xl hover:bg-[#0F2E1E] transition-all shadow-sm whitespace-nowrap"
                   title="Vào Dashboard"
                 >
                   <LayoutDashboard size={17} className="text-[#1C221F]" />
@@ -94,7 +94,7 @@ export const Navbar = () => {
                 <Link href="/auth/login" className="px-3 py-2 text-sm font-bold text-[#133E2B] hover:text-[#0F2E1E] transition-colors whitespace-nowrap">
                   Đăng nhập
                 </Link>
-                <Link href="/auth/login" className="px-5 py-2.5 bg-[#133E2B] text-[#1C221F] text-sm font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md shadow-[#133E2B]/10 active:scale-95 whitespace-nowrap">
+                <Link href="/auth/login" className="px-5 py-2.5 bg-[#133E2B] text-white text-sm font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md shadow-[#133E2B]/10 active:scale-95 whitespace-nowrap">
                   Đăng ký ngay
                 </Link>
               </>
@@ -140,7 +140,7 @@ export const Navbar = () => {
           <div className="pt-4 flex flex-col space-y-2.5">
             {isAuthenticated ? (
                <>
-                 <Link href={getDashboardPath()} className="w-full py-3 text-center text-sm font-bold bg-[#133E2B] text-[#1C221F] rounded-xl shadow-md" onClick={() => setIsMenuOpen(false)}>
+                 <Link href={getDashboardPath()} className="w-full py-3 text-center text-sm font-bold bg-[#133E2B] text-white rounded-xl shadow-md" onClick={() => setIsMenuOpen(false)}>
                     Vào Dashboard của bạn
                  </Link>
                  <button 
@@ -158,7 +158,7 @@ export const Navbar = () => {
                 <Link href="/auth/login" className="w-full py-3 text-center text-sm font-bold text-[#133E2B] bg-white border border-[#E8E3D9] rounded-xl" onClick={() => setIsMenuOpen(false)}>
                   Đăng nhập
                 </Link>
-                <Link href="/auth/login" className="w-full py-3 text-center text-sm font-bold bg-[#133E2B] text-[#1C221F] rounded-xl shadow-md">
+                <Link href="/auth/login" className="w-full py-3 text-center text-sm font-bold bg-[#133E2B] text-white rounded-xl shadow-md">
                   Đăng ký ngay
                 </Link>
               </>

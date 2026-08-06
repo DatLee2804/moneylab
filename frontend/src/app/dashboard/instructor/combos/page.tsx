@@ -164,7 +164,7 @@ export default function InstructorCombosPage() {
         </div>
         <button 
           onClick={handleOpenCreateModal}
-          className="flex items-center space-x-2 px-4 py-2 bg-[#133E2B] text-[#1C221F] rounded-xl font-bold hover:bg-[#d0ff00] transition-colors whitespace-nowrap"
+          className="flex items-center space-x-2 px-4 py-2 bg-[#133E2B] text-white rounded-xl font-bold hover:bg-[#d0ff00] transition-colors whitespace-nowrap"
         >
           <Plus size={18} />
           <span>Tạo Combo Mới</span>

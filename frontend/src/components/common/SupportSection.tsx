@@ -130,7 +130,7 @@ export const SupportSection = ({ role }: { role: string }) => {
         {(role === 'student' || role === 'instructor') && (
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center space-x-2 px-6 py-3 bg-[#133E2B] text-[#1C221F] rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-[#133E2B]/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            className="flex items-center space-x-2 px-6 py-3 bg-[#133E2B] text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-[#133E2B]/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             <Plus size={18} />
             <span>Tạo yêu cầu mới</span>
@@ -324,7 +324,7 @@ export const SupportSection = ({ role }: { role: string }) => {
 
                   <button 
                    type="submit"
-                   className="w-full py-5 bg-[#133E2B] text-[#1C221F] rounded-[32px] font-black text-xs uppercase tracking-widest shadow-xl shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all flex items-center justify-center space-x-2"
+                   className="w-full py-5 bg-[#133E2B] text-white rounded-[32px] font-black text-xs uppercase tracking-widest shadow-xl shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all flex items-center justify-center space-x-2"
                   >
                    <Send size={18} />
                    <span>Gửi yêu cầu hỗ trợ</span>
@@ -407,7 +407,7 @@ export const SupportSection = ({ role }: { role: string }) => {
                     <button 
                       onClick={() => handleUpdateStatus(selectedTicket.id, 'CLOSED')}
                       disabled={isProcessing || !replyMessage.trim()}
-                      className="py-4 bg-[#133E2B] text-[#1C221F] rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all"
+                      className="py-4 bg-[#133E2B] text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all"
                     >
                       Hoàn tất & Đóng
                     </button>

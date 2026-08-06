@@ -214,7 +214,7 @@ export default function AboutPage() {
                 <Link href="/courses" className="w-full sm:w-auto px-8 py-4 bg-white text-[#0F2E1E] font-bold rounded-xl hover:bg-[#133E2B] transition-colors text-sm shadow-md">
                   Khám phá khóa học
                 </Link>
-                <Link href="/auth/login" className="w-full sm:w-auto px-8 py-4 bg-[#133E2B] text-[#1C221F] font-bold rounded-xl border border-[#E8E3D9] hover:bg-white/10 transition-colors text-sm">
+                <Link href="/auth/login" className="w-full sm:w-auto px-8 py-4 bg-[#133E2B] text-white font-bold rounded-xl border border-[#E8E3D9] hover:bg-white/10 transition-colors text-sm">
                   Tạo tài khoản ngay
                 </Link>
               </div>

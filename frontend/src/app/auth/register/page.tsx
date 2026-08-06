@@ -241,7 +241,7 @@ export default function RegisterPage() {
                 <button 
                   type="submit" 
                   disabled={isLoading}
-                  className="w-full py-4 bg-[#133E2B] text-[#1C221F] rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all font-sans active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50"
+                  className="w-full py-4 bg-[#133E2B] text-white rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all font-sans active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50"
                 >
                   {isLoading ? <Loader2 className="animate-spin" size={20} /> : <span>Đăng ký ngay</span>}
                 </button>

@@ -133,7 +133,7 @@ export default function LoginPage() {
               <button 
                 type="submit" 
                 disabled={isLoading}
-                className="w-full py-3.5 bg-[#133E2B] text-[#1C221F] rounded-xl font-bold shadow-md hover:bg-[#0F2E1E] transition-all text-xs active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50"
+                className="w-full py-3.5 bg-[#133E2B] text-white rounded-xl font-bold shadow-md hover:bg-[#0F2E1E] transition-all text-xs active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50"
               >
                 {isLoading ? <Loader2 className="animate-spin" size={18} /> : <span>Đăng nhập</span>}
               </button>

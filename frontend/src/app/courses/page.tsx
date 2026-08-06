@@ -95,7 +95,7 @@ export default function CourseCatalog() {
                   className={cn(
                     "px-5 py-3 rounded-xl text-xs font-bold whitespace-nowrap transition-all",
                     activeCategory === cat 
-                      ? "bg-[#133E2B] text-[#1C221F] shadow-md" 
+                      ? "bg-[#133E2B] text-white shadow-md" 
                       : "bg-white text-[#1C221F] border border-[#E8E3D9] hover:bg-[#E8E3D9]/40"
                   )}
                 >

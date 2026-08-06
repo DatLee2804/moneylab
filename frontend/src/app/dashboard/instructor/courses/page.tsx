@@ -358,7 +358,7 @@ export default function InstructorCoursesPage() {
               <div className="flex justify-between items-end mb-4 px-2">
                 <div>
                   <div className="flex items-center space-x-3 mb-1">
-                    <span className="text-[10px] font-black text-[#1C221F] bg-[#133E2B]/10 px-2 py-0.5 rounded uppercase tracking-widest">Chương {sectionIndex + 1}</span>
+                    <span className="text-[10px] font-black text-white bg-[#133E2B]/10 px-2 py-0.5 rounded uppercase tracking-widest">Chương {sectionIndex + 1}</span>
                     <h3 className="text-xl font-black text-[#1C221F] tracking-tight">{section.title}</h3>
                   </div>
                 </div>

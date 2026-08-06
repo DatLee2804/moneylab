@@ -93,7 +93,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF7F2] font-sans text-[#1C221F] selection:bg-[#133E2B]/10 selection:text-[#133E2B]">
       {/* Top Banner Tag */}
-      <div className="bg-[#133E2B] text-[#1C221F] py-2 px-4 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2">
+      <div className="bg-[#133E2B] text-white py-2 px-4 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2">
         <Sparkles size={14} className="animate-pulse" />
         <span>Ưu đãi đặc biệt: Giảm 30% cho học viên mới đăng ký trong tuần này!</span>
         <Link href="/courses" className="underline font-black hover:opacity-80 ml-2">Khám phá ngay →</Link>
@@ -146,7 +146,7 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link 
                   href="/courses" 
-                  className="px-8 py-4 bg-[#133E2B] text-[#1C221F] font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-lg shadow-[#133E2B]/15 flex items-center space-x-2 group"
+                  className="px-8 py-4 bg-[#133E2B] text-white font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-lg shadow-[#133E2B]/15 flex items-center space-x-2 group"
                 >
                   <span>Khám phá ngay</span>
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -187,7 +187,7 @@ export default function HomePage() {
                     <h4 className="text-sm font-bold text-[#1C221F]">Chuyên gia đồng hành 1:1</h4>
                     <p className="text-xs text-emerald-100/70">Học thực chiến & giải đáp thắc mắc 24/7</p>
                   </div>
-                  <div className="w-10 h-10 bg-[#133E2B] text-[#1C221F] rounded-xl flex items-center justify-center shrink-0 font-bold shadow-md">
+                  <div className="w-10 h-10 bg-[#133E2B] text-white rounded-xl flex items-center justify-center shrink-0 font-bold shadow-md">
                     <CheckCircle size={20} />
                   </div>
                 </div>
@@ -207,7 +207,7 @@ export default function HomePage() {
                   onClick={() => setSelectedCategory(cat.id)}
                   className={`flex items-center space-x-2 px-5 py-2.5 rounded-full text-xs font-bold transition-all shrink-0 ${
                     selectedCategory === cat.id
-                      ? 'bg-[#133E2B] text-[#1C221F] shadow-md'
+                      ? 'bg-[#133E2B] text-white shadow-md'
                       : 'bg-[#FAF7F2] text-[#1C221F] hover:bg-[#E8E3D9]/60'
                   }`}
                 >

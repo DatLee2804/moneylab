@@ -64,7 +64,7 @@ export const Footer = () => {
                   className="w-full pl-9 pr-3 py-2.5 bg-white/10 border border-[#E8E3D9] rounded-xl text-sm text-[#1C221F] placeholder:text-emerald-100/40 focus:outline-none focus:ring-1 focus:ring-[#133E2B]"
                 />
               </div>
-              <button className="px-4 py-2.5 bg-[#133E2B] text-[#1C221F] text-sm font-bold rounded-xl hover:bg-[#a3e000] transition-colors shrink-0">
+              <button className="px-4 py-2.5 bg-[#133E2B] text-white text-sm font-bold rounded-xl hover:bg-[#a3e000] transition-colors shrink-0">
                 Gửi
               </button>
             </form>

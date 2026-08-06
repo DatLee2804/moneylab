@@ -144,7 +144,7 @@ export default function ManagerDashboard() {
                 <div className={cn("p-3 rounded-2xl", stat.bg)}>
                   {stat.icon}
                 </div>
-                <span className="text-xs font-black text-[#1C221F] bg-[#133E2B]/10 px-2 py-1 rounded-lg">{stat.change}</span>
+                <span className="text-xs font-black text-white bg-[#133E2B]/10 px-2 py-1 rounded-lg">{stat.change}</span>
               </div>
               <h4 className="text-3xl font-black text-[#1C221F] mb-1">{stat.value}</h4>
               <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">{stat.label}</p>

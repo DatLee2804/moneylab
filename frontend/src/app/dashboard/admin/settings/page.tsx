@@ -112,7 +112,7 @@ export default function AdminSettingsPage() {
                                     }}
                                     className="w-24 px-4 py-3 bg-white border border-[#E8E3D9] rounded-xl text-center text-[#1C221F] font-black text-xl focus:ring-2 focus:ring-[#133E2B]/20 transition-all outline-none"
                                 />
-                                <span className="absolute -top-3 -right-2 bg-[#133E2B] text-[#1C221F] text-[10px] font-black px-2 py-0.5 rounded-lg shadow-lg">%</span>
+                                <span className="absolute -top-3 -right-2 bg-[#133E2B] text-white text-[10px] font-black px-2 py-0.5 rounded-lg shadow-lg">%</span>
                             </div>
                         </div>
                     </div>

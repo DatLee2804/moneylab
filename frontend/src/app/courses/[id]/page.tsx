@@ -656,7 +656,7 @@ export default function CourseDetail() {
                             "w-full py-5 font-black rounded-2xl transition-all shadow-xl active:scale-95 uppercase tracking-[0.2em] text-xs flex items-center justify-center space-x-3",
                             isEnrolling 
                               ? "bg-gray-800 text-gray-500 cursor-not-allowed border border-[#E8E3D9]" 
-                              : "bg-[#133E2B] text-[#1C221F] hover:bg-[#8ec401] shadow-[#133E2B]/20"
+                              : "bg-[#133E2B] text-white hover:bg-[#8ec401] shadow-[#133E2B]/20"
                           )}
                         >
                           {isEnrolling ? (

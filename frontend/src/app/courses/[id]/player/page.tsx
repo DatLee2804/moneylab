@@ -292,7 +292,7 @@ export default function CoursePlayer() {
                     </div>
                     <Link 
                       href={`/courses/${course?.id}`}
-                      className="px-6 py-3 bg-[#133E2B] text-black font-bold rounded-xl hover:bg-[#8ec401] transition-colors mt-2"
+                      className="px-6 py-3 bg-[#133E2B] text-white font-bold rounded-xl hover:bg-[#8ec401] transition-colors mt-2"
                     >
                       Đăng ký ngay
                     </Link>
@@ -419,7 +419,7 @@ export default function CoursePlayer() {
                           <button
                             onClick={submitComment}
                             disabled={!newComment.trim() || isSubmittingComment}
-                            className="px-4 py-2 bg-[#133E2B] text-black font-bold text-sm rounded-lg hover:bg-[#133E2B]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
+                            className="px-4 py-2 bg-[#133E2B] text-white font-bold text-sm rounded-lg hover:bg-[#133E2B]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
                           >
                             {isSubmittingComment ? <Loader2 size={16} className="animate-spin" /> : <MessageSquare size={16} />}
                             <span>Gửi bình luận</span>
@@ -468,7 +468,7 @@ export default function CoursePlayer() {
                 className={cn(
                   "px-6 py-3 border rounded-xl font-bold uppercase text-xs transition-colors shrink-0 flex items-center space-x-2",
                   activeLesson && completedLessons.includes(activeLesson.id) 
-                    ? "bg-[#133E2B] text-black border-[#133E2B]"
+                    ? "bg-[#133E2B] text-white border-[#133E2B]"
                     : "bg-[#133E2B]/10 border-[#133E2B]/20 text-[#1C221F] hover:bg-[#133E2B] hover:text-black"
                 )}
               >

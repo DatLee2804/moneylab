@@ -115,7 +115,7 @@ export default function StudentDashboard() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div className="w-12 h-12 bg-[#133E2B] text-[#1C221F] rounded-full flex items-center justify-center shadow-xl">
+                      <div className="w-12 h-12 bg-[#133E2B] text-white rounded-full flex items-center justify-center shadow-xl">
                         <Play size={20} fill="currentColor" className="ml-1" />
                       </div>
                     </div>
@@ -143,7 +143,7 @@ export default function StudentDashboard() {
                         
                         <div className="flex justify-between items-center pt-1">
                           <span className="text-[10px] font-bold text-gray-500 uppercase">Lộ trình học</span>
-                          <div className="px-3 py-1.5 bg-[#133E2B] text-[#1C221F] rounded-lg text-xs font-bold shadow-sm group-hover:bg-[#0F2E1E] transition-all">
+                          <div className="px-3 py-1.5 bg-[#133E2B] text-white rounded-lg text-xs font-bold shadow-sm group-hover:bg-[#0F2E1E] transition-all">
                             Tiếp tục học
                           </div>
                         </div>
@@ -161,7 +161,7 @@ export default function StudentDashboard() {
             </div>
             <h3 className="text-lg font-bold text-[#1C221F] mb-1">Bạn chưa tham gia khóa học nào</h3>
             <p className="text-xs text-[#1C221F]/60 font-medium mb-6">Bạn hãy khám phá danh sách khóa học để bắt đầu hành trình mới.</p>
-            <Link href="/courses" className="px-6 py-3 bg-[#133E2B] text-[#1C221F] font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md text-xs">
+            <Link href="/courses" className="px-6 py-3 bg-[#133E2B] text-white font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md text-xs">
               Khám phá khóa học
             </Link>
           </div>
