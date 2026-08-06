@@ -38,32 +38,31 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3">
+          <div className="flex items-center shrink-0">
+            <Link href="/" className="flex items-center">
               <img src="/images/logo.jpg" alt="Money Lab Logo" className="h-9 md:h-11 w-auto object-contain rounded-lg shadow-sm" />
-              <span className="text-xl font-black text-[#133E2B] tracking-tight hidden sm:inline-block">MONEY LAB</span>
             </Link>
           </div>
 
           {/* Search Bar - Desktop */}
-          <div className="hidden lg:flex flex-grow max-w-sm mx-8">
+          <div className="hidden lg:flex max-w-[240px] xl:max-w-xs mx-6">
             <div className="relative w-full">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={17} />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
               <input 
                 type="text" 
-                placeholder="Tìm kiếm khóa học AI, Tài chính..." 
-                className="w-full pl-10 pr-4 py-2 bg-white border border-[#E8E3D9] rounded-full text-sm text-[#1C221F] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all shadow-sm"
+                placeholder="Tìm kiếm khóa học..." 
+                className="w-full pl-9 pr-4 py-2 bg-white border border-[#E8E3D9] rounded-full text-xs text-[#1C221F] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#133E2B]/20 transition-all shadow-sm"
               />
             </div>
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center space-x-7">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold text-[#1C221F]/80 hover:text-[#133E2B] transition-colors"
+                className="text-sm font-semibold text-[#1C221F]/80 hover:text-[#133E2B] transition-colors whitespace-nowrap"
               >
                 {link.name}
               </Link>
@@ -71,12 +70,12 @@ export const Navbar = () => {
           </nav>
 
           {/* Actions */}
-          <div className="hidden lg:flex items-center space-x-4 ml-6">
+          <div className="hidden lg:flex items-center space-x-3 xl:space-x-4 ml-4 shrink-0">
             {isAuthenticated ? (
               <>
                 <Link 
                   href={getDashboardPath()} 
-                  className="flex items-center space-x-2 px-4 py-2.5 bg-[#133E2B] text-white rounded-xl hover:bg-[#0F2E1E] transition-all shadow-sm"
+                  className="flex items-center space-x-2 px-4 py-2.5 bg-[#133E2B] text-white rounded-xl hover:bg-[#0F2E1E] transition-all shadow-sm whitespace-nowrap"
                   title="Vào Dashboard"
                 >
                   <LayoutDashboard size={17} className="text-[#BAFF02]" />
@@ -85,7 +84,7 @@ export const Navbar = () => {
                 <NotificationBell />
                 <button 
                   onClick={() => logout()}
-                  className="w-9 h-9 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center border border-rose-200 hover:bg-rose-600 hover:text-white transition-all text-sm"
+                  className="w-9 h-9 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center border border-rose-200 hover:bg-rose-600 hover:text-white transition-all text-sm shrink-0"
                   title="Đăng xuất"
                 >
                   <LogOut size={16} />
@@ -93,10 +92,10 @@ export const Navbar = () => {
               </>
             ) : (
               <>
-                <Link href="/auth/login" className="px-4 py-2 text-sm font-bold text-[#133E2B] hover:text-[#0F2E1E] transition-colors">
+                <Link href="/auth/login" className="px-3 py-2 text-sm font-bold text-[#133E2B] hover:text-[#0F2E1E] transition-colors whitespace-nowrap">
                   Đăng nhập
                 </Link>
-                <Link href="/auth/login" className="px-6 py-2.5 bg-[#133E2B] text-white text-sm font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md shadow-[#133E2B]/10 active:scale-95">
+                <Link href="/auth/login" className="px-5 py-2.5 bg-[#133E2B] text-white text-sm font-bold rounded-xl hover:bg-[#0F2E1E] transition-all shadow-md shadow-[#133E2B]/10 active:scale-95 whitespace-nowrap">
                   Đăng ký ngay
                 </Link>
               </>
