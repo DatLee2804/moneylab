@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Share2, TrendingUp, DollarSign, Users, MousePointer2, Copy, CheckCircle, Sparkles, Gift, ShieldCheck, Zap, ChevronDown } from 'lucide-react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
