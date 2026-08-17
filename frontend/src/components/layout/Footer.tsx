@@ -10,7 +10,7 @@ export const Footer = () => {
           {/* Col 1: Brand & Desc */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center space-x-3">
-              <img src="/images/logo.png" alt="Money Lab Logo" className="h-10 w-auto object-contain rounded-lg bg-white p-1" />
+              <img src="/images/logo.png" alt="Money Lab Logo" className="h-10 w-auto object-contain" />
               <span className="text-xl font-black text-white tracking-tight">MONEY LAB</span>
             </Link>
             <p className="text-emerald-100/80 text-sm leading-relaxed font-normal">
