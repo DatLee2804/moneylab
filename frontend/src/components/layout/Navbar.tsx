@@ -39,7 +39,7 @@ export const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center shrink-0">
             <Link href="/" className="flex items-center">
-              <img src="/images/logo.jpg" alt="Money Lab Logo" className="h-9 md:h-11 w-auto object-contain rounded-lg shadow-sm" />
+              <img src="/images/logo.png" alt="Money Lab Logo" className="h-9 md:h-11 w-auto object-contain rounded-lg shadow-sm" />
             </Link>
           </div>
 

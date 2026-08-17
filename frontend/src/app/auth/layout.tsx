@@ -15,7 +15,7 @@ export default function AuthLayout({
       {/* Header */}
       <header className="relative z-10 w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
         <Link href="/" className="flex items-center group">
-          <img src="/images/logo.jpg" alt="Money Lab Logo" className="h-10 w-auto object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform" />
+          <img src="/images/logo.png" alt="Money Lab Logo" className="h-10 w-auto object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform" />
         </Link>
         <Link 
           href="/" 
