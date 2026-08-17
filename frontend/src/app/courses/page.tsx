@@ -128,7 +128,7 @@ export default function CourseCatalog() {
                       alt={course.title} 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#0F2E1E] text-[#1C221F] text-[10px] font-bold rounded-md shadow-sm uppercase tracking-wider">
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#0F2E1E] text-white text-[10px] font-bold rounded-md shadow-sm uppercase tracking-wider">
                       {course.category || 'Tài chính'}
                     </div>
                   </div>

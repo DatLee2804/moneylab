@@ -181,10 +181,10 @@ export default function HomePage() {
                 </div>
 
                 {/* Floating Dark Box */}
-                <div className="absolute bottom-6 left-6 right-6 p-5 bg-[#0F2E1E] text-[#1C221F] rounded-2xl shadow-xl border border-[#E8E3D9] flex items-center justify-between">
+                <div className="absolute bottom-6 left-6 right-6 p-5 bg-[#0F2E1E] text-white rounded-2xl shadow-xl border border-[#E8E3D9] flex items-center justify-between">
                   <div className="space-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#1C221F]">Lộ trình chuẩn chỉnh</span>
-                    <h4 className="text-sm font-bold text-[#1C221F]">Chuyên gia đồng hành 1:1</h4>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-300">Lộ trình chuẩn chỉnh</span>
+                    <h4 className="text-sm font-bold text-white">Chuyên gia đồng hành 1:1</h4>
                     <p className="text-xs text-emerald-100/70">Học thực chiến & giải đáp thắc mắc 24/7</p>
                   </div>
                   <div className="w-10 h-10 bg-[#133E2B] text-white rounded-xl flex items-center justify-center shrink-0 font-bold shadow-md">
@@ -257,7 +257,7 @@ export default function HomePage() {
                       alt={course.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <span className="absolute top-3 left-3 bg-[#0F2E1E] text-[#1C221F] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
+                    <span className="absolute top-3 left-3 bg-[#0F2E1E] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
                       {course.category || 'Tài chính'}
                     </span>
                   </div>
@@ -404,10 +404,10 @@ export default function HomePage() {
 
         {/* 7-DAY FREE TRIAL CTA BAR */}
         <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-16">
-          <div className="bg-[#0F2E1E] text-[#1C221F] rounded-3xl p-8 sm:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-between border border-[#E8E3D9] relative overflow-hidden">
+          <div className="bg-[#0F2E1E] text-white rounded-3xl p-8 sm:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-between border border-[#E8E3D9] relative overflow-hidden">
             <div className="space-y-3 text-center lg:text-left z-10">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-[#1C221F]">Bắt đầu trải nghiệm</span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#1C221F]">Học thử miễn phí trong 7 ngày</h2>
+              <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-300">Bắt đầu trải nghiệm</span>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-white">Học thử miễn phí trong 7 ngày</h2>
               <p className="text-sm text-emerald-100/80 max-w-xl">
                 Truy cập toàn bộ hệ thống bài giảng mẫu, tài nguyên công cụ AI và cộng đồng hỗ trợ mà không tốn chi phí.
               </p>
