@@ -230,11 +230,11 @@ export default function CourseDetail() {
       <Navbar />
       
       {/* Top Banner / Breadcrumbs */}
-      <div className="bg-[#111111] border-b border-[#E8E3D9] py-4">
+      <div className="bg-[#FAF7F2] border-b border-[#E8E3D9] py-4">
         <div className="max-w-7xl mx-auto px-4 flex items-center space-x-2 text-xs font-bold text-gray-500">
-          <Link href="/" className="hover:text-[#1C221F] transition-colors">Trang chủ</Link>
+          <Link href="/" className="hover:text-[#133E2B] transition-colors">Trang chủ</Link>
           <ChevronRight size={12} />
-          <Link href="/courses" className="hover:text-[#1C221F] transition-colors">Khóa học</Link>
+          <Link href="/courses" className="hover:text-[#133E2B] transition-colors">Khóa học</Link>
           <ChevronRight size={12} />
           <span className="text-gray-600 line-clamp-1">{course.title}</span>
         </div>
@@ -341,58 +341,58 @@ export default function CourseDetail() {
             </div>
 
             {/* 3. Giới thiệu khoá học */}
-            <div className="bg-[#111111] rounded-[2rem] p-8 lg:p-10 border border-[#E8E3D9]">
+            <div className="bg-[#FAF7F2] rounded-[2rem] p-8 lg:p-10 border border-[#E8E3D9]">
               <h3 className="text-xl font-black mb-6 flex items-center space-x-3">
                 <div className="w-1.5 h-6 bg-[#133E2B] rounded-full" />
                 <span>Giới thiệu khoá học</span>
               </h3>
               <div 
-                className="prose prose-invert max-w-none text-gray-500 font-medium leading-[1.8] text-sm course-description-content"
+                className="prose max-w-none text-gray-600 font-medium leading-[1.8] text-sm course-description-content"
                 dangerouslySetInnerHTML={{ __html: course.description }}
               />
             </div>
 
             <style jsx global>{`
               .course-description-content * {
-                color: #9ca3af !important;
+                color: #4b5563 !important;
               }
               .course-description-content strong, 
               .course-description-content h1, 
               .course-description-content h2, 
               .course-description-content h3 {
-                color: #ffffff !important;
+                color: #1C221F !important;
               }
             `}</style>
 
             {/* 4. Khoá học bao gồm */}
-            <div className="bg-[#111111] rounded-[2rem] p-8 lg:p-10 border border-[#E8E3D9]">
+            <div className="bg-[#FAF7F2] rounded-[2rem] p-8 lg:p-10 border border-[#E8E3D9]">
               <h3 className="text-xl font-black mb-8 flex items-center space-x-3">
                 <div className="w-1.5 h-6 bg-[#133E2B] rounded-full" />
                 <span>Khoá học bao gồm</span>
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
-                <div className="flex items-center space-x-4 text-gray-600">
-                  <Play size={20} className="text-[#1C221F]" />
+                <div className="flex items-center space-x-4 text-gray-700">
+                  <Play size={20} className="text-[#133E2B]" />
                   <span className="text-sm font-bold">{course.totalLessons} bài học video</span>
                 </div>
-                <div className="flex items-center space-x-4 text-gray-600">
-                  <Clock size={20} className="text-[#1C221F]" />
+                <div className="flex items-center space-x-4 text-gray-700">
+                  <Clock size={20} className="text-[#133E2B]" />
                   <span className="text-sm font-bold">{formatDuration(course.totalDuration)} nội dung</span>
                 </div>
-                <div className="flex items-center space-x-4 text-gray-600">
-                  <Shield size={20} className="text-[#1C221F]" />
+                <div className="flex items-center space-x-4 text-gray-700">
+                  <Shield size={20} className="text-[#133E2B]" />
                   <span className="text-sm font-bold">Truy cập trọn đời</span>
                 </div>
-                <div className="flex items-center space-x-4 text-gray-600">
-                  <Smartphone size={20} className="text-[#1C221F]" />
+                <div className="flex items-center space-x-4 text-gray-700">
+                  <Smartphone size={20} className="text-[#133E2B]" />
                   <span className="text-sm font-bold">Xem trên mọi thiết bị</span>
                 </div>
-                <div className="flex items-center space-x-4 text-gray-600">
-                  <Award size={20} className="text-[#1C221F]" />
+                <div className="flex items-center space-x-4 text-gray-700">
+                  <Award size={20} className="text-[#133E2B]" />
                   <span className="text-sm font-bold">Cấp chứng chỉ hoàn thành</span>
                 </div>
-                <div className="flex items-center space-x-4 text-gray-600">
-                  <MessageCircle size={20} className="text-[#1C221F]" />
+                <div className="flex items-center space-x-4 text-gray-700">
+                  <MessageCircle size={20} className="text-[#133E2B]" />
                   <span className="text-sm font-bold">Hỗ trợ giảng viên 24/7</span>
                 </div>
               </div>
@@ -411,8 +411,8 @@ export default function CourseDetail() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {course.includedCourses?.map((included: any) => (
-                    <Link href={`/courses/${included.id}`} key={included.id} className="bg-[#111111] p-4 rounded-2xl border border-[#E8E3D9] flex items-center space-x-4 hover:border-[#133E2B]/50 transition-colors group">
-                      <div className="relative w-24 h-16 rounded-lg overflow-hidden bg-white/5 flex-shrink-0">
+                    <Link href={`/courses/${included.id}`} key={included.id} className="bg-[#FAF7F2] p-4 rounded-2xl border border-[#E8E3D9] flex items-center space-x-4 hover:border-[#133E2B]/50 transition-colors group">
+                      <div className="relative w-24 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
                         {included.coverImage ? (
                           <Image src={included.coverImage} fill className="object-cover group-hover:scale-105 transition-transform" alt={included.title} />
                         ) : (
@@ -420,7 +420,7 @@ export default function CourseDetail() {
                         )}
                       </div>
                       <div className="flex-grow">
-                        <h4 className="text-sm font-bold text-[#1C221F] line-clamp-1 group-hover:text-[#1C221F] transition-colors">{included.title}</h4>
+                        <h4 className="text-sm font-bold text-[#1C221F] line-clamp-1 group-hover:text-[#133E2B] transition-colors">{included.title}</h4>
                         <p className="text-[10px] text-gray-500 mt-1">{included.instructor?.name}</p>
                         <div className="mt-2 flex items-baseline space-x-2">
                           <span className="text-xs font-bold text-[#1C221F]">{included.discountPrice ? formatPrice(included.discountPrice) : formatPrice(included.price)}</span>
@@ -448,26 +448,26 @@ export default function CourseDetail() {
                     <div 
                       key={section.id} 
                       className={cn(
-                        "bg-[#111111] rounded-3xl border border-[#E8E3D9] overflow-hidden transition-all",
+                        "bg-[#FAF7F2] rounded-3xl border border-[#E8E3D9] overflow-hidden transition-all",
                         openSections.includes(section.id) ? "ring-1 ring-[#133E2B]/20" : ""
                       )}
                     >
                       <button 
                         onClick={() => toggleSection(section.id)}
-                        className="w-full flex items-center justify-between p-6 hover:bg-white/5 transition-colors group"
+                        className="w-full flex items-center justify-between p-6 hover:bg-[#133E2B]/5 transition-colors group"
                       >
                         <div className="flex items-center space-x-4 text-left">
-                          <div className="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-[10px] font-black group-hover:bg-[#133E2B] group-hover:text-[#0a0a0a] transition-all">
+                          <div className="w-8 h-8 rounded-xl bg-[#133E2B]/10 flex items-center justify-center text-[10px] font-black text-[#133E2B] group-hover:bg-[#133E2B] group-hover:text-white transition-all">
                             {idx + 1}
                           </div>
                           <div>
-                            <p className="text-sm font-black group-hover:text-[#1C221F] transition-colors">{section.title}</p>
+                            <p className="text-sm font-black group-hover:text-[#133E2B] transition-colors">{section.title}</p>
                             <p className="text-[10px] text-gray-500 font-bold uppercase mt-1">{section.lessons.length} bài học</p>
                           </div>
                         </div>
                         <ChevronDown 
                           size={18} 
-                          className={cn("text-gray-500 transition-transform duration-300", openSections.includes(section.id) && "rotate-180 text-[#1C221F]")} 
+                          className={cn("text-gray-500 transition-transform duration-300", openSections.includes(section.id) && "rotate-180 text-[#133E2B]")} 
                         />
                       </button>
                       
@@ -489,17 +489,17 @@ export default function CourseDetail() {
                                 }}
                                 className={cn(
                                   "p-5 pl-8 flex items-center justify-between group transition-colors",
-                                  (course.isFree || lesson.isPreview) ? "cursor-pointer hover:bg-white/5" : "cursor-not-allowed opacity-50"
+                                  (course.isFree || lesson.isPreview) ? "cursor-pointer hover:bg-[#133E2B]/5" : "cursor-not-allowed opacity-50"
                                 )}
                               >
                                 <div className="flex items-center space-x-4">
                                   <div className="text-gray-600">
-                                    {lesson.isPreview || course.isFree ? <Play size={14} fill="currentColor" className="text-[#1C221F]" /> : <Lock size={14} />}
+                                    {lesson.isPreview || course.isFree ? <Play size={14} fill="currentColor" className="text-[#133E2B]" /> : <Lock size={14} />}
                                   </div>
                                   <div className="flex flex-col">
-                                    <span className="text-sm font-bold text-gray-600">{lesson.title}</span>
+                                    <span className="text-sm font-bold text-gray-700">{lesson.title}</span>
                                     {(lesson.isPreview || course.isFree) && (
-                                      <span className="text-[9px] text-[#1C221F] font-black uppercase tracking-widest mt-0.5">
+                                      <span className="text-[9px] text-[#133E2B] font-black uppercase tracking-widest mt-0.5">
                                         {course.isFree ? 'Miễn phí' : 'Học thử miễn phí'}
                                       </span>
                                     )}
@@ -518,7 +518,7 @@ export default function CourseDetail() {
             )}
 
             {/* 6. Giảng viên */}
-            <div className="bg-[#111111] rounded-[2rem] p-10 border border-[#E8E3D9]">
+            <div className="bg-[#FAF7F2] rounded-[2rem] p-10 border border-[#E8E3D9]">
               <h3 className="text-xl font-black mb-10 flex items-center space-x-3">
                 <div className="w-1.5 h-6 bg-[#133E2B] rounded-full" />
                 <span>Thông tin giảng viên</span>
@@ -530,29 +530,29 @@ export default function CourseDetail() {
                     <Image src={course.instructor?.avatar || 'https://i.pravatar.cc/300'} fill className="object-cover" alt="Instructor" />
                   </div>
                   <div className="mt-4 flex justify-center space-x-3 text-gray-500">
-                    <Facebook size={16} className="hover:text-[#1C221F] cursor-pointer" />
-                    <Twitter size={16} className="hover:text-[#1C221F] cursor-pointer" />
-                    <LinkIcon size={16} className="hover:text-[#1C221F] cursor-pointer" />
+                    <Facebook size={16} className="hover:text-[#133E2B] cursor-pointer" />
+                    <Twitter size={16} className="hover:text-[#133E2B] cursor-pointer" />
+                    <LinkIcon size={16} className="hover:text-[#133E2B] cursor-pointer" />
                   </div>
                 </div>
                 <div className="space-y-4">
                   <h4 className="text-2xl font-black text-[#1C221F]">{course.instructor?.name || 'Money Lab Team'}</h4>
-                  <p className="text-xs font-black text-[#1C221F]/40 uppercase tracking-widest">{course.instructor?.specialization || 'Chuyên gia đào tạo AI & Business'}</p>
-                  <p className="text-sm text-gray-500 font-medium leading-relaxed italic">
+                  <p className="text-xs font-black text-[#1C221F]/60 uppercase tracking-widest">{course.instructor?.specialization || 'Chuyên gia đào tạo AI & Business'}</p>
+                  <p className="text-sm text-gray-600 font-medium leading-relaxed italic">
                     {course.instructor?.bio || "Một dự án từ Money Studio nhầm chia sẻ những kiến thức mới nhất hiện nay."}
                   </p>
                   <div className="flex space-x-8 pt-4">
                     <div className="text-center">
                       <p className="text-lg font-black">{randomRating}</p>
-                      <p className="text-[10px] text-gray-500 font-bold uppercase">Đánh giá</p>
+                      <p className="text-[10px] text-gray-600 font-bold uppercase">Đánh giá</p>
                     </div>
                     <div className="text-center">
                       <p className="text-lg font-black">{randomReviewCount}+</p>
-                      <p className="text-[10px] text-gray-500 font-bold uppercase">Học viên</p>
+                      <p className="text-[10px] text-gray-600 font-bold uppercase">Học viên</p>
                     </div>
                     <div className="text-center">
                       <p className="text-lg font-black">{course.totalLessons}+</p>
-                      <p className="text-[10px] text-gray-500 font-bold uppercase">Bài học</p>
+                      <p className="text-[10px] text-gray-600 font-bold uppercase">Bài học</p>
                     </div>
                   </div>
                 </div>
@@ -568,7 +568,7 @@ export default function CourseDetail() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {(course.reviews && course.reviews.length > 0) ? course.reviews.map(review => (
-                  <div key={review.id} className="bg-[#111111] p-6 rounded-3xl border border-[#E8E3D9] space-y-4">
+                  <div key={review.id} className="bg-[#FAF7F2] p-6 rounded-3xl border border-[#E8E3D9] space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 rounded-xl bg-[#133E2B]/10 relative overflow-hidden">
@@ -583,11 +583,11 @@ export default function CourseDetail() {
                         {[...Array(review.rating)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                       </div>
                     </div>
-                    <p className="text-sm text-gray-500 leading-relaxed italic">"{review.content}"</p>
+                    <p className="text-sm text-gray-600 leading-relaxed italic">"{review.content}"</p>
                   </div>
                 )) : (
                   [...Array(4)].map((_, i) => (
-                    <div key={i} className="bg-[#111111] p-6 rounded-3xl border border-[#E8E3D9] space-y-4">
+                    <div key={i} className="bg-[#FAF7F2] p-6 rounded-3xl border border-[#E8E3D9] space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
                           <div className="w-10 h-10 rounded-xl bg-[#133E2B]/10 relative overflow-hidden">
@@ -602,7 +602,7 @@ export default function CourseDetail() {
                           {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                         </div>
                       </div>
-                      <p className="text-sm text-gray-500 leading-relaxed italic">
+                      <p className="text-sm text-gray-600 leading-relaxed italic">
                         {[
                           "Khoá học cực kỳ thực chiến, giúp mình áp dụng AI vào công việc ngay lập tức.",
                           "Giảng viên giải thích rất dễ hiểu, lộ trình rõ ràng, đáng tiền lắm mọi người ơi.",
