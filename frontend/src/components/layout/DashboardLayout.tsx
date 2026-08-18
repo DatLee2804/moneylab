@@ -109,7 +109,7 @@ export const DashboardLayout = ({ children, role, title }: DashboardLayoutProps)
         <div className="h-full flex flex-col">
           <div className="p-6 flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
-              <img src="/images/logo.png" alt="Money Lab Logo" className="h-10 w-auto object-contain rounded-lg shadow-sm" />
+              <img src="/images/logo.png" alt="Money Lab Logo" className="h-10 w-auto object-contain rounded-xl shadow-sm bg-[#0F2E1E] p-1.5 px-3" />
             </Link>
             <button 
               onClick={() => setIsSidebarOpen(false)}
