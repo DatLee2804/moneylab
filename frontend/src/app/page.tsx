@@ -28,6 +28,7 @@ import Image from 'next/image';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import api from '@/lib/api';
+import { stripHtml } from '@/utils/utils';
 
 interface Course {
   id: string;
@@ -276,7 +277,7 @@ export default function HomePage() {
                           {course.title}
                         </h3>
                         <p className="text-xs text-[#1C221F]/60 mt-2 line-clamp-2 leading-relaxed">
-                          {course.description || 'Khóa học cung cấp kiến thức nền tảng và thực hành ứng dụng trực tiếp.'}
+                          {stripHtml(course.description) || 'Khóa học cung cấp kiến thức nền tảng và thực hành ứng dụng trực tiếp.'}
                         </p>
                       </div>
 
