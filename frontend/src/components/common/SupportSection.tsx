@@ -229,7 +229,7 @@ export const SupportSection = ({ role }: { role: string }) => {
                            setSelectedTicket(ticket);
                            setIsReplyModalOpen(true);
                          }}
-                         className="px-4 py-2 bg-white/5 border border-[#E8E3D9] rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#133E2B] hover:text-[#0a0a0a] transition-all"
+                         className="px-4 py-2 bg-white/5 border border-[#E8E3D9] rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#133E2B] hover:text-white transition-all"
                        >
                          Xử lý
                        </button>

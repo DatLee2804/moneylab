@@ -313,7 +313,7 @@ export default function ManagerInstructorsPage() {
                           {/* Detail Button */}
                           <button 
                             onClick={() => openDetailModal(ins)}
-                            className="p-2.5 bg-gray-100 dark:bg-gray-700 text-gray-500 hover:bg-[#133E2B] hover:text-[#0f172a] rounded-xl transition-all" 
+                            className="p-2.5 bg-gray-100 dark:bg-gray-700 text-gray-500 hover:bg-[#133E2B] hover:text-white rounded-xl transition-all" 
                             title="Xem chi tiết"
                           >
                             <Eye size={16} />
@@ -363,7 +363,7 @@ export default function ManagerInstructorsPage() {
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2 block">Nội dung</label>
                   <textarea required rows={5} value={emailContent} onChange={e => setEmailContent(e.target.value)} placeholder="Nhập nội dung thư gửi giảng viên..." className="w-full px-5 py-4 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-sm font-medium focus:ring-4 focus:ring-blue-500/5 focus:border-blue-500 outline-none transition-all resize-none shadow-sm"></textarea>
                 </div>
-                <button type="submit" disabled={isSending} className="w-full flex items-center justify-center space-x-3 py-4 bg-[#133E2B] text-[#0f172a] rounded-2xl text-sm font-black shadow-lg shadow-[#133E2B]/20">
+                <button type="submit" disabled={isSending} className="w-full flex items-center justify-center space-x-3 py-4 bg-[#133E2B] text-white rounded-2xl text-sm font-black shadow-lg shadow-[#133E2B]/20">
                   {isSending ? <Loader2 className="animate-spin" size={20} /> : <><Send size={18} /><span>Gửi Email</span></>}
                 </button>
               </form>
@@ -498,7 +498,7 @@ export default function ManagerInstructorsPage() {
                         setIsDetailModalOpen(false);
                         openEmailModal(selectedInstructor);
                      }}
-                     className="px-8 py-3 bg-[#133E2B] text-[#0f172a] rounded-2xl text-xs font-black uppercase tracking-widest shadow-lg shadow-[#133E2B]/20"
+                     className="px-8 py-3 bg-[#133E2B] text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-lg shadow-[#133E2B]/20"
                   >
                     Gửi phản hồi nhanh
                   </button>

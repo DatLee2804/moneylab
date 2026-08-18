@@ -200,7 +200,7 @@ export default function LoginPage() {
                 className="group relative p-5 bg-white border border-[#E8E3D9] rounded-2xl text-left hover:border-[#133E2B] transition-all shadow-sm hover:shadow-md active:scale-[0.98]"
               >
                 <div className="flex items-center space-x-4">
-                  <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-[#1C221F] shadow-sm", item.color)}>
+                  <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-sm", item.color)}>
                     {item.icon}
                   </div>
                   <div className="flex-grow">

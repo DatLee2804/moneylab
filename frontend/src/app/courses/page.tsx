@@ -164,7 +164,7 @@ export default function CourseCatalog() {
                           )}
                         </div>
                       </div>
-                      <Link href={`/courses/${course.id}`} className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-[#1C221F] hover:border-[#133E2B] transition-all">
+                      <Link href={`/courses/${course.id}`} className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-white hover:border-[#133E2B] transition-all">
                         Chi tiết
                       </Link>
                     </div>

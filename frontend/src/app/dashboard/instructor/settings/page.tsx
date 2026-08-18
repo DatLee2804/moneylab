@@ -238,7 +238,7 @@ export default function InstructorSettingsPage() {
                       className={cn(
                         "px-3 py-1.5 rounded-lg text-xs font-bold transition-all",
                         instructorInfo.categories.includes(cat)
-                          ? "bg-[#133E2B] text-[#0f172a]"
+                          ? "bg-[#133E2B] text-white"
                           : "bg-gray-100 dark:bg-gray-700 text-gray-500"
                       )}
                     >
@@ -339,7 +339,7 @@ export default function InstructorSettingsPage() {
           {!isEditingProfile ? (
             <button 
               onClick={() => setIsEditingProfile(true)}
-              className="flex items-center space-x-2 px-8 py-3 bg-[#133E2B] text-[#0f172a] rounded-xl font-bold shadow-lg shadow-[#133E2B]/20 hover:bg-[#133E2B]/90 transition-all font-sans"
+              className="flex items-center space-x-2 px-8 py-3 bg-[#133E2B] text-white rounded-xl font-bold shadow-lg shadow-[#133E2B]/20 hover:bg-[#133E2B]/90 transition-all font-sans"
             >
               <Edit2 size={18} />
               <span>Chỉnh sửa thông tin</span>
@@ -356,7 +356,7 @@ export default function InstructorSettingsPage() {
               <button 
                 onClick={handleSave}
                 disabled={isSaving}
-                className="flex items-center space-x-2 px-8 py-3 bg-[#133E2B] text-[#0f172a] rounded-xl font-bold shadow-lg shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all font-sans disabled:opacity-50"
+                className="flex items-center space-x-2 px-8 py-3 bg-[#133E2B] text-white rounded-xl font-bold shadow-lg shadow-[#133E2B]/20 hover:bg-[#8ec401] transition-all font-sans disabled:opacity-50"
               >
                 {isSaving ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
                 <span>Lưu thay đổi</span>

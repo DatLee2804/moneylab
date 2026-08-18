@@ -232,7 +232,7 @@ export default function HomePage() {
               className="mt-4 sm:mt-0 flex items-center space-x-2 text-sm font-bold text-[#133E2B] hover:text-[#0F2E1E] group"
             >
               <span>Xem tất cả</span>
-              <div className="w-7 h-7 rounded-full bg-[#133E2B]/10 flex items-center justify-center group-hover:bg-[#133E2B] group-hover:text-[#1C221F] transition-all">
+              <div className="w-7 h-7 rounded-full bg-[#133E2B]/10 flex items-center justify-center group-hover:bg-[#133E2B] group-hover:text-white transition-all">
                 <ArrowRight size={14} />
               </div>
             </Link>
@@ -294,7 +294,7 @@ export default function HomePage() {
 
                       <Link 
                         href={`/courses/${course.id}`} 
-                        className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-[#1C221F] hover:border-[#133E2B] transition-all"
+                        className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-white hover:border-[#133E2B] transition-all"
                       >
                         Chi tiết
                       </Link>
@@ -392,7 +392,7 @@ export default function HomePage() {
                   <h4 className="text-sm font-bold text-[#1C221F] line-clamp-1">{mini.title}</h4>
                   <div className="flex items-center justify-between pt-1">
                     <span className="text-xs font-bold text-[#133E2B]">{formatPrice(mini.price)}</span>
-                    <Link href={`/courses/${mini.id}`} className="text-[11px] font-bold text-[#133E2B] bg-[#133E2B] hover:bg-[#a3e000] px-3 py-1 rounded-lg transition-colors">
+                    <Link href={`/courses/${mini.id}`} className="text-[11px] font-bold text-white bg-[#133E2B] hover:bg-[#a3e000] px-3 py-1 rounded-lg transition-colors">
                       Học ngay
                     </Link>
                   </div>

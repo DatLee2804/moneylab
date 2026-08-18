@@ -155,7 +155,7 @@ export default function StudentSettingsPage() {
                 {isEditing && !isUploading && (
                   <button 
                     onClick={handleUploadClick}
-                    className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#133E2B] text-[#0f172a] rounded-xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+                    className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#133E2B] text-white rounded-xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
                   >
                     <Upload size={18} />
                   </button>
@@ -271,7 +271,7 @@ export default function StudentSettingsPage() {
                   <button 
                     onClick={handleSave}
                     disabled={isSaving}
-                    className="px-8 py-3 bg-[#133E2B] text-[#0f172a] font-bold rounded-xl hover:bg-[#8ec401] transition-all shadow-lg shadow-[#133E2B]/20 flex items-center gap-2 font-sans disabled:opacity-50"
+                    className="px-8 py-3 bg-[#133E2B] text-white font-bold rounded-xl hover:bg-[#8ec401] transition-all shadow-lg shadow-[#133E2B]/20 flex items-center gap-2 font-sans disabled:opacity-50"
                   >
                     {isSaving ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
                     Lưu thay đổi

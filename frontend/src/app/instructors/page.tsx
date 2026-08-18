@@ -160,7 +160,7 @@ export default function InstructorsPage() {
                               <span className="text-xs font-semibold">{(inst as any).coursesCount || 5}</span>
                             </div>
                           </div>
-                          <Link href="/courses" className="w-9 h-9 bg-[#FAF7F2] border border-[#E8E3D9] text-[#133E2B] hover:bg-[#133E2B] hover:text-[#1C221F] rounded-xl flex items-center justify-center transition-all shadow-sm">
+                          <Link href="/courses" className="w-9 h-9 bg-[#FAF7F2] border border-[#E8E3D9] text-[#133E2B] hover:bg-[#133E2B] hover:text-white rounded-xl flex items-center justify-center transition-all shadow-sm">
                             <ChevronRight size={18} />
                           </Link>
                         </div>

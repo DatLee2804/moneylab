@@ -213,7 +213,7 @@ export default function AdminUsersPage() {
                         <div className="flex items-center justify-end space-x-2">
                           <button 
                             onClick={() => { setSelectedUser(u); setIsEmailModalOpen(true); }}
-                            className="p-2.5 bg-[#133E2B]/5 text-[#1C221F] rounded-xl hover:bg-[#133E2B] hover:text-[#0a0a0a] transition-all" 
+                            className="p-2.5 bg-[#133E2B]/5 text-[#1C221F] rounded-xl hover:bg-[#133E2B] hover:text-white transition-all" 
                             title="Gửi mail thông báo"
                           >
                             <Mail size={18} />
@@ -223,8 +223,8 @@ export default function AdminUsersPage() {
                             className={cn(
                               "p-2.5 rounded-xl transition-all",
                               u.status === 'ACTIVE' 
-                                ? "bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-[#1C221F]" 
-                                : "bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500 hover:text-[#1C221F]"
+                                ? "bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-white" 
+                                : "bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500 hover:text-white"
                             )} 
                             title={u.status === 'ACTIVE' ? "Khóa tài khoản" : "Mở khóa tài khoản"}
                           >

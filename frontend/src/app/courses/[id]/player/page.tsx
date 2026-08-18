@@ -469,7 +469,7 @@ export default function CoursePlayer() {
                   "px-6 py-3 border rounded-xl font-bold uppercase text-xs transition-colors shrink-0 flex items-center space-x-2",
                   activeLesson && completedLessons.includes(activeLesson.id) 
                     ? "bg-[#133E2B] text-white border-[#133E2B]"
-                    : "bg-[#133E2B]/10 border-[#133E2B]/20 text-[#1C221F] hover:bg-[#133E2B] hover:text-black"
+                    : "bg-[#133E2B]/10 border-[#133E2B]/20 text-[#1C221F] hover:bg-[#133E2B] hover:text-white"
                 )}
               >
                 {activeLesson && completedLessons.includes(activeLesson.id) ? (

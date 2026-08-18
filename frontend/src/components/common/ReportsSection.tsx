@@ -243,7 +243,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
                            setSelectedReport(report);
                            setIsHandleModalOpen(true);
                          }}
-                         className="px-4 py-2 bg-white/5 border border-[#E8E3D9] rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#133E2B] hover:text-[#0a0a0a] transition-all"
+                         className="px-4 py-2 bg-white/5 border border-[#E8E3D9] rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#133E2B] hover:text-white transition-all"
                        >
                          Xử lý
                        </button>
@@ -343,7 +343,7 @@ export const ReportsSection = ({ role }: { role: string }) => {
                     <button 
                       onClick={() => handleUpdateStatus(selectedReport.id, 'RESOLVED')}
                       disabled={isProcessing}
-                      className="py-4 bg-emerald-50 text-emerald-600 border border-emerald-200 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-[#1C221F] transition-all"
+                      className="py-4 bg-emerald-50 text-emerald-600 border border-emerald-200 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all"
                     >
                       Xác nhận: Không có lỗi
                     </button>

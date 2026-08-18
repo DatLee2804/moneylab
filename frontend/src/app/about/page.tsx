@@ -158,9 +158,9 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-6 -left-6 bg-[#0F2E1E] p-6 rounded-2xl shadow-xl text-[#1C221F] hidden md:block border border-[#E8E3D9]">
-                  <Target size={36} className="text-[#1C221F] mb-2" />
-                  <p className="font-bold text-base leading-tight uppercase tracking-wider text-[#1C221F]">Mục tiêu 1 triệu<br />học viên vào 2030</p>
+                <div className="absolute -bottom-6 -left-6 bg-[#0F2E1E] p-6 rounded-2xl shadow-xl text-white hidden md:block border border-[#E8E3D9]">
+                  <Target size={36} className="text-white mb-2" />
+                  <p className="font-bold text-base leading-tight uppercase tracking-wider text-white">Mục tiêu 1 triệu<br />học viên vào 2030</p>
                 </div>
               </motion.div>
             </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
                   transition={{ delay: idx * 0.1 }}
                   className="bg-white p-8 rounded-2xl border border-[#E8E3D9] shadow-sm hover:shadow-xl transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-[#1C221F] mb-6 bg-[#133E2B] group-hover:bg-[#0F2E1E] transition-colors">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white mb-6 bg-[#133E2B] group-hover:bg-[#0F2E1E] transition-colors">
                     {value.icon}
                   </div>
                   <h3 className="text-lg font-bold text-[#1C221F] mb-3">{value.title}</h3>
@@ -201,10 +201,10 @@ export default function AboutPage() {
 
         {/* CTA Section */}
         <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-          <div className="bg-[#0F2E1E] rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden shadow-2xl border border-[#E8E3D9] text-[#1C221F]">
+          <div className="bg-[#0F2E1E] rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden shadow-2xl border border-[#E8E3D9] text-white">
             <div className="relative z-10 max-w-3xl mx-auto space-y-4">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-[#1C221F]">Hành trình làm chủ tài chính</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1C221F]">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-white">Hành trình làm chủ tài chính</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
                 Sẵn sàng bắt đầu hành trình của bạn?
               </h2>
               <p className="text-emerald-100/80 text-sm max-w-xl mx-auto font-normal">

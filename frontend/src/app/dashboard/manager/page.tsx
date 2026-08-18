@@ -126,7 +126,7 @@ export default function ManagerDashboard() {
           <button 
             onClick={handlePrintReport}
             disabled={isGeneratingPdf}
-            className="flex items-center space-x-2 px-6 py-3 bg-[#133E2B] text-[#0f172a] rounded-2xl font-black text-sm shadow-lg shadow-[#133E2B]/20 hover:scale-105 transition-all disabled:opacity-50"
+            className="flex items-center space-x-2 px-6 py-3 bg-[#133E2B] text-white rounded-2xl font-black text-sm shadow-lg shadow-[#133E2B]/20 hover:scale-105 transition-all disabled:opacity-50"
           >
             {isGeneratingPdf ? <Loader2 className="animate-spin" size={18} /> : <><Download size={18} /><span>Tải Báo Cáo PDF</span></>}
           </button>

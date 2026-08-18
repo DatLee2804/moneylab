@@ -138,7 +138,7 @@ export default function AdminPayoutsPage() {
                         <div className="flex items-center justify-end space-x-2">
                           <button 
                             onClick={() => setConfirmModal({ isOpen: true, type: 'approve', payout: p })}
-                            className="p-2.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-xl hover:bg-emerald-500 hover:text-[#1C221F] transition-all shadow-sm" 
+                            className="p-2.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm" 
                             title="Chấp nhận thanh toán"
                           >
                             <Check size={18} />

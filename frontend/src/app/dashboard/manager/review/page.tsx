@@ -228,7 +228,7 @@ export default function ManagerReviewPage() {
                         <button 
                           disabled={actionLoading}
                           onClick={() => handleApprove(course.id)}
-                          className="px-6 py-3 bg-[#133E2B] text-[#0f172a] font-black rounded-xl hover:bg-[#a3e600] transition-all text-xs uppercase tracking-widest shadow-lg shadow-[#133E2B]/20 disabled:opacity-50 flex items-center justify-center min-w-[120px]"
+                          className="px-6 py-3 bg-[#133E2B] text-white font-black rounded-xl hover:bg-[#a3e600] transition-all text-xs uppercase tracking-widest shadow-lg shadow-[#133E2B]/20 disabled:opacity-50 flex items-center justify-center min-w-[120px]"
                         >
                           {actionLoading ? <Loader2 size={16} className="animate-spin" /> : 'Duyệt ngay'}
                         </button>

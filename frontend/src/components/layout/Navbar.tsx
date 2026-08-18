@@ -77,7 +77,7 @@ export const Navbar = () => {
                   className="flex items-center space-x-2 px-4 py-2.5 bg-[#133E2B] text-white rounded-xl hover:bg-[#0F2E1E] transition-all shadow-sm whitespace-nowrap"
                   title="Vào Dashboard"
                 >
-                  <LayoutDashboard size={17} className="text-[#1C221F]" />
+                  <LayoutDashboard size={17} className="text-white" />
                   <span className="text-xs font-bold uppercase tracking-wider">Dashboard</span>
                 </Link>
                 <NotificationBell />

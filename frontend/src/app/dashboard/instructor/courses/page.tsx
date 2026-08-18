@@ -338,7 +338,7 @@ export default function InstructorCoursesPage() {
           <h1 className="text-2xl font-extrabold text-[#1C221F]">Thiết kế khóa học</h1>
           <button 
             onClick={() => handleOpenSectionModal()}
-            className="flex items-center space-x-2 px-6 py-3 bg-[#133E2B] text-[#0f172a] rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:scale-105 active:scale-95 transition-all"
+            className="flex items-center space-x-2 px-6 py-3 bg-[#133E2B] text-white rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:scale-105 active:scale-95 transition-all"
           >
             <Plus size={18} />
             <span>Thêm chương mới</span>
@@ -365,7 +365,7 @@ export default function InstructorCoursesPage() {
                 <div className="flex items-center space-x-2">
                   <button 
                     onClick={() => handleOpenSessionModal(section.id)}
-                    className="flex items-center space-x-1 px-3 py-1.5 bg-[#133E2B]/10 text-[#1C221F] rounded-xl hover:bg-[#133E2B] hover:text-[#0f172a] transition-all text-xs font-black uppercase tracking-wider"
+                    className="flex items-center space-x-1 px-3 py-1.5 bg-[#133E2B]/10 text-[#1C221F] rounded-xl hover:bg-[#133E2B] hover:text-white transition-all text-xs font-black uppercase tracking-wider"
                   >
                     <Plus size={14} />
                     <span>Thêm bài học</span>
@@ -472,7 +472,7 @@ export default function InstructorCoursesPage() {
             <p className="text-sm text-gray-500 font-medium mb-8 max-w-xs text-center">Bắt đầu bằng cách tạo chương (section) đầu tiên để tổ chức các bài học của bạn.</p>
             <button 
               onClick={() => handleOpenSectionModal()}
-              className="px-10 py-4 bg-[#133E2B] text-[#0f172a] rounded-2xl font-black shadow-xl shadow-[#133E2B]/20 hover:scale-105 transition-all"
+              className="px-10 py-4 bg-[#133E2B] text-white rounded-2xl font-black shadow-xl shadow-[#133E2B]/20 hover:scale-105 transition-all"
             >
               Thêm chương đầu tiên
             </button>
@@ -496,7 +496,7 @@ export default function InstructorCoursesPage() {
               <h2 className="text-xl font-bold text-[#1C221F]">Khóa học của bạn</h2>
               <button 
                 onClick={() => handleOpenCourseModal()}
-                className="flex items-center space-x-2 px-6 py-3 bg-[#133E2B] text-[#0f172a] rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:bg-green-700 transition-all"
+                className="flex items-center space-x-2 px-6 py-3 bg-[#133E2B] text-white rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:bg-green-700 transition-all"
               >
                 <Plus size={18} />
                 <span>Tạo khóa học mới</span>
@@ -569,7 +569,7 @@ export default function InstructorCoursesPage() {
                           <div className="flex flex-col space-y-2">
                             <button 
                               onClick={() => handleSelectCourse(course)}
-                              className="flex items-center space-x-2 px-3 py-1.5 bg-[#133E2B]/10 text-[#1C221F] text-xs font-bold rounded-lg hover:bg-[#133E2B] hover:text-[#0f172a] transition-all"
+                              className="flex items-center space-x-2 px-3 py-1.5 bg-[#133E2B]/10 text-[#1C221F] text-xs font-bold rounded-lg hover:bg-[#133E2B] hover:text-white transition-all"
                             >
                               <LayoutDashboard size={14} />
                               <span>Thiết kế khoá học</span>
@@ -702,7 +702,7 @@ export default function InstructorCoursesPage() {
                         onClick={() => setCourseFormData({...courseFormData, isFree: true})}
                         className={cn(
                           "px-8 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all",
-                          courseFormData.isFree ? "bg-[#133E2B] text-[#0f172a] shadow-sm" : "text-gray-500 hover:text-gray-700"
+                          courseFormData.isFree ? "bg-[#133E2B] text-white shadow-sm" : "text-gray-500 hover:text-gray-700"
                         )}
                       >
                         Miễn phí
@@ -783,7 +783,7 @@ export default function InstructorCoursesPage() {
                 
                 <div className="flex justify-end gap-4 pt-4 border-t border-gray-100">
                   <button type="button" onClick={() => setIsCourseModalOpen(false)} className="px-8 py-4 text-sm font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-2xl transition-colors">Hủy</button>
-                  <button type="submit" className="px-10 py-4 bg-[#133E2B] text-[#0f172a] rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:bg-green-700 transition-all font-sans">
+                  <button type="submit" className="px-10 py-4 bg-[#133E2B] text-white rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:bg-green-700 transition-all font-sans">
                     Lưu khoá học
                   </button>
                 </div>
@@ -847,7 +847,7 @@ export default function InstructorCoursesPage() {
                             "px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center space-x-2 transition-all",
                             isUploadingVideo 
                               ? "bg-gray-100 text-gray-500 cursor-not-allowed" 
-                              : "bg-[#133E2B] text-[#0f172a] hover:scale-105 active:scale-95 shadow-lg shadow-[#133E2B]/20"
+                              : "bg-[#133E2B] text-white hover:scale-105 active:scale-95 shadow-lg shadow-[#133E2B]/20"
                           )}
                         >
                           {isUploadingVideo ? (
@@ -903,7 +903,7 @@ export default function InstructorCoursesPage() {
                 
                 <div className="flex justify-end gap-4 pt-4">
                   <button type="button" onClick={() => setIsSessionModalOpen(false)} className="px-8 py-4 text-sm font-bold text-gray-500 hover:text-[#0f172a] transition-colors">Hủy</button>
-                  <button type="submit" className="px-10 py-4 bg-[#133E2B] text-[#0f172a] rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:bg-green-700 transition-all font-sans">
+                  <button type="submit" className="px-10 py-4 bg-[#133E2B] text-white rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:bg-green-700 transition-all font-sans">
                     Lưu bài học
                   </button>
                 </div>
@@ -951,7 +951,7 @@ export default function InstructorCoursesPage() {
                 
                 <div className="flex justify-end gap-4">
                   <button type="button" onClick={() => setIsSectionModalOpen(false)} className="px-8 py-4 text-sm font-bold text-gray-500">Hủy</button>
-                  <button type="submit" className="px-10 py-4 bg-[#133E2B] text-[#0f172a] rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:scale-105 transition-all">
+                  <button type="submit" className="px-10 py-4 bg-[#133E2B] text-white rounded-2xl font-black shadow-lg shadow-[#133E2B]/20 hover:scale-105 transition-all">
                     Lưu thông tin
                   </button>
                 </div>

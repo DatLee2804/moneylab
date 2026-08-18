@@ -22,7 +22,7 @@ export const Footer = () => {
                 { icon: <Send size={18} />, href: '#' },
                 { icon: <Globe size={18} />, href: '#' },
               ].map((item, i) => (
-                <a key={i} href={item.href} className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#133E2B] hover:text-[#0F2E1E] transition-all cursor-pointer">
+                <a key={i} href={item.href} className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#133E2B] hover:text-white transition-all cursor-pointer">
                   {item.icon}
                 </a>
               ))}

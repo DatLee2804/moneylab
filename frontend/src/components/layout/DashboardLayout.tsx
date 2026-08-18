@@ -146,7 +146,7 @@ export const DashboardLayout = ({ children, role, title }: DashboardLayoutProps)
           <div className="p-4 mt-auto">
             <div className="bg-[#FAF7F2] rounded-2xl p-5 border border-[#E8E3D9] mb-3">
               <p className="text-xs text-[#1C221F]/60 font-bold mb-2 uppercase tracking-tight">Cần hỗ trợ?</p>
-              <button className="w-full py-2 bg-white text-xs font-bold text-[#133E2B] rounded-xl border border-[#E8E3D9] shadow-sm hover:bg-[#133E2B] hover:text-[#1C221F] transition-colors">
+              <button className="w-full py-2 bg-white text-xs font-bold text-[#133E2B] rounded-xl border border-[#E8E3D9] shadow-sm hover:bg-[#133E2B] hover:text-white transition-colors">
                 Trung tâm hỗ trợ
               </button>
             </div>

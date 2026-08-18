@@ -414,7 +414,7 @@ export default function InstructorCombosPage() {
                 <button 
                   type="submit"
                   disabled={selectedCourses.length === 0}
-                  className="px-10 py-4 bg-[#133E2B] text-[#0f172a] font-black rounded-2xl hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-[#133E2B]/20"
+                  className="px-10 py-4 bg-[#133E2B] text-white font-black rounded-2xl hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-[#133E2B]/20"
                 >
                   {isEditMode ? 'Lưu Thay Đổi' : 'Tạo Combo'}
                 </button>
