@@ -245,62 +245,62 @@ export default function HomePage() {
           ) : featuredCourses.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredCourses.map((course) => (
-                <motion.div
-                  key={course.id}
-                  whileHover={{ y: -6 }}
-                  className="bg-white border border-[#E8E3D9] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group"
-                >
-                  {/* Card Thumbnail */}
-                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                    <img 
-                      src={course.coverImage || 'https://picsum.photos/seed/course/800/500'} 
-                      alt={course.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <span className="absolute top-3 left-3 bg-[#0F2E1E] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
-                      {course.category || 'Tài chính'}
-                    </span>
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                    <div>
-                      <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
-                        <div className="flex items-center space-x-1 text-amber-500 font-bold">
-                          <Star size={14} fill="currentColor" />
-                          <span>4.9</span>
-                        </div>
-                        <span className="text-[11px] font-semibold text-[#1C221F]/60">1,250+ học viên</span>
-                      </div>
-                      <h3 className="text-lg font-bold text-[#1C221F] group-hover:text-[#133E2B] transition-colors line-clamp-2 leading-snug">
-                        {course.title}
-                      </h3>
-                      <p className="text-xs text-[#1C221F]/60 mt-2 line-clamp-2 leading-relaxed">
-                        {course.description || 'Khóa học cung cấp kiến thức nền tảng và thực hành ứng dụng trực tiếp.'}
-                      </p>
+                <Link href={`/courses/${course.id}`} key={course.id} className="block">
+                  <motion.div
+                    whileHover={{ y: -6 }}
+                    className="bg-white border border-[#E8E3D9] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group h-full cursor-pointer"
+                  >
+                    {/* Card Thumbnail */}
+                    <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
+                      <img 
+                        src={course.coverImage || 'https://picsum.photos/seed/course/800/500'} 
+                        alt={course.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <span className="absolute top-3 left-3 bg-[#0F2E1E] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
+                        {course.category || 'Tài chính'}
+                      </span>
                     </div>
 
-                    <div className="pt-4 border-t border-[#E8E3D9] flex items-center justify-between">
+                    {/* Card Body */}
+                    <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
                       <div>
-                        {course.discountPrice && Number(course.discountPrice) > 0 ? (
-                          <div className="flex items-baseline space-x-2">
-                            <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.discountPrice)}</span>
-                            <span className="text-xs text-gray-500 line-through">{formatPrice(course.price)}</span>
+                        <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
+                          <div className="flex items-center space-x-1 text-amber-500 font-bold">
+                            <Star size={14} fill="currentColor" />
+                            <span>4.9</span>
                           </div>
-                        ) : (
-                          <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.price)}</span>
-                        )}
+                          <span className="text-[11px] font-semibold text-[#1C221F]/60">1,250+ học viên</span>
+                        </div>
+                        <h3 className="text-lg font-bold text-[#1C221F] group-hover:text-[#133E2B] transition-colors line-clamp-2 leading-snug">
+                          {course.title}
+                        </h3>
+                        <p className="text-xs text-[#1C221F]/60 mt-2 line-clamp-2 leading-relaxed">
+                          {course.description || 'Khóa học cung cấp kiến thức nền tảng và thực hành ứng dụng trực tiếp.'}
+                        </p>
                       </div>
 
-                      <Link 
-                        href={`/courses/${course.id}`} 
-                        className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-white hover:border-[#133E2B] transition-all"
-                      >
-                        Chi tiết
-                      </Link>
+                      <div className="pt-4 border-t border-[#E8E3D9] flex items-center justify-between">
+                        <div>
+                          {course.discountPrice && Number(course.discountPrice) > 0 ? (
+                            <div className="flex items-baseline space-x-2">
+                              <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.discountPrice)}</span>
+                              <span className="text-xs text-gray-500 line-through">{formatPrice(course.price)}</span>
+                            </div>
+                          ) : (
+                            <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.price)}</span>
+                          )}
+                        </div>
+
+                        <span 
+                          className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-white hover:border-[#133E2B] transition-all"
+                        >
+                          Chi tiết
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
           ) : (
@@ -373,7 +373,11 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {displayMiniCourses.map((mini, idx) => (
-              <div key={mini.id || idx} className="bg-white p-5 rounded-2xl border border-[#E8E3D9] flex items-center space-x-4 shadow-sm hover:shadow-md transition-all">
+              <Link 
+                href={`/courses/${mini.id}`} 
+                key={mini.id || idx} 
+                className="bg-white p-5 rounded-2xl border border-[#E8E3D9] flex items-center space-x-4 shadow-sm hover:shadow-md transition-all cursor-pointer hover:scale-[1.01] duration-300"
+              >
                 <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-gray-100">
                   <img 
                     src={mini.coverImage || 'https://picsum.photos/seed/mini/200/200'} 
@@ -392,12 +396,12 @@ export default function HomePage() {
                   <h4 className="text-sm font-bold text-[#1C221F] line-clamp-1">{mini.title}</h4>
                   <div className="flex items-center justify-between pt-1">
                     <span className="text-xs font-bold text-[#133E2B]">{formatPrice(mini.price)}</span>
-                    <Link href={`/courses/${mini.id}`} className="text-[11px] font-bold text-white bg-[#133E2B] hover:bg-[#a3e000] px-3 py-1 rounded-lg transition-colors">
+                    <span className="text-[11px] font-bold text-white bg-[#133E2B] hover:bg-[#a3e000] px-3 py-1 rounded-lg transition-colors">
                       Học ngay
-                    </Link>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>

@@ -114,62 +114,63 @@ export default function CourseCatalog() {
           ) : filteredCourses.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredCourses.map((course) => (
-                <motion.div 
-                  key={course.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ y: -6 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#E8E3D9] hover:shadow-xl group flex flex-col h-full transition-all"
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                    <img 
-                      src={course.coverImage || 'https://picsum.photos/seed/trading/1000/600'} 
-                      alt={course.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                    />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#0F2E1E] text-white text-[10px] font-bold rounded-md shadow-sm uppercase tracking-wider">
-                      {course.category || 'Tài chính'}
-                    </div>
-                  </div>
-                  <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                    <div>
-                      <div className="flex items-center space-x-2 mb-3">
-                        <span className="px-2 py-0.5 bg-[#133E2B]/10 text-[#133E2B] text-[10px] font-bold rounded uppercase">{course.category || 'Khóa học'}</span>
-                        <div className="flex items-center text-amber-500">
-                          <Star size={13} fill="currentColor" />
-                          <span className="ml-1 text-xs font-bold text-[#1C221F]/60">4.9</span>
-                        </div>
-                      </div>
-                      <h3 className="text-lg font-bold text-[#1C221F] group-hover:text-[#133E2B] transition-colors leading-snug line-clamp-2">
-                        {course.title}
-                      </h3>
-                      <div className="flex items-center space-x-4 mt-3 text-xs text-[#1C221F]/60 font-medium">
-                        <span className="flex items-center"><BookOpen size={14} className="mr-1" /> Cơ bản</span>
-                        <span className="flex items-center"><Clock size={14} className="mr-1" /> 12h học</span>
+                <Link href={`/courses/${course.id}`} key={course.id} className="block">
+                  <motion.div 
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    whileHover={{ y: -6 }}
+                    className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#E8E3D9] hover:shadow-xl group flex flex-col h-full transition-all cursor-pointer"
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
+                      <img 
+                        src={course.coverImage || 'https://picsum.photos/seed/trading/1000/600'} 
+                        alt={course.title} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      />
+                      <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#0F2E1E] text-white text-[10px] font-bold rounded-md shadow-sm uppercase tracking-wider">
+                        {course.category || 'Tài chính'}
                       </div>
                     </div>
-                    <div className="pt-4 border-t border-[#E8E3D9] flex items-center justify-between">
+                    <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
                       <div>
-                        <div className="flex flex-col">
-                          {course.isFree || Number(course.price) === 0 ? (
-                            <span className="text-base font-extrabold text-[#133E2B]">Khoá học miễn phí</span>
-                          ) : course.discountPrice && Number(course.discountPrice) > 0 ? (
-                            <>
-                              <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.discountPrice)}</span>
-                              <span className="text-xs text-gray-500 line-through font-normal">{formatPrice(course.price)}</span>
-                            </>
-                          ) : (
-                            <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.price)}</span>
-                          )}
+                        <div className="flex items-center space-x-2 mb-3">
+                          <span className="px-2 py-0.5 bg-[#133E2B]/10 text-[#133E2B] text-[10px] font-bold rounded uppercase">{course.category || 'Khóa học'}</span>
+                          <div className="flex items-center text-amber-500">
+                            <Star size={13} fill="currentColor" />
+                            <span className="ml-1 text-xs font-bold text-[#1C221F]/60">4.9</span>
+                          </div>
+                        </div>
+                        <h3 className="text-lg font-bold text-[#1C221F] group-hover:text-[#133E2B] transition-colors leading-snug line-clamp-2">
+                          {course.title}
+                        </h3>
+                        <div className="flex items-center space-x-4 mt-3 text-xs text-[#1C221F]/60 font-medium">
+                          <span className="flex items-center"><BookOpen size={14} className="mr-1" /> Cơ bản</span>
+                          <span className="flex items-center"><Clock size={14} className="mr-1" /> 12h học</span>
                         </div>
                       </div>
-                      <Link href={`/courses/${course.id}`} className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-white hover:border-[#133E2B] transition-all">
-                        Chi tiết
-                      </Link>
+                      <div className="pt-4 border-t border-[#E8E3D9] flex items-center justify-between">
+                        <div>
+                          <div className="flex flex-col">
+                            {course.isFree || Number(course.price) === 0 ? (
+                              <span className="text-base font-extrabold text-[#133E2B]">Khoá học miễn phí</span>
+                            ) : course.discountPrice && Number(course.discountPrice) > 0 ? (
+                              <>
+                                <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.discountPrice)}</span>
+                                <span className="text-xs text-gray-500 line-through font-normal">{formatPrice(course.price)}</span>
+                              </>
+                            ) : (
+                              <span className="text-base font-extrabold text-[#133E2B]">{formatPrice(course.price)}</span>
+                            )}
+                          </div>
+                        </div>
+                        <span className="px-4 py-2 bg-[#FAF7F2] text-[#133E2B] text-xs font-bold rounded-xl border border-[#E8E3D9] hover:bg-[#133E2B] hover:text-white hover:border-[#133E2B] transition-all">
+                          Chi tiết
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
           ) : (
