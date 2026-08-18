@@ -195,10 +195,10 @@ export default function CourseDetail() {
   };
 
   const getEmbedUrl = (url: string) => {
-    if (!url) return null;
+    if (!url) return '';
     if (url.includes('youtube.com') || url.includes('youtu.be')) {
       const id = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop();
-      return `https://www.youtube.com/embed/${id}`;
+      return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${id}&playsinline=1`;
     }
     if (url.includes('drive.google.com')) {
       const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
@@ -253,25 +253,30 @@ export default function CourseDetail() {
               className="relative aspect-video rounded-[2.5rem] overflow-hidden border border-[#E8E3D9] bg-[#111111] shadow-2xl group"
             >
               {course.introVideoUrl ? (
-                <iframe 
-                  src={getEmbedUrl(course.introVideoUrl) || ''} 
-                  className="w-full h-full"
-                  allowFullScreen
-                />
-              ) : (
-                <>
-                  <Image 
-                    src={course.coverImage || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000'} 
-                    fill 
-                    className="object-cover group-hover:scale-105 transition-transform duration-700" 
-                    alt="Cover" 
+                course.introVideoUrl.includes('youtube.com') || course.introVideoUrl.includes('youtu.be') || course.introVideoUrl.includes('drive.google.com') ? (
+                  <iframe 
+                    src={getEmbedUrl(course.introVideoUrl) || ''} 
+                    className="w-full h-full border-0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
                   />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="p-6 bg-white/10 backdrop-blur-xl rounded-full border border-[#E8E3D9] text-[#1C221F]">
-                      <Play size={32} fill="currentColor" />
-                    </div>
-                  </div>
-                </>
+                ) : (
+                  <video
+                    src={course.introVideoUrl}
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                )
+              ) : (
+                <Image 
+                  src={course.coverImage || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000'} 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                  alt="Cover" 
+                />
               )}
             </motion.div>
 
